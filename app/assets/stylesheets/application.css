@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+ /* nav bar*/
+header {
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    width: 132px;
+    height: 40px;
+    margin: 20px 0;
+}
+
+.login-signup ul {
+    display: flex;
+    list-style: none;
+}
+
+.login-signup ul li a {
+    padding: 28px 17px;
+}
+
+ /*  */
