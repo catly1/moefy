@@ -5,14 +5,16 @@ import Footer from '../footer/footer'
 const Splash = () => (
     <div>
         <HeaderContainer/>
-        <div class="background"></div>
+        <section className="main">
+        <div className="background-img"></div>
         <div>
-            <div className="something">
-                <h1>Moe for everyone</h1>
+            <div className="body-text">
+                <h1>Moe for everyone.</h1>
                 <h4>Millions of songs. Credit card needed.</h4>
-                <button>Get Moefy free</button>
+                <button className="splash-grn-button">Get Moefy free</button>
             </div>
         </div>
+        </section>
         <Footer/>
     </div>
 );
