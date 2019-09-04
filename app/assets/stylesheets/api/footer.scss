@@ -1,0 +1,137 @@
+footer {
+    flex-shrink: 0;
+    width: 100%;
+    background-color: black;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+ }
+
+ .bottom-logo{
+    width: 16.66666667%;
+    padding: 0 15px;
+ }
+
+ .about img {
+    width: 132px;
+    height: 40px;
+    margin: 20px 0;
+ }
+
+ .about {
+     display: flex;
+     width: 64%;
+     justify-content: space-between;
+     padding: 80px 0 0px;
+ }
+
+ .footer-top-links{
+     display: flex;
+     width: 50%;
+     justify-content: space-between;
+ }
+
+ .footer-top-links dl {
+     display: flex;
+     flex-direction: column;
+
+ }
+ .footer-top-links dl dt {
+    display: flex;
+    margin: 20px 0;
+    color: #919496;
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 1.4;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+ }
+
+.footer-top-links dl dd {
+     display: flex;
+     padding: 3px 0 15px;
+     margin: 0;
+
+ }
+
+.footer-top-links a {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 3px 0 15px;
+    transition-property: color;
+ }
+
+.footer-top-links a:hover {
+    color: #1ED760;
+}
+
+ .social-media ul {
+    display: flex;
+ }
+
+ .social-media li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background-color: #222326;
+    margin-right: 15px;
+ }
+
+ .social-media img {
+     height: 35px;
+     width: auto;
+ }
+
+ .country, .bottom-links {
+    display: flex;
+ }
+
+ .country{
+    width: 60%;
+    flex-direction: row-reverse;
+
+    padding: 10px;
+ }
+
+.country img {
+    margin-left: 10px;
+    height: 18px;
+    width: auto;
+}
+
+ .country a {
+    display: flex;
+    align-items: center;
+    color: #919496;
+    font-size: 12px;
+ }
+ 
+ .bottom-links {
+    width: 60%;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 50px;
+ }
+
+ .bottom-links ul {
+    width: 40%;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    padding: 0 0 0 15px;
+
+ }
+
+
+ .bottom-links a {
+    color: #919496;
+    font-size: 12px;
+ }

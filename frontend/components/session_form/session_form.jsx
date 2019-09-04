@@ -125,10 +125,10 @@ class SessionForm extends React.Component {
             {this.renderErrors()}
             <div className="login-form">
                 <br />
-                <label>Email:
+                <label>Username:
                             <input type="text"
-                        value={this.state.email}
-                        onChange={this.update('email')}
+                        value={this.state.username}
+                        onChange={this.update('username')}
                         className="login-input"
                     />
                 </label>

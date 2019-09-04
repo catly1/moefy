@@ -1,0 +1,22 @@
+// Place all the styles related to the api/songs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.song-index{
+    display: flex;
+    position: relative;
+}
+.song-index-background{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: url("../background.jpg");
+    background-repeat: repeat;
+    background-attachment: fixed;
+    z-index: -1;  
+}
+
+
+.song-list{
+
+}
