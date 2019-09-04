@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 const SongIndexItem = ({song}) =>{
     return(
     <li>
-        <span>{song.name}</span>
+        <span>
+            <div>{song.name}</div>
+            </span>
     </li>
     )
 }
