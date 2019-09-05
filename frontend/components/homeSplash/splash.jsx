@@ -7,7 +7,7 @@ const Splash = ({ currentUser }) => {
 
     const notLoggedIn = () =>(
         <section className="main">
-            <div className="background-img"></div>
+            <div className="background-img background-img-notlogged"></div>
             <div className="body-text">
                 <div>
                     <h1>Moe for everyone.</h1>
@@ -19,10 +19,11 @@ const Splash = ({ currentUser }) => {
     );
     const loggedIn = () =>(
         <section className="main">
-            <div className="background-img"></div>
-            <div className="body-text">
+            <div className="background-img background-img-logged"></div>
+            <div className="body-text loggedin">
                 <div>
-                    <Link to="/player" className="splash-grn-button">Open Web Player</Link>
+                    <h1>Jump back in</h1>
+                    <Link to="/player/browse" className="splash-grn-button">Open Web Player</Link>
                 </div>
             </div>
         </section> 

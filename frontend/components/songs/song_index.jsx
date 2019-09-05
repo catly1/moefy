@@ -15,8 +15,8 @@ class SongIndex extends Component {
         const {songs, playSong} = this.props
         return(
             <div className="song-index">
+                <div className="player-background player-background-song-index"></div>
                 <HeaderPlayerContainer/>
-                <div className="player-background"></div>
                 <div className="song-list">
                     <ol >
                         {songs.map(song => <SongIndexItem key={song.id} song={song} playSong={playSong}/>)}

@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
-import { Slider, Direction } from 'react-player-controls'
+import { MdPlayCircleOutline, MdPauseCircleOutline, MdSkipNext, MdSkipPrevious } from "react-icons/md";
+import { IoIosShuffle } from "react-icons/io";
+import { TiArrowRepeat } from "react-icons/ti";
+import Duration from './duration'
+
 
 class FooterPlayer extends Component {
     constructor(props){
         super(props)
         this.state = {
-            playing: false,
+            playing: true,
             volume: 0.8,
             played: 0,
+            duration: 0,
         }
         this.handlePlayPause = this.handlePlayPause.bind(this);
         this.handleVolumeChange = this.handleVolumeChange.bind(this);
@@ -17,6 +22,7 @@ class FooterPlayer extends Component {
         this.handleSeekMouseUp = this.handleSeekMouseUp.bind(this)
         this.ref = this.ref.bind(this)
         this.handleProgress = this.handleProgress.bind(this)
+        this.handleDuration = this.handleDuration.bind(this)
     }
     
     handlePlayPause (){
@@ -47,6 +53,10 @@ class FooterPlayer extends Component {
         }
     }
 
+    handleDuration (duration){
+        this.setState({ duration })
+    }
+
 
     ref (player){
         this.player = player
@@ -54,7 +64,7 @@ class FooterPlayer extends Component {
 
     render (){
         const { queue, songs } = this.props
-        const { playing, volume, played } = this.state
+        const { playing, volume, played, duration } = this.state
 
         let nowPlaying
         if (queue.length > 0) {
@@ -68,29 +78,50 @@ class FooterPlayer extends Component {
                 width="0%" 
                 volume={volume}
                 onProgress={this.handleProgress}
+                onDuration={this.handleDuration}
                 />
-                <button onClick={this.handlePlayPause}>{playing ? 'Pause' : 'Play'}</button>
+                <section className="song-info">
 
-                <input
-                    type='range' min={0} max={1} step='any'
-                    value={played}
-                    onMouseDown={this.handleSeekMouseDown}
-                    onChange={this.handleSeekChange}
-                    onMouseUp={this.handleSeekMouseUp}
-                />
+                </section>
 
+                <section className="center-console">
+                <div className="control-buttons">
+                    <div className="shuffle-button button"><IoIosShuffle/></div>
+                    <div className="back-button button"><MdSkipPrevious/></div>
+                    <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
+                    <div className="fwd-button button"><MdSkipNext/></div>
+                    <div className="rep-button button"><TiArrowRepeat /></div>              
+                </div>
 
-                <input type='range' min={0} max={1} step='any' value={volume} onChange={this.handleVolumeChange} />
+                <div className="seek-bar">
+                    <div className="current-progress"><Duration seconds={duration * played} /></div>
+                    <div className="range-bar">
+                        <input
+                            type='range' min={0} max={1} step='any'
+                            value={played}
+                            onMouseDown={this.handleSeekMouseDown}
+                            onChange={this.handleSeekChange}
+                            onMouseUp={this.handleSeekMouseUp}
+                        />
+                        <progress max={1} value={played}/>
+                    </div>
+                    <div className="song-length"><Duration seconds={duration} /></div>
+                </div>
+                </section>
+
+                <section className="volume">
+                    <input type='range' min={0} max={1} step='any' value={volume} onChange={this.handleVolumeChange} />
+                    <progress max={1} value={volume}/>
+                </section>
+
                 
                 </div>
                 )
             }
             
-            return(
-                <footer className="footer-player">
-            <div>
+        return(
+        <footer className="footer-player">
                 {nowPlaying}
-            </div>
         </footer>
         )
     }

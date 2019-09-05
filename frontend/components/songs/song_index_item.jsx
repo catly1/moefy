@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
+import { MdMusicNote, MdPlayArrow } from "react-icons/md";
 
 class SongIndexItem extends Component {
     constructor(props){
         super(props)
         this.handleDoubleClick = this.handleDoubleClick.bind(this)
+        this.handleMouseEnter = this.handleMouseEnter.bind(this)
+        this.handleMouseLeave = this.handleMouseLeave.bind(this)
+        this.state = {
+            note: <MdMusicNote />
+        }
     }
 
 
     handleDoubleClick(e) {
         this.props.playSong(this.props.song.id)
+    }
+
+    handleMouseEnter(e){
+        this.setState({ note: <MdPlayArrow onClick={this.handleDoubleClick}/>})
+    }
+
+    handleMouseLeave(e){
+        this.setState({ note: <MdMusicNote /> })
     }
 
     render(){
@@ -18,18 +32,26 @@ class SongIndexItem extends Component {
             <Link key={artist.id} to="">{artist.name}</Link>
         )
         return(
-            <li onDoubleClick={this.handleDoubleClick}>
-                <span className="song-item">
+            <li onDoubleClick={this.handleDoubleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                <section className="song-item-play-button">
+                    <div>{this.state.note}</div>
+                </section>
+                <section className="song-item">
                     <div className="song-first-line">
                             <div className="song-name">{song.name}</div>
-                            <div className="song-name">5:00</div>
                     </div>
-
                     <div className="song-second-line">
                         {artists}
+                        <div className="song-second-line-dot">.</div>
                         <Link to="">{song.album}</Link>
                     </div>
-                </span>
+                </section>
+                <section className="song-item-song-options">
+                    <div>...</div>
+                </section>
+                <section className="song-item-song-length">
+                    <div>3:00</div>
+                </section>
             </li>
         )
     }

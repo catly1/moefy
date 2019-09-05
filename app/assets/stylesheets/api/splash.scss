@@ -100,10 +100,17 @@ header img {
 .background-img {
     width: 100%;
     height: 100vh;
-    background: url("../background.jpg");
     background-repeat: repeat;
     background-attachment: fixed;
     z-index: -1;
+}
+
+.background-img-notlogged{
+    background-image: url("../background_splash_notlogged.jpg");
+}
+
+.background-img-logged{
+    background-image: url("../background_splash_logged.jpg.png")
 }
 
 .social-media {
@@ -139,4 +146,17 @@ header img {
 .splash {
     display: flex;
     flex-direction: column;
+}
+
+.main, .logged{
+}
+
+.loggedin, .body-text{
+    top: 337px;
+    left: 678px;
+}
+
+.loggedin h1{
+    text-align: center;
+    width: 442px;
 }

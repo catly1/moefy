@@ -3,3 +3,33 @@
     justify-content: center;
     min-width: 80%;
 }
+
+.header-player{
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: bold;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: #fff;
+}
+
+
+.header-player li a{
+    position: relative;
+    padding: 5px 10px;
+    color: white;
+}
+
+.header-player li a::before{
+    content: "";
+    height: 2px;
+    background-color: #1db954;
+    width: 30px;
+    position: absolute;
+    display: block;
+    left: 50%;
+    bottom: 0;
+    margin-left: -15px;  
+}
+

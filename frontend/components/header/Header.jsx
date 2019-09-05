@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Header = ({ currentUser, logout }) => {
     const notLoggedIn = () => (
-        <ul className="not-logged">
+        <ul className="not-logged-in">
             <li><a href="">Premium</a></li>
             <li><a href="">Help</a></li>
             <li><a href="">Download</a></li>
@@ -15,7 +15,7 @@ const Header = ({ currentUser, logout }) => {
         </ul>
     );
     const loggedIn = () => (
-        <ul className="logged">
+        <ul className="logged-in">
             <li><a href="">Premium</a></li>
             <li><a href="">Help</a></li>
             <li><a href="">Download</a></li>
