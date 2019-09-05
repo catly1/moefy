@@ -93,6 +93,7 @@ class FooterPlayer extends Component {
                     <div className="rep-button button"><TiArrowRepeat /></div>              
                 </div>
 
+                    <button onClick={this.handlePlayPause}>{playing ? "pause" : "play"}</button>
                 <div className="seek-bar">
                     <div className="current-progress"><Duration seconds={duration * played} /></div>
                     <div className="range-bar">

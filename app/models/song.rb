@@ -20,4 +20,6 @@ class Song < ApplicationRecord
 
     has_many :artists,
         through: :collaborations
+
+    has_one_attached :song
 end
