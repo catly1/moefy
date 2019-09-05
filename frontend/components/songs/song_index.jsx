@@ -12,14 +12,14 @@ class SongIndex extends Component {
     }
 
     render(){
-        const {songs} = this.props
+        const {songs, playSong} = this.props
         return(
             <div className="song-index">
                 <HeaderPlayerContainer/>
-                <div className="song-index-background"></div>
+                <div className="player-background"></div>
                 <div className="song-list">
-                    <ol>
-                        {songs.map(song => <SongIndexItem key={song.id} song={song}/>)}
+                    <ol >
+                        {songs.map(song => <SongIndexItem key={song.id} song={song} playSong={playSong}/>)}
                     </ol>
                 </div>
             </div>

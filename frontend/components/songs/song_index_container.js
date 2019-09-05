@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import SongIndex from './song_index';
 
-import { requestSongs } from '../../actions/song_actions'
+import { requestSongs, playSong } from '../../actions/song_actions'
+
 
 const msp = state => {
     // debugger
@@ -10,7 +11,8 @@ const msp = state => {
 }}
 
 const mdp = dispatch => ({
-    requestSongs: () => dispatch(requestSongs())
+    requestSongs: () => dispatch(requestSongs()),
+    playSong: song => dispatch(playSong(song))
 });
 
 export default connect(msp, mdp)(SongIndex)

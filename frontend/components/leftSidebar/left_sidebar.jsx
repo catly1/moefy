@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
 
 class LeftSidebar extends Component {
     render() {
         return (
-            <section className="left-nav-bar">Test siderbar</section>
+            <section className="left-nav-bar"> 
+        <div className="left-nav-wrapper">
+            <div className="left-nav-logo"> 
+                <Link to='/player/browse' >
+                    <img src="./assets/logo.png" alt="Moefy" />
+                </Link>
+            </div>
+        </div>
+
+            </section>
         )
     }
 }

@@ -1,6 +1,7 @@
 import {
     RECEIVE_SONGS,
-    RECEIVE_SONG
+    RECEIVE_SONG,
+    RECEIVE_SONG_TO_PLAY
 } from '../actions/song_actions'
 
 const SongsReducer = (state = {}, action) => {

@@ -4,22 +4,27 @@
 
 .song-index{
     display: flex;
-    position: relative;
     flex-direction: column;
     align-items: center;
-}
-
-.song-index-background{
-    position: absolute;
     width: 100%;
-    height: 100vh;
-    background: url("../background.jpg");
-    background-repeat: repeat;
-    background-attachment: fixed;
-    z-index: -1;  
 }
 
+
+// song list
+
+.song-list {
+    min-width: 80%;
+}
 
 .song-list ol{
+    max-width: 1480px;
     list-style: none;
+}
+
+.song-item > div {
+    display: flex;
+}
+
+.song-first-line {
+    justify-content: space-between;
 }

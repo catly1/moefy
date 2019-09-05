@@ -7,12 +7,11 @@ const Browse = (props) =>{
 
     return(
         <section className="browse">
-            {/* <nav>
+            <nav>
                 <ul>
                     <li><Link to="/player/songs">Songs</Link></li>
                 </ul>
-            </nav> */}
-            <Route exact path="/player/songs" component={SongIndexContainer}/>
+            </nav>
         </section>
     )
 }
