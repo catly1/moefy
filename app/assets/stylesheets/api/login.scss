@@ -11,8 +11,7 @@
 }
 
 .login-form {
-    max-width: 26.875em;
-    min-width: 320px;
+    width: 450px;
     display: flex;
     flex-direction: column;
 }
@@ -214,3 +213,130 @@ input{
 .active {
     display: block;
 }
+
+.splash-grn-button-login-button {
+    width: 210px;
+}
+
+.login-divider{
+    border-top: 1px solid #d9dadc;
+    display: block;
+    line-height: 1px;
+    margin: 15px 0;
+    position: relative;
+    text-align: center;    
+}
+
+button {
+    cursor: pointer;
+}
+
+button.splash-grn-button-sign-up-not-green {
+    background-color: white;
+    color: #616467;
+    box-shadow: inset 0 0 0 2px #616467;
+    width: 410px;
+}
+
+button.splash-grn-button-sign-up-not-green:hover {
+    color: #fff;
+    background-color: rgb(97, 100, 103);
+}
+
+.login-boxes-first-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.login-boxes-first-row label {
+    display: flex;
+}
+
+// custom check box
+/* The container */
+.container{
+  display: flex;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border: #1db954 1px solid;
+  border-radius: 5px;
+}
+
+/* On mouse-over, add a grey background color */
+// .container:hover input ~ .checkmark {
+//   background-color: #ccc;
+// }
+
+/* When the checkbox is checked, this is the background */
+.container input:checked ~ .checkmark {
+  background-color: #1db954;
+}
+
+/* Show the checkmark when checked */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 6px;
+    top: 2.7px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(26deg);
+}
+//
+
+.forgot-pw{
+    display: flex;
+    justify-content: center;
+}
+
+.showSignup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.showSignup div h2{
+
+    text-align: center;
+    margin-bottom: 35px;
+}
+

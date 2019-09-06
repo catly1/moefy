@@ -338,7 +338,6 @@ class SessionForm extends React.Component {
     render() {
         const signup = (
         <form onSubmit={this.handleSubmit} className="login-form-box">
-            {/* {this.renderErrors()} */}
             <h2>Sign up with your email address</h2>
             <div className="login-form">
                 <div className="login-form-details">
@@ -462,36 +461,46 @@ class SessionForm extends React.Component {
 
         const login = (
         <form onSubmit={this.handleSubmit} className="login-form-box">
-            <br />
             <h2>To continue, log in to Moefy.</h2>
             {/* {this.renderErrors()} */}
-            <div className="login-form">
-                <br />
-                <label>Username:
+            <div className="login-form">                       
+                <div className="login-form-details">
+                        <div>
                             <input type="text"
-                        value={this.state.username}
-                        onChange={this.update('username')}
-                        className="login-input"
-                    />
-                </label>
-                <br />
-                <label>Password:
+                                value={this.state.username}
+                                onChange={this.update('username')}
+                                className="login-input"
+                                placeholder="Email address or username"
+                                id="email"
+                            />
+                        </div>
+    
+    
+                        <div>
                             <input type="password"
-                        value={this.state.password}
-                        onChange={this.update('password')}
-                        className="login-input"
-                    />
-                </label>
-                <br />
-                <button type="submit" className="login-button">Log in</button>
-                <div><a href="#">Forgot your password?</a>
+                                value={this.state.password}
+                                onChange={this.update('password')}
+                                className="login-input"
+                                placeholder="Password"
+                            />
+                        </div>
+
                 </div>
-                    
-                <div className="showSignup">
-                    <h2>Don't have an account?</h2>
-                    {this.props.navLink}
+                <div className="login-boxes-first-row">
+                        <label className="container">Remember me<input type="checkbox" /><span className="checkmark"/></label>
+                    <button type="submit" className="splash-grn-button splash-grn-button-login-button">Log in</button>
                 </div>
-            </div>
+                    <p className="forgot-pw"><a href="#">Forgot your password?</a></p>
+                
+
+                    <div className="login-divider"></div>
+                    <div className="showSignup">
+                        <div>
+                            <h2>Don't have an account?</h2>
+                            {this.props.navLink}
+                        </div>
+                    </div>
+                </div>
         </form>
         )
 
@@ -507,7 +516,9 @@ class SessionForm extends React.Component {
         return (
             <div className="login-form-container">
                 <div className="login-form-header">
-                    <Link to="/"><img src="./assets/logo-blk.png" alt="Moefy" /></Link>
+                    <Link to={                     
+                        this.props.formType === 'login' ? "/login" : "/signup"
+                    }><img src="./assets/logo-blk.png" alt="Moefy" /></Link>
                 </div>
                 {display}
             </div>

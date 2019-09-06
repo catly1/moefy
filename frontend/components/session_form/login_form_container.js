@@ -3,12 +3,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../../actions/session_actions';
 import SessionForm from './session_form';
+import LinkButton from '../../util/link_button'
 
 const mapStateToProps = ({ errors }) => {
     return {
         errors: errors.session,
         formType: 'login',
-        navLink: <Link to="/signup">Sign up form Moefy</Link>,
+        navLink: <LinkButton className="splash-grn-button splash-grn-button-sign-up-not-green" to="/signup">Sign up for Moefy</LinkButton>,
     };
 };
 
