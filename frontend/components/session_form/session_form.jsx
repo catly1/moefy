@@ -43,12 +43,19 @@ class SessionForm extends React.Component {
         //     element.classList.remove("active")
         // }
 
+
         return e => this.setState({
             [field]: e.currentTarget.value
         });
     }
 
     updateTwo(){
+
+
+        if (this.state.rememberMe) {
+            this.rememberUser()
+        }
+
         return e => this.setState({
             username: e.currentTarget.value,
             email: e.currentTarget.value
