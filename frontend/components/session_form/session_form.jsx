@@ -28,15 +28,30 @@ class SessionForm extends React.Component {
         this.renderPasswordError = this.renderPasswordError.bind(this);
         this.renderDayError = this.renderDayError.bind(this);
         this.renderYearError = this.renderYearError.bind(this);
+        this.renderUsernameError = this.renderUsernameError.bind(this);
+        this.renderMonthError= this.renderMonthError.bind(this);
     }
 
     update(field) {
+
+        // let elementId = `${field}` + "-error"
+        // let element = document.getElementById(elementId)
+        // if (element) {
+        //     element.classList.remove("active")
+        // }
+
         return e => this.setState({
             [field]: e.currentTarget.value
         });
     }
 
     handleSubmit(e) {
+        // const errors = Array.from(document.getElementsByClassName("error"))
+        // if (errors) errors.forEach(error => error.style.display = "none");
+
+        // const postErrors = Array.from(document.getElementsByClassName("post-error"))
+        // if (postErrors) postErrors.forEach(error => this.removeElement(error.id));
+
         e.preventDefault();
         const user = {
             username: this.state.username,
@@ -48,16 +63,139 @@ class SessionForm extends React.Component {
         this.props.processForm(user);
     }
 
+    componentDidUpdate(prevProps, prevState){
+
+        //Removes old post-errors when there's a change to state
+        if (this.state.email) {
+            let element = document.getElementById("email-error")
+            if (element) {
+                element.classList.remove("active")
+            }
+        }
+        if (this.state.email2) {
+            let element = document.getElementById("email2-error")
+            if (element) {
+                element.classList.remove("active")
+            }
+        }
+        if (this.state.password) {
+            let element = document.getElementById("password-error")
+            if (element) {
+                element.classList.remove("active")
+            }
+        }
+        if (this.state.username) {
+            let element = document.getElementById("username-error")
+            if (element) {
+                element.classList.remove("active")
+            }
+        }
+
+        if (this.state.day) {
+            let element = document.getElementById("day-error")
+            if (element) {
+                element.classList.remove("active")
+            } 
+        }
+
+        if (this.state.year) {
+            let element = document.getElementById("year-error")
+            if (element) {
+                element.classList.remove("active")
+            }
+        }
+
+        if (this.state.month) {
+            let element = document.getElementById("month-error")
+            if (element) {
+                element.classList.remove("active")
+            }
+        }
+
+    
+
+        if (this.props.errors != prevProps.errors) {
+            //Removes old post-errors when there's a change to props
+
+            // const errors = Array.from(document.getElementsByClassName("error"))
+            // if (errors) errors.forEach(error => this.removeElement(error.id))
+
+
+            if (!prevState.email2 && !this.state.email2) {
+                let element = document.getElementById("email2-error")
+                if (element) {
+                    element.textContent = "Please enter your email."
+                    element.classList.add("active")
+                    this.addRedBorder('email2')
+                }
+            } 
+
+            //creates new post-errors
+            const states = Object.keys(this.state).filter(key => !key.includes("validation"))
+            this.props.errors.forEach(error => {
+            states.forEach(state => {
+                const cap = state[0].toUpperCase() + state.substr(1)
+                if (error.includes(cap)){
+
+                    let elementId = `${state}` + "-error"
+                    let element = document.getElementById(elementId)
+                    if(element) {
+                        element.textContent = error
+                        element.classList.add("active")
+                        this.addRedBorder(state)
+                        }
+                    
+
+                }
+
+
+
+                if (error.includes("Dob")){
+                    console.log(error)
+                    this.handleDobAfter(prevState)
+                }
+
+
+            })
+        })
+        } 
+
+
+    }
+
+    handleDobAfter(prevState){
+        if (!prevState.day) {
+            this.addRedBorder("day")
+            let dayElement = document.getElementById("day-error")
+            dayElement.textContent = "Please enter a valid day of the month."
+            dayElement.classList.add("active")
+        }
+
+        if (!prevState.year) {
+            this.addRedBorder("year")
+            let yearElement = document.getElementById("year-error")
+            yearElement.textContent = "Please enter a valid year."
+            yearElement.classList.add("active")
+        }
+
+        if (!prevState.month) {
+            this.addRedBorder("month")
+            let monthElement = document.getElementById("month-error")
+            monthElement.textContent = "Please enter your birth month."
+            monthElement.classList.add("active")
+        }
+    }
+
     renderErrors() {
-        return (
-            <ul>
-                {this.props.errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        );
+        // return (
+        //     <ul>
+        //         {this.props.errors.map((error, i) => (
+        //             <li key={`error-${i}`}>
+        //                 {error}
+        //             </li>
+        //         ))}
+        //     </ul>
+        // );
     }
 
     checkIfValid(e){
@@ -75,11 +213,11 @@ class SessionForm extends React.Component {
         if (this.state.email_validation && !this.validateEmail(this.state.email)) {
             this.addRedBorder("email")
             return (
-                    <label className="error">The email address you supplied is invalid.</label>
+                    <label className="error" id="email-error">The email address you supplied is invalid.</label>
             );
         }
-        this.removeRedBorder("email")
-        return null;
+        if(this.state.email) this.removeRedBorder('email')
+        return <label className="error hidden" id="email-error"></label>
     }
 
     renderEmailNotAMatchError(){
@@ -96,9 +234,8 @@ class SessionForm extends React.Component {
                 <label className="error">The email address you supplied is invalid.</label>
             );
         }
-
-            this.removeRedBorder("email2")
-        return null;
+        if (this.state.email2) this.removeRedBorder('email2')
+        return <label className="error hidden" id="email2-error"></label>
     }
 
     renderPasswordError(){
@@ -109,9 +246,20 @@ class SessionForm extends React.Component {
             );
         }
 
-        this.removeRedBorder("password")
-        return null
+        if (this.state.password) this.removeRedBorder('password')
+        return <label className="error hidden" id="password-error"></label>
 
+    }
+
+    renderUsernameError() {
+
+        if (this.state.username) this.removeRedBorder('username')
+        return <label className="error hidden" id="username-error"></label>
+    }
+
+    renderMonthError(){
+
+        return <label className="error hidden" id="month-error"></label>
     }
 
     renderDayError(){
@@ -122,8 +270,8 @@ class SessionForm extends React.Component {
             );
         }
 
-        this.removeRedBorder("password")
-        return null   
+        if (this.state.day) this.removeRedBorder('day')
+        return <label className="error hidden" id="day-error"></label>
     }
 
     renderYearError(){
@@ -143,10 +291,15 @@ class SessionForm extends React.Component {
             );
         }
 
-        this.removeRedBorder("password")
-        return null   
+        if (this.state.year) this.removeRedBorder('year')
+        return <label className="error hidden" id="year-error"></label> 
     }
 
+
+    removeElement(elementId){
+        const element = document.getElementById(elementId)
+        if (element) element.style.display = 'none'
+    }
 
     addRedBorder(elementId){
         const element = document.getElementById(elementId)
@@ -161,7 +314,7 @@ class SessionForm extends React.Component {
     render() {
         const signup = (
         <form onSubmit={this.handleSubmit} className="login-form-box">
-            {this.renderErrors()}
+            {/* {this.renderErrors()} */}
             <h2>Sign up with your email address</h2>
             <div className="login-form">
                 <div className="login-form-details">
@@ -175,6 +328,7 @@ class SessionForm extends React.Component {
                             id="email"
                         />
                     {this.renderEmailError()}
+                    
                     </div>
                     <div>
                         <input type="text"
@@ -206,6 +360,7 @@ class SessionForm extends React.Component {
                             placeholder="What should we call you?"
                             id="username"
                         />
+                        {this.renderUsernameError()}
                     </div>
                 </div>
                 <div className="dob">
@@ -213,7 +368,7 @@ class SessionForm extends React.Component {
                     <div className="dob-second-line">
                     
                     <div className="months">
-                        <select name="DOBMonth" value={this.state.month} onChange={this.update("month")}>
+                        <select name="DOBMonth" value={this.state.month} id="month" onChange={this.update("month")}>
                             <option>Month</option>
                             <option value="January">January</option>
                             <option value="Febuary">Febuary</option>
@@ -248,8 +403,9 @@ class SessionForm extends React.Component {
                         />
                     </div>
                     </div>
-                    {this.renderYearError()}
+                    {this.renderMonthError()}
                     {this.renderDayError()}
+                    {this.renderYearError()}
                 </div>
 
                 <div className="gender">
@@ -281,7 +437,7 @@ class SessionForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="login-form-box">
             <br />
             <h2>To continue, log in to Moefy.</h2>
-            {this.renderErrors()}
+            {/* {this.renderErrors()} */}
             <div className="login-form">
                 <br />
                 <label>Username:
