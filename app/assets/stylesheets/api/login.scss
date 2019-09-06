@@ -210,9 +210,7 @@ input{
     display: none;
 }
 
-.active {
-    display: block;
-}
+
 
 .splash-grn-button-login-button {
     width: 210px;
@@ -284,7 +282,7 @@ button.splash-grn-button-sign-up-not-green:hover {
   height: 20px;
   width: 20px;
   background-color: white;
-  border: #1db954 1px solid;
+  border: #dfe0e6 1px solid;
   border-radius: 5px;
 }
 
@@ -296,6 +294,7 @@ button.splash-grn-button-sign-up-not-green:hover {
 /* When the checkbox is checked, this is the background */
 .container input:checked ~ .checkmark {
   background-color: #1db954;
+  border: #1db954 1px solid;
 }
 
 /* Show the checkmark when checked */
@@ -340,3 +339,35 @@ button.splash-grn-button-sign-up-not-green:hover {
     margin-bottom: 35px;
 }
 
+div.login-error{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #f59b23;
+    border-color: #f59b23;
+    color: #fff;
+    border-width: 0;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 6px 0 34px;
+    height: 44px;
+}
+
+.noSelect {
+    outline: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.active{
+    display: flex;
+}
+
+div.active {
+    display: flex;
+}

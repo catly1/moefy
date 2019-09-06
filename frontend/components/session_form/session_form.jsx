@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdExpandMore } from "react-icons/md";
+import { AsyncStorage } from 'AsyncStorage';
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class SessionForm extends React.Component {
             day_validation: false,
             year: '',
             year_validation: false,
+            rememberMe: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.checkIfValid = this.checkIfValid.bind(this);
@@ -46,6 +48,13 @@ class SessionForm extends React.Component {
         });
     }
 
+    updateTwo(){
+        return e => this.setState({
+            username: e.currentTarget.value,
+            email: e.currentTarget.value
+        });
+    }
+
     handleSubmit(e) {
         // const errors = Array.from(document.getElementsByClassName("error"))
         // if (errors) errors.forEach(error => error.style.display = "none");
@@ -64,8 +73,9 @@ class SessionForm extends React.Component {
         this.props.processForm(user);
     }
 
-    componentDidUpdate(prevProps, prevState){
 
+
+    componentDidUpdate(prevProps, prevState){
         //Removes old post-errors when there's a change to state
         if (this.state.email) {
             let element = document.getElementById("email-error")
@@ -175,6 +185,11 @@ class SessionForm extends React.Component {
                 }
 
 
+                if (error.includes("Incorrect")){
+                    let element = document.getElementById("login-error")
+                    if (element) element.classList.add("active")
+                }
+
             })
         })
         } 
@@ -229,15 +244,24 @@ class SessionForm extends React.Component {
     }
 
     renderEmailError(){
-        if (this.state.email_validation && !this.validateEmail(this.state.email)) {
+        if (this.state.email_validation && !this.validateEmail(this.state.email) && this.props.formType === "signup") {
             this.addRedBorder("email")
             return (
                     <label className="error" id="email-error">The email address you supplied is invalid.</label>
             );
         }
+
+        if (this.state.email_validation && this.state.email.length < 1 && this.props.formType === "login") {
+            this.addRedBorder("email")
+            return (
+                <label className="error">Please enter your Spotify username or email address.</label>
+            );
+        }
+
         if(this.state.email) this.removeRedBorder('email')
         return <label className="error hidden" id="email-error"></label>
     }
+    
 
     renderEmailNotAMatchError(){
         if (this.state.email2 && (this.state.email != this.state.email2)) {
@@ -258,10 +282,17 @@ class SessionForm extends React.Component {
     }
 
     renderPasswordError(){
-        if (this.state.password_validation && this.state.password.length < 6) {
+        if (this.state.password_validation && this.state.password.length < 6 && this.props.formType === "signup") {
             this.addRedBorder("password")
             return(
                 <label className="error">Your password is too short.</label>
+            );
+        }
+
+        if (this.state.password_validation && this.state.password.length < 1 && this.props.formType === "login") {
+            this.addRedBorder("password")
+            return (
+                <label className="error">Please enter your password.</label>
             );
         }
 
@@ -334,6 +365,65 @@ class SessionForm extends React.Component {
         const element = document.getElementById(elementId)
         if (element) element.classList.remove("red-border")
     }
+
+
+
+    //Remember Me
+
+    toggleRememberMe(value){
+        this.setState({ rememberMe: value.target.checked })
+        if (value.target.checked) {
+            //user wants to be remembered.
+            this.rememberUser();
+        } else {
+            this.forgetUser();
+        }
+    }
+
+    async rememberUser() {
+        try {
+            await AsyncStorage.setItem('username', this.state.username);
+        } catch (error) {
+            // Error saving data
+        }
+    };
+
+    async getRememberedUser() {
+        try {
+            const username = await AsyncStorage.getItem('username');
+            if (username) {
+                // We have username!!
+                return username;
+            }
+        } catch (error) {
+            // Error retrieving data
+        }
+    };
+
+    async forgetUser() {
+ 
+        try {
+            // await AsyncStorage.removeItem('username');
+            const username = await AsyncStorage.setItem('username', "");
+            // debugger
+        } catch (error) {
+            console.log(error)
+            // Error removing
+        }
+    };
+
+    async componentDidMount() {
+        const username = await this.getRememberedUser();
+        this.setState({
+            username: username || "",
+            rememberMe: username ? true : false
+        });
+
+        const checkbox = document.getElementById("special-box")
+        if (checkbox) checkbox.checked = (!!username)
+    }
+
+
 
     render() {
         const signup = (
@@ -452,7 +542,7 @@ class SessionForm extends React.Component {
                         <br/>
                         To learn more about how Moefy collects, uses, shares and protects your personal data please read Moefy's <a href="">Privacy Policy</a>.
                     </p>
-                    <button type="submit" className="splash-grn-button splash-grn-button-sign-up">Sign up</button>
+                    <button type="submit" className="splash-grn-button splash-grn-button-sign-up noSelect">Sign up</button>
                     <p className="sign-up-form-redirect">Already have an account? {this.props.navLink }</p>
             </div>
         </form>
@@ -465,14 +555,17 @@ class SessionForm extends React.Component {
             {/* {this.renderErrors()} */}
             <div className="login-form">                       
                 <div className="login-form-details">
+                        <div className="login-error hidden" id="login-error">Incorrect username or password.</div>
                         <div>
                             <input type="text"
                                 value={this.state.username}
-                                onChange={this.update('username')}
+                                onChange={this.updateTwo()}
                                 className="login-input"
                                 placeholder="Email address or username"
+                                onBlur={this.checkIfValid}
                                 id="email"
                             />
+                            {this.renderEmailError()}
                         </div>
     
     
@@ -482,13 +575,16 @@ class SessionForm extends React.Component {
                                 onChange={this.update('password')}
                                 className="login-input"
                                 placeholder="Password"
+                                onBlur={this.checkIfValid}
+                                id="password"
                             />
+                        {this.renderPasswordError()}
                         </div>
 
                 </div>
                 <div className="login-boxes-first-row">
-                        <label className="container">Remember me<input type="checkbox" /><span className="checkmark"/></label>
-                    <button type="submit" className="splash-grn-button splash-grn-button-login-button">Log in</button>
+                        <label className="container">Remember me<input id="special-box" type="checkbox" value={this.state.rememberMe} onChange={value => this.toggleRememberMe(value)}/><span className="checkmark"/></label>
+                    <button type="submit" className="splash-grn-button splash-grn-button-login-button noSelect">Log in</button>
                 </div>
                     <p className="forgot-pw"><a href="#">Forgot your password?</a></p>
                 
@@ -517,7 +613,8 @@ class SessionForm extends React.Component {
             <div className="login-form-container">
                 <div className="login-form-header">
                     <Link to={                     
-                        this.props.formType === 'login' ? "/login" : "/signup"
+                        // this.props.formType === 'login' ? "/login" : "/signup"
+                        '/'
                     }><img src="./assets/logo-blk.png" alt="Moefy" /></Link>
                 </div>
                 {display}

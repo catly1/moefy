@@ -9,7 +9,7 @@ const mapStateToProps = ({ errors }) => {
     return {
         errors: errors.session,
         formType: 'login',
-        navLink: <LinkButton className="splash-grn-button splash-grn-button-sign-up-not-green" to="/signup">Sign up for Moefy</LinkButton>,
+        navLink: <LinkButton className="splash-grn-button splash-grn-button-sign-up-not-green noSelect" to="/signup">Sign up for Moefy</LinkButton>,
     };
 };
 
