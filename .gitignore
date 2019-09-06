@@ -30,3 +30,4 @@ bundle.js.map
 
 # Ignore audio assets.
 /app/assets/audios
+./app/assets/audios

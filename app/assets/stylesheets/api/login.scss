@@ -1,0 +1,205 @@
+.login-form-header{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 24px 0;
+}
+
+
+.login-form-box {
+    border-top: 1px solid #dfe0e6;
+}
+
+.login-form {
+    max-width: 26.875em;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form h2{
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.login-form-box, .login-form-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input.red-border{
+    border: 1px solid #bd3200!important; 
+}
+
+.login-form-details div input {
+    width:  100%;
+    height: 48px;
+
+    font-size: 15px;
+    padding: 0 11.250px;
+    border: 1px solid #dfe0e6;
+    color: #88898c;
+    border-radius: 2px;
+    background-color: #FFF;
+}
+
+.login-form-details div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.dob{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 16px;  
+}
+
+.dob div div:nth-child(2){
+    padding: 0 20px;
+}
+
+.dob-first-line{
+    width:100%;
+    font-size: 15px;
+    color: #88898c;
+}
+
+.gender {
+    display: flex;
+}
+
+
+.dob-second-line{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.months {
+    width: 45%;
+}
+
+.months, .day, .year{
+    display: flex;
+}
+
+.dob-second-line select {
+    -webkit-appearance: none;
+    color: #88898c;
+    height: 48px;
+    line-height: 1em;
+    padding: 9.375px;
+    width: 100%;
+    border: 1px solid #dfe0e6;
+    border-radius: 2px;
+    background-color: #FFF;
+    white-space: pre;
+ background: url("https://i.ibb.co/b7xjLrB/selectbox-arrow.png") right center no-repeat;
+}
+
+
+
+
+.dob-second-line option:nth-child(n) {
+    color: #88898c;
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+    line-height: 1em;
+    font-size: .9375em;
+    text-size-adjust: 100%;
+
+}
+
+
+
+
+.dob-second-line input{
+    height: 48px;
+    padding: 0 11.250px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: #FFF;
+    border: 1px solid #dfe0e6;
+    color: #88898c;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.day {
+    width: 22%;
+}
+
+.year {
+    width: 33%;
+}
+
+input{
+    box-sizing: border-box;
+}
+
+.gender {
+    margin-bottom: 16px;
+    color: #88898c;
+    font-size: 15px;
+    margin-bottom: 16px;
+}
+
+.gender label:nth-child(n+2){
+    margin-left: 15px;
+}
+
+.share-data label{
+    text-align: left;
+    color: #88898c;
+    display: flex;
+    font-size: 12px;
+}
+
+.share-data label div{
+    padding-left: 10px;
+}
+
+.login-form-box a {
+    color: #1DB954;
+}
+
+.login-form-header img {
+    height: 59px;
+    width: 197px;
+}
+
+.legal-stuff{
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.splash-grn-button-sign-up {
+    margin-bottom: 16px;
+    width: 320px;
+    align-self: center;
+}
+
+.sign-up-form-redirect{
+    font-size: 15px;
+    align-self: center;
+}
+
+.error {
+    color: #bd3200;
+    font-size: 15px;
+    padding-top: 5px;
+}
+

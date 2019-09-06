@@ -29,7 +29,7 @@ const Header = ({ currentUser, logout }) => {
     return(
         <header>
         <nav className="login-signup">
-            <a href=""><img src="./assets/logo.png" alt="Moefy" /></a>
+                <Link to='/'><img src="./assets/logo.png" alt="Moefy" /></Link>
             {display}
         </nav>
         </header>
