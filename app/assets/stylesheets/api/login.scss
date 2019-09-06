@@ -72,9 +72,6 @@ select.red-border{
     color: #88898c;
 }
 
-.gender {
-    display: flex;
-}
 
 
 .dob-second-line{
@@ -153,10 +150,13 @@ input{
     box-sizing: border-box;
 }
 
-.gender {
-    margin-bottom: 16px;
+.gender div {
+    display: flex;
     color: #88898c;
     font-size: 15px;
+}
+
+.gender {
     margin-bottom: 16px;
 }
 

@@ -30,6 +30,7 @@ class SessionForm extends React.Component {
         this.renderYearError = this.renderYearError.bind(this);
         this.renderUsernameError = this.renderUsernameError.bind(this);
         this.renderMonthError= this.renderMonthError.bind(this);
+        this.renderGenderError = this.renderGenderError.bind(this);
     }
 
     update(field) {
@@ -112,6 +113,13 @@ class SessionForm extends React.Component {
             }
         }
 
+        if (this.state.gender) {
+            let element = document.getElementById("gender-error")
+            if (element) {
+                element.classList.remove("active")
+            }
+        }
+
     
 
         if (this.props.errors != prevProps.errors) {
@@ -135,7 +143,7 @@ class SessionForm extends React.Component {
             this.props.errors.forEach(error => {
             states.forEach(state => {
                 const cap = state[0].toUpperCase() + state.substr(1)
-                if (error.includes(cap)){
+                if (error.includes(cap) && cap != "Gender"){
 
                     let elementId = `${state}` + "-error"
                     let element = document.getElementById(elementId)
@@ -148,6 +156,17 @@ class SessionForm extends React.Component {
 
                 }
 
+                if (error.includes(cap) && cap === "Gender") {
+                    let elementId = `${state}` + "-error"
+                    let element = document.getElementById(elementId)
+                    if (element) {
+                        element.textContent = "Please indicate your gender."
+                        element.classList.add("active")
+                        this.addRedBorder(state)
+                    }
+
+
+                }
 
 
                 if (error.includes("Dob")){
@@ -258,7 +277,7 @@ class SessionForm extends React.Component {
     }
 
     renderMonthError(){
-
+        if (this.state.month) this.removeRedBorder('month')
         return <label className="error hidden" id="month-error"></label>
     }
 
@@ -295,6 +314,11 @@ class SessionForm extends React.Component {
         return <label className="error hidden" id="year-error"></label> 
     }
 
+    renderGenderError(){
+
+        if (this.state.gender) this.removeRedBorder('gender')
+        return <label className="error hidden" id="gender-error"></label>
+    }
 
     removeElement(elementId){
         const element = document.getElementById(elementId)
@@ -409,10 +433,13 @@ class SessionForm extends React.Component {
                 </div>
 
                 <div className="gender">
+                    <div>
                     <label><input type="radio" name="gender" value="male" onChange={this.update('gender')} /> Male</label>
                     <label><input type="radio" name="gender" value="female" onChange={this.update('gender')} /> Female</label>
                     <label><input type="radio" name="gender" value="other" onChange={this.update('gender')} /> Non-binary</label>
                     <label><input type="radio" name="gender" value="weeb" onChange={this.update('gender')} /> Weeb</label>
+                    </div>
+                    {this.renderGenderError()}
                 </div>
                     <div className="share-data">
                         <label><input type="checkbox" />
