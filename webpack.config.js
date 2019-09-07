@@ -16,7 +16,7 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     presets: ['@babel/env', '@babel/react'],
-                    plugins: ["@babel/plugin-proposal-class-properties", ["@babel/transform-runtime"], new CaseSensitivePathsPlugin()]
+                    plugins: ["@babel/plugin-proposal-class-properties", ["@babel/transform-runtime"]]
                 }
             },
             {
@@ -28,5 +28,8 @@ module.exports = {
     devtool: 'source-map',
     resolve: {
         extensions: ['.js', '.jsx', '*'],
-    }
+    },
+    plugins: [
+        new CaseSensitivePathsPlugin()
+    ]
 };
