@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 gem "aws-sdk-s3"
 gem 'exception_handler', '~> 0.8.0.0'
 gem 'jquery-rails'
+gem "bcrypt"
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -57,7 +58,6 @@ group :development do
   gem "binding_of_caller"
   gem "pry-rails"
   gem "annotate"
-  gem "bcrypt"
 end
 
 group :test do
