@@ -1,4 +1,5 @@
 const path = require('path');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
     entry: './frontend/moefy.jsx',
@@ -15,7 +16,7 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     presets: ['@babel/env', '@babel/react'],
-                    plugins: ["@babel/plugin-proposal-class-properties", ["@babel/transform-runtime"]]
+                    plugins: ["@babel/plugin-proposal-class-properties", ["@babel/transform-runtime"], new CaseSensitivePathsPlugin()]
                 }
             },
             {
