@@ -12,8 +12,7 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "postinstall": "webpack",
-    "start": "webpack -w --mode=development"
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
