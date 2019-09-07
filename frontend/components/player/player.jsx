@@ -3,8 +3,8 @@ import { Link, Route, Switch, Redirect  } from 'react-router-dom';
 import FooterPlayerContainer from '../footer/footer_player_container';
 import BrowseContainer from '../browse/browse_container';
 import SongIndexContainer from '../songs/song_index_container';
-import LeftSiderbarContainer from '../leftSidebar/left_sidebar_container'
-import UserShow from '../leftSidebar/user_show'
+import LeftSiderbarContainer from '../left_sidebar/left_sidebar_container'
+import UserShow from '../left_sidebar/user_show'
 
 const Player = (props) => {
     return(

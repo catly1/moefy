@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: './frontend/moefy.jsx',
+    mode: 'development',
     output: {
         path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
         filename: 'bundle.js'

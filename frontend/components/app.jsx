@@ -6,7 +6,7 @@ import LogInFormContainer from './session_form/login_form_container';
 import PlayerContainer from './player/player_container';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import SplashContainer from "../components/homeSplash/splash_container";
+import SplashContainer from "../components/home_splash/splash_container";
 
 const App = () => (
     <div>
