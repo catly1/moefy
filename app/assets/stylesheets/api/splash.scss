@@ -106,11 +106,11 @@ header img {
 }
 
 .background-img-notlogged{
-    background-image: url(<%= asset_path "background_splash_notlogged.jpg" %>);
+    background-image: asset-url("background_splash_notlogged.jpg");
 }
 
 .background-img-logged{
-    background-image: url(<%= asset_path "../background_splash_logged.jpg.png" %>);
+    background-image: asset-url("background_splash_logged.jpg.png")
 }
 
 .social-media {
