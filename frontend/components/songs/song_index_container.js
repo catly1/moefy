@@ -5,7 +5,6 @@ import { requestSongs, playSong } from '../../actions/song_actions'
 
 
 const msp = state => {
-    // debugger
     return {
     songs: Object.keys((state.entities.songs)).map(id => state.entities.songs[id])
 }}

@@ -47,7 +47,6 @@ class FooterPlayer extends Component {
     }
     
     handleProgress (state){
-        console.log('onProgress', state)
         if (!this.state.seeking) {
             this.setState(state)
         }

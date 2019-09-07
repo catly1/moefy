@@ -411,7 +411,6 @@ class SessionForm extends React.Component {
         try {
             // await AsyncStorage.removeItem('username');
             const username = await AsyncStorage.setItem('username', "");
-            // debugger
         } catch (error) {
             // Error removing
         }
