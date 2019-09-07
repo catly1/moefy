@@ -30,6 +30,6 @@ module.exports = {
         extensions: ['.js', '.jsx', '*'],
     },
     plugins: [
-        new CaseSensitivePathsPlugin()
+        new CaseSensitivePathsPlugin({debug: true})
     ]
 };
