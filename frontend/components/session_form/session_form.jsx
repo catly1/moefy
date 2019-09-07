@@ -187,7 +187,6 @@ class SessionForm extends React.Component {
 
 
                 if (error.includes("Dob")){
-                    console.log(error)
                     this.handleDobAfter(prevState)
                 }
 
@@ -414,7 +413,6 @@ class SessionForm extends React.Component {
             const username = await AsyncStorage.setItem('username', "");
             // debugger
         } catch (error) {
-            console.log(error)
             // Error removing
         }
     };

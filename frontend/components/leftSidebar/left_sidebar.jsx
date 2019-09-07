@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 class LeftSidebar extends Component {
+
     render() {
         return (
             <section className="left-nav-bar"> 
@@ -11,8 +12,12 @@ class LeftSidebar extends Component {
                     <img src="./assets/logo.png" alt="Moefy" />
                 </Link>
             </div>
+            <div className="user-profile">
+                <Link to='/player/settings/account'>
+                    {this.props.currentUser.username}
+                </Link>
+            </div>
         </div>
-
             </section>
         )
     }
