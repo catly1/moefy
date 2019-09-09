@@ -5,7 +5,10 @@
 }
 
 .left-nav-wrapper{
-    padding-top: 24px;
+    padding: 24px 24px 0 24px;
+    display: flex;
+    flex-direction: column;
+    height: 89%;
 }
 
 .left-nav-logo img{
@@ -14,6 +17,78 @@
 }
 
 .left-nav-logo {
-    padding-left: 24px;
     padding-bottom: 18px;
+}
+
+.left-nav-bar-items{
+    display: flex;
+    align-items: center;
+    color: #b3b3b3;
+    padding-bottom: 13px;
+}
+
+.left-nav-bar-items svg{
+    font-size: 27px;
+
+}
+
+.left-nav-bar-items div {
+    margin-left: 16px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-weight: bold;
+    
+}
+
+.sidebar-main-nav a:last-child{
+    padding-bottom: 20px;
+}
+
+.sidebar-playlist-header{
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: .015em;
+    font-weight: bold;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    letter-spacing: .16em;  
+}
+
+.create-playlist-button{
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0);
+    color:  #b3b3b3;
+    border-width: 0;
+    padding-left: 0;
+    font-weight: bold;
+}
+
+.create-playlist-button svg {
+    width: auto;
+    height: 24px;
+    padding: 4px;
+    margin-right: 16px;
+    background: #b3b3b3;
+    color: black;
+    font-size: 12px;
+}
+
+.sidebar-bottom{
+    margin-top: auto
+}
+
+.sidebar-bottom-download svg {
+    font-size: 18px;
+}
+
+.user-profile{
+padding-top: 8px;
+border-top: 1px solid #404040;
+margin-bottom: 24px;
+}
+
+.user-profile div, .user-profile svg{
+    color: white;
 }
