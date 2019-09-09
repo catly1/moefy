@@ -50,7 +50,7 @@ class SongIndexItem extends Component {
                     <div>...</div>
                 </section>
                 <section className="song-item-song-length">
-                    <div>3:00</div>
+                    <div>{song.duration}</div>
                 </section>
             </li>
         )
