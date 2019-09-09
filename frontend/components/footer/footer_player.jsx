@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
-import { MdPlayCircleOutline, MdPauseCircleOutline, MdSkipNext, MdSkipPrevious } from "react-icons/md";
+import { MdPlayCircleOutline, MdPauseCircleOutline, MdSkipNext, MdSkipPrevious, MdVolumeUp, MdVolumeOff, MdVolumeDown} from "react-icons/md";
 import { IoIosShuffle } from "react-icons/io";
 import { TiArrowRepeat } from "react-icons/ti";
 import Duration from './duration';
@@ -13,6 +13,7 @@ class FooterPlayer extends Component {
         this.state = {
             playing: true,
             volume: 0.8,
+            savedVolume: 0,
             played: 0,
             duration: 0,
             muted: false,
@@ -25,6 +26,7 @@ class FooterPlayer extends Component {
         this.ref = this.ref.bind(this)
         this.handleProgress = this.handleProgress.bind(this)
         this.handleDuration = this.handleDuration.bind(this)
+        this.handleMute = this.handleMute.bind(this)
     }
     
     handlePlayPause (){
@@ -35,8 +37,18 @@ class FooterPlayer extends Component {
         this.setState({ volume: parseFloat(e.target.value) })
     }
 
-    handleToggleMuted = () => {
+    handleToggleMuted(){
         this.setState({ muted: !this.state.muted })
+    }
+
+    handleMute() {
+        if (this.state.volume) {
+            this.setState({ savedVolume: this.state.volume })
+            this.setState({ volume: 0 })
+        } else {
+            this.setState({ volume: this.state.savedVolume })
+            this.setState({ savedVolume: 0 })
+        }
     }
 
     handleSeekMouseDown (e){
@@ -70,6 +82,19 @@ class FooterPlayer extends Component {
     render (){
         const { queue, songs } = this.props
         const { playing, volume, played, duration, muted } = this.state
+        let muteButton
+
+        if (volume >= .50) {
+            muteButton = <MdVolumeUp />
+        } else if (volume < .50 && volume > 0) {
+            muteButton = <MdVolumeDown/>
+        } else if (volume === 0)
+        {
+            muteButton = <MdVolumeOff/>
+        }
+
+
+
         let nowPlaying
         if (queue.length > 0) {
             let last = queue[queue.length - 1]
@@ -127,7 +152,8 @@ class FooterPlayer extends Component {
 
                 <section className="volume">
 
-                    <div className="volume-left"><input id='muted' type='checkbox' checked={muted} onChange={this.handleToggleMuted} /></div>
+                    {/* <label className="volume-left"><input id='muted' type='checkbox' checked={muted} onChange={this.handleToggleMuted} /><span className="checkmark" /></label> */}
+                    <label className ="volume-left" onClick={this.handleMute}>{muteButton}</label>
                     <div className="volume-right">
                         <div className="volume-bar"><input type='range' min={0} max={1} step='any' value={volume} onChange={this.handleVolumeChange} /></div>
                         <progress max={1} value={volume}/>
