@@ -11,3 +11,31 @@ export const fetchSong = id => (
         url: `api/songs/${id}`
     })
 )
+
+export const fetchArtists = () => (
+    $.ajax({
+        method: 'GET',
+        url: 'api/artists'
+    })
+);
+
+export const fetchArtist = id => (
+    $.ajax({
+        method: 'GET',
+        url: `api/artists/${id}`
+    })
+)
+
+export const fetchAlbums = () => (
+    $.ajax({
+        method: 'GET',
+        url: 'api/albums'
+    })
+);
+
+export const fetchAlbum = id => (
+    $.ajax({
+        method: 'GET',
+        url: `api/albums/${id}`
+    })
+)

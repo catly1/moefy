@@ -5,7 +5,8 @@
     height: 90px;
     background-color:rgb(40, 40, 40);
     border-top: 1px solid #000;
-    width: 100%
+    width: 100%;
+    padding: 0 16px;
 }
 
 .footer-player a {
@@ -122,9 +123,36 @@ input[type=range]::-webkit-slider-thumb {
 
 .volume{
     display: flex;
-    flex-direction: column;
 }
 
 .volume input[type=range], progress {
-    width: 50%;
+    width: 100%;
+}
+
+.song-info img {
+    width: 56px;
+    height: 56px;
+}
+
+.song-info{
+    display: flex;
+}
+
+.song-info-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    margin: 0 14px;
+}
+
+.song-info-details-first-line{
+    color: #fff;  
+}
+
+.song-info-details-second-line > a{
+    color: #b3b3b3;
 }
