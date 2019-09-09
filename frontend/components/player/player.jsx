@@ -11,7 +11,7 @@ const Player = (props) => {
         <div className="player">
             <LeftSiderbarContainer currentUser={props.currentUser}/>
                 <Switch>
-                    <Route exact path='/player/browse' component={BrowseContainer}/>
+                    <Route exact path='/player/browse' component={() => <BrowseContainer currentUser={props.currentUser}/>}/>
                     <Route exact path="/player/songs" component={SongIndexContainer} />
                     <Route exact path='/player/settings/account' component={() => <UserShow currentUser={props.currentUser} logout={props.logout}/>} />
                     <Route path='/player/*' render={() => <Redirect to={{pathname: "/player/browse"}}/>} />

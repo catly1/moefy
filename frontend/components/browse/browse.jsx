@@ -10,6 +10,21 @@ const Browse = (props) =>{
         <section className="browse">
             <div className="player-background player-background-browse"></div>
             <HeaderPlayerContainer />
+            <div className="browse-content">
+                <div className="made-for">
+                    <div className="made-for-block">
+                        <h1>
+                            Made for {props.currentUser.username}
+                        </h1>
+                        <h2>
+                            Get better recommendations the more you listen.
+                        </h2>
+                    </div>
+                    <div className="made-for-grid">
+                        
+                    </div>
+                </div>
+            </div>
         </section>
     )
 }
