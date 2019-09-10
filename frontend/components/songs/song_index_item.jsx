@@ -15,7 +15,7 @@ class SongIndexItem extends Component {
 
 
     handleDoubleClick(e) {
-        this.props.playSong(this.props.song.id)
+        // this.props.playSong(this.props.song.id)
     }
 
     handleMouseEnter(e){
@@ -32,7 +32,7 @@ class SongIndexItem extends Component {
             <Link key={artist.id} to="">{artist.name}</Link>
         )
         return(
-            <li onDoubleClick={this.handleDoubleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+            <li onDoubleClick={this.handleDoubleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} id={song.id}>
                 <section className="song-item-play-button">
                     <div>{this.state.note}</div>
                 </section>

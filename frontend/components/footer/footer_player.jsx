@@ -17,6 +17,8 @@ class FooterPlayer extends Component {
             played: 0,
             duration: 0,
             muted: false,
+            queue: [],
+            currentSongIndex: 0,
         }
         this.handlePlayPause = this.handlePlayPause.bind(this);
         this.handleVolumeChange = this.handleVolumeChange.bind(this);
@@ -27,12 +29,41 @@ class FooterPlayer extends Component {
         this.handleProgress = this.handleProgress.bind(this)
         this.handleDuration = this.handleDuration.bind(this)
         this.handleMute = this.handleMute.bind(this)
+        this.handleForward = this.handleForward.bind(this)
+        this.nowPlaying = this.nowPlaying.bind(this)
+        this.handleBackward = this.handleBackward.bind(this)
     }
     
+
+    componentDidUpdate(prevProps, prevState){
+        if (this.props.queue !== prevProps.queue){
+            this.setState({ queue: this.props.queue})
+        }
+    }
+
+
     handlePlayPause (){
         this.setState({ playing: !this.state.playing })
     }
     
+    handleForward (){
+        const { currentSongIndex, queue} = this.state
+        let newCurrentSongIndex = currentSongIndex + 1
+        if (newCurrentSongIndex < queue.length && newCurrentSongIndex >= 0) {
+            this.setState({ currentSongIndex: newCurrentSongIndex, 
+                            playing: true})
+        }
+    }
+
+    handleBackward (){
+        const { currentSongIndex, queue} = this.state
+        let newCurrentSongIndex = currentSongIndex - 1
+        if (newCurrentSongIndex < queue.length && newCurrentSongIndex >= 0) {
+            this.setState({ currentSongIndex: newCurrentSongIndex, 
+                            playing: true})
+        }
+    }
+
     handleVolumeChange (e){
         this.setState({ volume: parseFloat(e.target.value) })
     }
@@ -79,43 +110,50 @@ class FooterPlayer extends Component {
         this.player = player
     }
 
-    render (){
-        const { queue, songs } = this.props
-        const { playing, volume, played, duration, muted } = this.state
+
+    handleQueue(){
+        this.setState({
+            firstSong: this.state.queue[0],
+            lastSong: this.state.queue[this.state.queue.length - 1]
+        })
+    }
+
+    nowPlaying(){
+        const { songs } = this.props
+        const { playing, volume, played, duration, muted, queue, currentSongIndex } = this.state
         let muteButton
 
         if (volume >= .50) {
             muteButton = <MdVolumeUp />
         } else if (volume < .50 && volume > 0) {
-            muteButton = <MdVolumeDown/>
-        } else if (volume === 0)
-        {
-            muteButton = <MdVolumeOff/>
+            muteButton = <MdVolumeDown />
+        } else if (volume === 0) {
+            muteButton = <MdVolumeOff />
         }
 
 
 
         let nowPlaying
         if (queue.length > 0) {
-            let last = queue[queue.length - 1]
-            let song = songs[last]
+            let current = queue[currentSongIndex]
+            let song = songs[current]
             let artists = song.artists.map(artist =>
                 <Link key={artist.id} to="">{artist.name}</Link>
-                )
+            )
             nowPlaying = (<div className="music-player">
-                <ReactPlayer 
-                ref={this.ref}
-                url={song.song_url} 
-                playing={playing} 
-                height="0%" 
-                width="0%" 
-                volume={volume}
-                onProgress={this.handleProgress}
-                onDuration={this.handleDuration}
-                muted={muted}
+                <ReactPlayer
+                    ref={this.ref}
+                    url={song.song_url}
+                    playing={playing}
+                    height="0%"
+                    width="0%"
+                    volume={volume}
+                    onProgress={this.handleProgress}
+                    onDuration={this.handleDuration}
+                    muted={muted}
                 />
                 <section className="song-info">
-                    <div><Link to=""><img src={song.album_image} alt={song.album}/></Link></div>
+                    <div><Link to=""><img src={song.album_image} alt={song.album} /></Link></div>
                     <div className="song-info-details">
                         <div className="song-info-details-first-line">
                             {song.name}
@@ -127,47 +165,53 @@ class FooterPlayer extends Component {
                 </section>
 
                 <section className="center-console">
-                <div className="control-buttons">
-                    <div className="shuffle-button button"><IoIosShuffle/></div>
-                    <div className="back-button button"><MdSkipPrevious/></div>
-                    <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
-                    <div className="fwd-button button"><MdSkipNext/></div>
-                    <div className="rep-button button"><TiArrowRepeat /></div>              
-                </div>
-                <div className="seek-bar">
-                    <div className="current-progress"><Duration seconds={duration * played} /></div>
-                    <div className="range-bar">
-                        <input
-                            type='range' min={0} max={1} step='any'
-                            value={played}
-                            onMouseDown={this.handleSeekMouseDown}
-                            onChange={this.handleSeekChange}
-                            onMouseUp={this.handleSeekMouseUp}
-                        />
-                        <progress max={1} value={played}/>
+                    <div className="control-buttons">
+                        <div className="shuffle-button button"><IoIosShuffle /></div>
+                        <div className="back-button button" onClick={this.handleBackward}><MdSkipPrevious /></div>
+                        <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
+                        <div className="fwd-button button" onClick={this.handleForward}><MdSkipNext /></div>
+                        <div className="rep-button button"><TiArrowRepeat /></div>
                     </div>
-                    <div className="song-length"><Duration seconds={duration} /></div>
-                </div>
+                    <div className="seek-bar">
+                        <div className="current-progress"><Duration seconds={duration * played} /></div>
+                        <div className="range-bar">
+                            <input
+                                type='range' min={0} max={1} step='any'
+                                value={played}
+                                onMouseDown={this.handleSeekMouseDown}
+                                onChange={this.handleSeekChange}
+                                onMouseUp={this.handleSeekMouseUp}
+                            />
+                            <progress max={1} value={played} />
+                        </div>
+                        <div className="song-length"><Duration seconds={duration} /></div>
+                    </div>
                 </section>
 
                 <section className="volume">
 
                     {/* <label className="volume-left"><input id='muted' type='checkbox' checked={muted} onChange={this.handleToggleMuted} /><span className="checkmark" /></label> */}
-                    <label className ="volume-left" onClick={this.handleMute}>{muteButton}</label>
+                    <label className="volume-left" onClick={this.handleMute}>{muteButton}</label>
                     <div className="volume-right">
                         <div className="volume-bar"><input type='range' min={0} max={1} step='any' value={volume} onChange={this.handleVolumeChange} /></div>
-                        <progress max={1} value={volume}/>
+                        <progress max={1} value={volume} />
                     </div>
                 </section>
 
-                
-                </div>
-                )
-            }
-            
+
+            </div>
+            )
+        }
+
+        return nowPlaying
+    }
+
+
+    render (){
+
         return(
         <footer className="footer-player">
-                {nowPlaying}
+                {this.nowPlaying()}
         </footer>
         )
     }
