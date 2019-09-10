@@ -32,12 +32,16 @@ class FooterPlayer extends Component {
         this.handleForward = this.handleForward.bind(this)
         this.nowPlaying = this.nowPlaying.bind(this)
         this.handleBackward = this.handleBackward.bind(this)
+        this.handleEnded = this.handleEnded.bind(this)
     }
     
 
     componentDidUpdate(prevProps, prevState){
         if (this.props.queue !== prevProps.queue){
-            this.setState({ queue: this.props.queue})
+            this.setState({ 
+                queue: this.props.queue,
+                currentSongIndex: 0
+            })
         }
     }
 
@@ -118,6 +122,10 @@ class FooterPlayer extends Component {
         })
     }
 
+    handleEnded = () => {
+        this.handleForward()
+    }
+
     nowPlaying(){
         const { songs } = this.props
         const { playing, volume, played, duration, muted, queue, currentSongIndex } = this.state
@@ -137,6 +145,7 @@ class FooterPlayer extends Component {
         if (queue.length > 0) {
             let current = queue[currentSongIndex]
             let song = songs[current]
+            if (song) {
             let artists = song.artists.map(artist =>
                 <Link key={artist.id} to="">{artist.name}</Link>
             )
@@ -151,6 +160,7 @@ class FooterPlayer extends Component {
                     onProgress={this.handleProgress}
                     onDuration={this.handleDuration}
                     muted={muted}
+                    onEnded={this.handleEnded}
                 />
                 <section className="song-info">
                     <div><Link to=""><img src={song.album_image} alt={song.album} /></Link></div>
@@ -200,7 +210,7 @@ class FooterPlayer extends Component {
 
 
             </div>
-            )
+            )}
         }
 
         return nowPlaying
