@@ -11,20 +11,14 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: inherit;
+    height: 0;
 }
 
 .song-list ol{
     display:flex;
     flex-direction: column;
     list-style: none;
-    // padding: 0;
-    // flex: 1;
-    overflow-y: hidden;
-    // position: absolute;
-    // left: 0;
-    // top: 0;
-    // bottom: 90px;
+    margin-bottom: 0;
 }
 
 .song-item {

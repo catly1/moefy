@@ -1,11 +1,9 @@
 .footer-player{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    height: 90px;
     background-color:rgb(40, 40, 40);
     border-top: 1px solid #000;
     width: 100%;
+    grid-area: footer-player;
+    height: 90px;
 }
 
 .footer-player a {
@@ -16,6 +14,7 @@
     display: flex;
     width: 100%;
     padding: 0 16px;
+    height: auto;
 }
 
 .center-console {

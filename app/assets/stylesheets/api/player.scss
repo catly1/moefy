@@ -1,17 +1,17 @@
 .player {
     display: grid;
-    flex-direction: column;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "left-nav-bar main-view"  "footer-player footer-player";
     // background-image: linear-gradient(to right bottom, rgb(36, 58, 56), rgb(0, 0, 0)), linear-gradient(transparent, rgb(0, 0, 0) 70%);
+    min-height: 100vh;
 }
 
-.player-top{
-    display: flex;
-    flex: 1;
+.main-view{
+    grid-area: main-view;
+    width: 100%;
 }
 
-.player-bottom{
-    flex: 1;
-}
 
 .player-background{
     position: absolute;
@@ -34,7 +34,6 @@
 
 .player-main-view{
     width: 100%;
-    margin-left: 230px;
 }
 
 .player-main-view div:nth-child(3){
@@ -44,5 +43,11 @@
 }
 
 .player-background-user-profile {
-background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.816) 95%), linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.752) 95%),  asset-url("profile.jpg");
+    background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.816) 95%), linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.752) 95%),  asset-url("profile.jpg");
 }
+
+.scroll-wrapper{
+    height: 100%;
+    overflow-y: scroll;
+}
+

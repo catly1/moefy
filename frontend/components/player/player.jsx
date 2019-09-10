@@ -9,19 +9,20 @@ import UserShow from '../left_sidebar/user_show'
 const Player = (props) => {
     return(
         <div className="player">
-            <div className="player-top">
             <LeftSiderbarContainer currentUser={props.currentUser}/>
 
+            <div className="main-view">
+                <div className="scroll-wrapper">
                     <Switch>
                         <Route className="player-main-view" exact path='/player/browse' component={() => <BrowseContainer currentUser={props.currentUser}/>}/>
                         <Route className="player-main-view" exact path="/player/songs" component={SongIndexContainer} />
                         <Route className="player-main-view" exact path='/player/settings/account' component={() => <UserShow currentUser={props.currentUser} logout={props.logout}/>} />
                         <Route path='/player/*' render={() => <Redirect to={{pathname: "/player/browse"}}/>} />
                     </Switch>
+                </div>
             </div>
-            <div className="player-bottom">
+
             <FooterPlayerContainer />
-            </div>
         </div>
     )
 }
