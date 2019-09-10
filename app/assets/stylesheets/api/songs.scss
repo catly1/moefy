@@ -24,12 +24,17 @@
 }
 
 .song-item-song-options div{
+    display: none;
     margin-top: 9.8px;
     color: lightgray;
     font-size: 30px;
     line-height: 20px;
     letter-spacing: .015em;
     font-weight: normal;
+}
+
+li:hover .song-item-song-options > div{
+    display: flex;
 }
 
 .song-item-play-button{

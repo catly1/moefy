@@ -1,0 +1,57 @@
+.user-profile-page{
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 1480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-name-pic{
+    color:white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-name-pic svg{
+    font-size: 102px;
+}
+
+.profile-name-pic div{
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -.005em;
+    font-weight: bold;
+    color: #fff;
+    text-transform: none;
+    margin: 24px 0;  
+}
+
+.user-profile-page ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+
+button.profile-button {
+    margin-top: 16px;
+    width: 240px;
+    background-color: rgba(0,0,0,0);
+    box-shadow: inset 0 0 0 2px white;
+    padding: 7px 22px;
+    font-size: 11px;
+}
+
+.profile-button a {
+    color: white;
+}
+
+button.profile-button:hover {
+    background-color: rgba(0,0,0,0);
+    box-shadow: inset 0 0 0 2px #fff, 0 0 0 1px transparent;
+    transform: scale(1.06);
+}
