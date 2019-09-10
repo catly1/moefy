@@ -36,13 +36,20 @@ class FooterPlayer extends Component {
     }
     
 
+
     componentDidUpdate(prevProps, prevState){
         if (this.props.queue !== prevProps.queue){
             this.setState({ 
                 queue: this.props.queue,
+            })
+        }
+
+        if (prevState.currentSongIndex && this.state.queue.length === 1){
+            this.setState({
                 currentSongIndex: 0
             })
         }
+
     }
 
 
@@ -143,6 +150,7 @@ class FooterPlayer extends Component {
 
         let nowPlaying
         if (queue.length > 0) {
+
             let current = queue[currentSongIndex]
             let song = songs[current]
             if (song) {
