@@ -1,14 +1,17 @@
 .left-nav-bar{
     background-color: rgba(0, 0, 0, 0.8);
     min-width: 230px;
-    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 90px;
 }
 
 .left-nav-wrapper{
     padding: 24px 24px 0 24px;
     display: flex;
     flex-direction: column;
-    height: 89%;
+    height: 100%;
 }
 
 .left-nav-logo img{

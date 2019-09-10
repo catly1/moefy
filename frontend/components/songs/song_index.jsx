@@ -14,7 +14,7 @@ class SongIndex extends Component {
     render(){
         const {songs, playSong} = this.props
         return(
-            <div className="song-index">
+            <div className="song-index player-main-view">
                 <div className="player-background player-background-song-index"></div>
                 <HeaderPlayerContainer/>
                 <div className="song-list">

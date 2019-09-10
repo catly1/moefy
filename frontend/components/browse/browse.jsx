@@ -7,7 +7,7 @@ const Browse = (props) =>{
 
 
     return(
-        <section className="browse">
+        <section className="browse player-main-view">
             <div className="player-background player-background-browse"></div>
             <HeaderPlayerContainer />
             <div className="browse-content">
@@ -21,7 +21,7 @@ const Browse = (props) =>{
                         </h2>
                     </div>
                     <div className="made-for-grid">
-                        
+
                     </div>
                 </div>
             </div>

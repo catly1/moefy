@@ -2,23 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.song-index{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
+
 
 
 // song list
 
-.song-list {
-    min-width: 80%;
-}
 
 .song-list ol{
-    max-width: 1480px;
     list-style: none;
+    padding: 0;
 }
 
 .song-item {
