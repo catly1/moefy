@@ -7,10 +7,24 @@
 
 // song list
 
+.song-list{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+}
 
 .song-list ol{
+    display:flex;
+    flex-direction: column;
     list-style: none;
-    padding: 0;
+    // padding: 0;
+    // flex: 1;
+    overflow-y: hidden;
+    // position: absolute;
+    // left: 0;
+    // top: 0;
+    // bottom: 90px;
 }
 
 .song-item {
@@ -73,10 +87,6 @@ li:hover .song-item-song-options > div{
 
 .song-second-line{
     display: flex;
-}
-
-.song-second-line > {
-    
 }
 
 

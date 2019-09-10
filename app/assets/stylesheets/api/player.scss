@@ -1,6 +1,16 @@
 .player {
-    display: flex;
+    display: grid;
+    flex-direction: column;
     // background-image: linear-gradient(to right bottom, rgb(36, 58, 56), rgb(0, 0, 0)), linear-gradient(transparent, rgb(0, 0, 0) 70%);
+}
+
+.player-top{
+    display: flex;
+    flex: 1;
+}
+
+.player-bottom{
+    flex: 1;
 }
 
 .player-background{
