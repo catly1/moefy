@@ -32,7 +32,8 @@ class Album extends Component {
 
     componentDidUpdate(prevProps, prevState){
         if (this.state.songList.length === 0 && this.props.songs.length > 0) {
-            let songList = this.props.songs.map(song => song.id)
+            let filtered = this.props.songs.filter(song => this.props.album.songs.includes(song.id))
+            let songList = filtered.map(song => song.id)
             let joined = this.state.songList.concat(songList)
             this.setState({ songList: joined })
         }
