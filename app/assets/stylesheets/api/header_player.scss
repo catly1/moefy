@@ -1,10 +1,6 @@
 .header-player{
     display: flex;
     justify-content: center;
-    min-width: 80%;
-}
-
-.header-player{
     font-size: 12px;
     line-height: 16px;
     font-weight: bold;
@@ -12,8 +8,20 @@
     text-transform: uppercase;
     letter-spacing: .16em;
     color: #fff;
+    max-width: 1480px;
+    margin: auto;
 }
 
+.header-player ul {
+    display: flex;
+    padding-left: 0;
+}
+
+.header-player li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .header-player li a{
     position: relative;
@@ -21,13 +29,14 @@
     color: white;
 }
 
-.header-player li a::before{
+
+.header-player-bar{
     content: "";
     height: 2px;
     background-color: #1db954;
     width: 30px;
-    position: absolute;
     display: block;
+    position: absolute;
     left: 50%;
     bottom: 0;
     margin-left: -15px;  
