@@ -20,8 +20,9 @@ class AlbumIndex extends Component {
             <div className="album-index player-main-view">
                 <div className="player-background player-background-album-index"></div>
                 <HeaderPlayerContainer />
-                <div className="album-list">
-                    <ul onClick={this.handleClicks}>{albums.map(album => <AlbumIndexItem key={album.id} album={album} />)}
+                <div className="album-list-wrapper">
+                    <ul className="album-list" onClick={this.handleClicks}>
+                        {albums.map(album => <AlbumIndexItem key={album.id} album={album} />)}
                     </ul>
                 </div>
             </div>

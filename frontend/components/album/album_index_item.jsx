@@ -10,8 +10,14 @@ class AlbumIndexItem extends Component {
         const {album} = this.props
 
         return(
-            <li>
-                {album.name}
+            <li className="album-index-item">
+                <div className="album-index-item-container draggabletest">
+                    <div className="album-index-art-name">
+                        <div className="album-index-art"><Link to={`/player/albums/${album.id}`}><img src={album.image_url} alt={album.name}/></Link></div>
+                        <div className="album-index-name"><Link to={`/player/albums/${album.id}`}>{album.name}</Link></div>
+                    </div>
+                    <div className="album-index-artist"><Link to="">{album.artist}</Link></div>
+                </div>
             </li>
         )
     }

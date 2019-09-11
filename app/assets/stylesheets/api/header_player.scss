@@ -26,7 +26,11 @@
 .header-player li a{
     position: relative;
     padding: 5px 10px;
-    color: white;
+    color: #b3b3b3;
+}
+
+.header-player li:hover a{
+    color:white;
 }
 
 

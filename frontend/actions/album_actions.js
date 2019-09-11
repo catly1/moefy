@@ -15,7 +15,7 @@ export const requestAlbums = () => (dispatch) => (
 )
 
 export const receiveAlbum = album => ({
-    type: RECEIVE_Album,
+    type: RECEIVE_ALBUM,
     album,
 });
 

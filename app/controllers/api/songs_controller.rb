@@ -4,7 +4,7 @@ class Api::SongsController < ApplicationController
   end
 
   def show
-    @song = Song.with_attached_songs.find(params[:id])
+    @song = Song.find(params[:id])
   end
 
 end
