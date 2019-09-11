@@ -11,10 +11,10 @@ class SongIndex extends Component {
         this.handleClicks = this.handleClicks.bind(this);
     }
 
-    componentDidMount() {
-        this.props.requestSongs();
+    // componentDidMount() {
+    //     this.props.requestSongs();
 
-    }
+    // }
 
     componentDidUpdate(){
         if (this.state.songList.length === 0) {
