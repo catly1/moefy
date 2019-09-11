@@ -43,7 +43,7 @@ class SongIndexItem extends Component {
                     <div className="song-second-line">
                         {artists}
                         <div className="song-second-line-dot">.</div>
-                        <Link to="">{song.album}</Link>
+                        <Link to={`/player/albums/${song.album_id}`}>{song.album}</Link>
                     </div>
                 </section>
                 <section className="song-item-song-options">

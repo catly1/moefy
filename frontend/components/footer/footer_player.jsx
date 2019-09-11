@@ -171,7 +171,7 @@ class FooterPlayer extends Component {
                     onEnded={this.handleEnded}
                 />
                 <section className="song-info">
-                    <div><Link to=""><img src={song.album_image} alt={song.album} /></Link></div>
+                    <div><Link to={`/player/albums/${song.album_id}`}><img src={song.album_image} alt={song.album} /></Link></div>
                     <div className="song-info-details">
                         <div className="song-info-details-first-line">
                             {song.name}

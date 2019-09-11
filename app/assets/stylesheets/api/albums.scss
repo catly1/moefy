@@ -70,7 +70,7 @@
     align-items: center;
     padding: 0 32px;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 35px;
     max-width: 1480px;
 }
 
@@ -111,7 +111,7 @@
     font-size: 14px;
     line-height: 20px;
     letter-spacing: .015em;
-    font-weight: normal;
+    font-weight: bold;
     color: #b3b3b3;
     text-transform: none;
 }
@@ -124,8 +124,12 @@
 
 
 .album-show-left img{
-    max-width: 320px;
+    width: 100%;
+    height: auto;
+}
 
+.album-show-art-name-artist{
+    max-width: 320px;
 }
 
 .album-show-right{
@@ -147,4 +151,31 @@
 
 .album-show-right li:hover{
     background-color: rgba(0,0,0,.3);
+}
+
+.album-show-play-button-wrapper{
+    margin-top: 35px;
+    text-align: center;
+}
+
+.album-show-year{
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: .015em;
+    font-weight: bold;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+}
+
+.album-show-dot{
+    font-size: 22px;
+    line-height: 4px;
+    letter-spacing: .015em;
+    font-weight: bold;
+    padding: 0 10px 0 9px;
+    color: #b3b3b3; 
 }

@@ -10,6 +10,8 @@ class Album extends Component {
             songList: []
         }
         this.handleClicks = this.handleClicks.bind(this);
+        this.handlePlayButton = this.handlePlayButton.bind(this);
+        this.constructAlbumShow = this.constructAlbumShow.bind(this);
     }
 
     componentDidMount(){
@@ -23,6 +25,11 @@ class Album extends Component {
     }
     
 
+    handlePlayButton(){
+        let firstSongId = document.getElementById("album-show-songs").firstChild.id
+        let queue = this.queueConstructor(firstSongId)
+        this.props.playQueue(queue)
+    }
 
     queueConstructor(songId) {
         let songList = this.state.songList
@@ -39,31 +46,39 @@ class Album extends Component {
         }
     }
 
-    render(){
-        const {songs, playSong, album} = this.props
+
+    constructAlbumShow(){
+        const { songs, playSong, album } = this.props
         let list
-        if (songs){
-            let filtered = songs.filter(song => this.props.album.songs.includes(song.id))
+        if (album && songs) {
+            let filtered = songs.filter(song => album.songs.includes(song.id))
             list = filtered.map(song => <SongIndexItem key={song.id} song={song} playSong={playSong} />)
         }
         let albumShow
-        if (album){
+        if (album) {
             albumShow = (<div className="album-song-list">
                 <div className="album-show-left">
-                <div className="album-show-art-name-artist">
-                    <div className="album-show-art">
-                        <img src={album.image_url} alt={album.name} />
-                    </div>
-                    <div className="album-show-name">
-                        <span>{album.name}</span>
-                    </div>
-                    <div className="album-show-artist">
-                        <Link to="">{album.artist}</Link>
+                    <div className="album-show-art-name-artist">
+                        <div className="album-show-art">
+                            <img src={album.image_url} alt={album.name} />
+                        </div>
+                        <div className="album-show-name">
+                            <span>{album.name}</span>
+                        </div>
+                        <div className="album-show-artist">
+                            <Link to="">{album.artist}</Link>
+                        </div>
+                        <div className="album-show-play-button-wrapper"><button className="splash-grn-button" onClick={this.handlePlayButton}>Play</button></div>
+                        <div className="album-show-year">
+                            {album.year}
+                            <div className="album-show-dot">.</div>
+                            {album.songs.length} {album.songs.length === 1 ? "song" : "songs"}
+                        </div>
                     </div>
                 </div>
-            </div>
                 <div className="album-show-right">
-                    <ol onClick={this.handleClicks}>{list}
+                    <ol onClick={this.handleClicks} id="album-show-songs">
+                        {list}
                     </ol>
                 </div>
             </div>)
@@ -71,8 +86,12 @@ class Album extends Component {
 
         return (<div className="album-show">
             <div className="player-background player-background-album-show"></div>
-                {albumShow}
+            {albumShow}
         </div>)
+    }
+
+    render(){
+        return <div>{this.constructAlbumShow()}</div>
     }
 
 }
