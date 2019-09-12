@@ -155,7 +155,7 @@ class FooterPlayer extends Component {
             let song = songs[current]
             if (song) {
             let artists = song.artists.map(artist =>
-                <Link key={artist.id} to="">{artist.name}</Link>
+                <Link key={artist.id} to={`/player/artists/${artist.id}`}>{artist.name}</Link>
             )
             nowPlaying = (<div className="music-player">
                 <ReactPlayer

@@ -6,6 +6,8 @@ import SongIndexContainer from '../songs/song_index_container';
 import LeftSiderbarContainer from '../left_sidebar/left_sidebar_container';
 import AlbumIndexContainer from '../album/album_index_container';
 import AlbumContainer from '../album/album_container';
+import ArtistIndexContainer from '../artist/artist_index_container';
+import ArtistContainer from '../artist/artist_container';
 import UserShow from '../left_sidebar/user_show';
 
 class Player extends Component {
@@ -30,8 +32,10 @@ class Player extends Component {
                         <Route className="player-main-view" exact path="/player/songs" component={SongIndexContainer} />
                         <Route className="player-main-view" exact path="/player/albums/:albumId" component={AlbumContainer}/>
                         <Route className="player-main-view" exact path="/player/albums" component={AlbumIndexContainer} />
+                        <Route className="player-main-view" exact path="/player/artists/:artistId" component={ArtistContainer} />
+                        <Route className="player-main-view" exact path="/player/artists" component={ArtistIndexContainer} />
                         <Route className="player-main-view" exact path='/player/settings/account' component={() => <UserShow currentUser={this.props.currentUser} logout={this.props.logout}/>} />
-                        <Route path='/player/*' render={() => <Redirect to={{pathname: "/player/browse"}}/>} />
+                        <Route exact path='/player*' render={() => <Redirect to={{pathname: "/player/browse"}}/>} />
                     </Switch>
                 </div>
             </div>
