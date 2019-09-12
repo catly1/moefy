@@ -11,12 +11,20 @@ class Artist extends Component{
         }
         this.handleClicks = this.handleClicks.bind(this)
         this.constructArtistShow = this.constructArtistShow.bind(this)
+        this.handlePlayButton = this.handlePlayButton.bind(this)
     }
 
 
     componentDidMount() {
         this.props.requestArtist(this.props.match.params.artistId)
     }
+
+    handlePlayButton() {
+        let firstSongId = document.getElementById("artist-show-songs").firstChild.id
+        let queue = this.queueConstructor(firstSongId)
+        this.props.playQueue(queue)
+    }
+
 
     handleClicks(e) {
         let pickedSongId = e.target.closest("li").id
@@ -53,13 +61,13 @@ class Artist extends Component{
             artistShow = (<div className="artist-show-img-header">
                 <img src={artist.image_url} alt={artist.name} />
                 <div className="artist-show-name"><div>{artist.name}</div>
-                    <button className="splash-grn-button artist-show-play-button">Play</button>
+                    <button className="splash-grn-button artist-show-play-button noSelect" onClick={this.handlePlayButton}>Play</button>
                     <nav className="artist-show-nav"><li>Overview</li></nav>
                 </div>
                 <div className="artist-show-content">
                     <div className="artist-show-songs">
                         <h2>Tracks</h2>
-                        <ol onClick={this.handleClicks}>
+                        <ol onClick={this.handleClicks} id="artist-show-songs">
                             {artistSongs}
                         </ol>
                     </div>

@@ -68,7 +68,7 @@ class Album extends Component {
                         <div className="album-show-artist">
                             <Link to="">{album.artist}</Link>
                         </div>
-                        <div className="album-show-play-button-wrapper"><button className="splash-grn-button" onClick={this.handlePlayButton}>Play</button></div>
+                        <div className="album-show-play-button-wrapper"><button className="splash-grn-button noSelect" onClick={this.handlePlayButton}>Play</button></div>
                         <div className="album-show-year">
                             {album.year}
                             <div className="album-show-dot">.</div>
