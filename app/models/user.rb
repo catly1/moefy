@@ -25,6 +25,8 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
 
+    has_many :playlists
+
     def validate_age
         if dob.present? && dob.year > 13.years.ago.year
             errors.add(:dob, 'You should be over 13 years old.')

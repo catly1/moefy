@@ -29,7 +29,7 @@ class SongIndexItem extends Component {
     render(){
         const {song} = this.props
         const artists = song.artists.map(artist => 
-            <Link key={artist.id} to="">{artist.name}</Link>
+            <Link key={artist.id} to={`/player/artists/${artist.id}`}>{artist.name}</Link>
         )
         return(
             <li onDoubleClick={this.handleDoubleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} id={song.id}>

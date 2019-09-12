@@ -22,4 +22,6 @@ class Song < ApplicationRecord
         through: :collaborations
 
     has_one_attached :song
+
+    has_many :playlist_songs
 end
