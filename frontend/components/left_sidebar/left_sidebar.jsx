@@ -8,6 +8,15 @@ import { FiArrowDownCircle } from "react-icons/fi";
 
 
 class LeftSidebar extends Component {
+    constructor(props){
+        super(props)
+        this.handlePlaylistForm = this.handlePlaylistForm.bind(this)
+    }
+
+    handlePlaylistForm(){
+        const playlistForm = document.getElementById("playlist-form")
+        playlistForm.classList.add("active")
+    }
 
     render() {
         return (
@@ -31,7 +40,7 @@ class LeftSidebar extends Component {
                 </Link>
             </nav>
             <h2 className="sidebar-playlist-header">Playlists</h2>
-            <button className="create-playlist-button">
+            <button className="create-playlist-button" onClick={this.handlePlaylistForm}>
                 <FaPlus/>
                 <span>Create Playlist</span>
             </button>

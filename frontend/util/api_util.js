@@ -46,3 +46,11 @@ export const fetchPlaylist = id => (
         url: `api/playlists/${id}`
     })
 )
+
+export const createPlaylist = playlistForm =>(
+    $.ajax({
+        method: "POST",
+        url: "api/playlists",
+        data: playlistForm,
+    })
+)

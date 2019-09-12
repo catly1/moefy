@@ -9,6 +9,7 @@ import AlbumContainer from '../album/album_container';
 import ArtistIndexContainer from '../artist/artist_index_container';
 import ArtistContainer from '../artist/artist_container';
 import UserShow from '../left_sidebar/user_show';
+import PlaylistFormContainer from '../playlist/playlist_form_container';
 
 class Player extends Component {
     constructor(props){
@@ -23,6 +24,7 @@ class Player extends Component {
 
     render(){
         return(<div className="player">
+            <PlaylistFormContainer currentUser={this.props.currentUser}/>
             <LeftSiderbarContainer currentUser={this.props.currentUser}/>
 
             <div className="main-view">
