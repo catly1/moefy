@@ -5,3 +5,7 @@ export const selectAlbum = (state, id) => {
 export const selectArtist = (state, id) => {
     return state.entities.artists[id]
 }
+
+export const selectPlaylist = (state, id) => {
+    return state.entities.playlist[id]
+}

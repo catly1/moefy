@@ -11,11 +11,16 @@ class LeftSidebar extends Component {
     constructor(props){
         super(props)
         this.handlePlaylistForm = this.handlePlaylistForm.bind(this)
+        this.handlePlaylist = this.handlePlaylist.bind(this)
     }
 
     handlePlaylistForm(){
         const playlistForm = document.getElementById("playlist-form")
         playlistForm.classList.add("active")
+    }
+
+    handlePlaylist(){
+        return this.props.currentUser.playlists.map(playlist => <li><Link to={`/player/playlists/${playlist.id}`}>{playlist.name}</Link></li>)
     }
 
     render() {
@@ -44,6 +49,11 @@ class LeftSidebar extends Component {
                 <FaPlus/>
                 <span>Create Playlist</span>
             </button>
+            <div className="sidebar-playlist-list-wrapper">
+                <ul className="sidebar-playlist-list">
+                    {this.handlePlaylist()}
+                </ul>
+            </div>
             <div className="sidebar-bottom">
                 <Link className="left-nav-bar-items sidebar-bottom-download" to='/player/browse' >
                     <FiArrowDownCircle/><div>Install App</div>

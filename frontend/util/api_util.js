@@ -1,3 +1,5 @@
+import PlaylistForm from "../components/playlist/playlist_form";
+
 export const fetchSongs = () => (
     $.ajax({
         method: 'GET',
@@ -47,10 +49,10 @@ export const fetchPlaylist = id => (
     })
 )
 
-export const createPlaylist = playlistForm =>(
+export const createPlaylist = playlist =>(
     $.ajax({
         method: "POST",
         url: "api/playlists",
-        data: playlistForm,
+        data: {playlist}
     })
 )

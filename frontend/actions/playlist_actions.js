@@ -8,7 +8,7 @@ export const receivePlaylist = playlist => ({
 });
 
 export const createPlaylist = playlist => dispatch => (
-    APIUtil.fetchPlaylist(playlist).then(playlist =>(
+    APIUtil.createPlaylist(playlist).then(playlist =>(
         dispatch(receivePlaylist(playlist))
     ))
 );

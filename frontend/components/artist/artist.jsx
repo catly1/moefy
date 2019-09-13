@@ -39,6 +39,12 @@ class Artist extends Component{
     }
 
     componentDidUpdate(prevProps, prevState) {
+        if (prevProps.artist != this.props.artist && !this.props.artist) {
+            debugger
+            this.props.requestArtist(this.props.match.params.artistId)
+        }
+        
+
         if (this.state.songList.length === 0 && this.props.songs.length > 0) {
             let filtered = this.props.songs.filter(song => this.props.artist.songs.includes(song.id))
             let songList = filtered.map(song => song.id)

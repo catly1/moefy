@@ -140,3 +140,112 @@ button.create-button:hover{
     transition-property: all;
     transform: scale(1.06); 
 }
+
+//playlist show
+.playlist-show{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 32px;
+    margin: 0 auto;
+    margin-top: 35px;
+    max-width: 1480px;
+}
+
+.playlist-song-list{
+    display: flex;
+    width: 100%;
+}
+
+.playlist-show-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+}
+
+.playlist-show-art-name-artist{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.playlist-show-name, .playlist-show-artist{
+    text-align: center;
+}
+
+.playlist-show-name{
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -.005em;
+    font-weight: bold;
+    color: #fff;
+    text-transform: none;
+    overflow-wrap: break-word;
+    margin: 12px 0 4.2px 0; 
+}
+
+.playlist-show-artist a{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-weight: bold;
+    color: #b3b3b3;
+    text-transform: none;
+}
+
+.playlist-show-artist:hover a{
+    color: #fff;
+    border-bottom: 1px solid transparent;
+    border-bottom-color: currentcolor;
+}
+
+
+.playlist-show-left img{
+    width: 100%;
+    height: auto;
+}
+
+.playlist-show-art-name-artist{
+    max-width: 320px;
+}
+
+.playlist-show-right{
+    height: 0;
+    width: 66%;
+}
+
+.playlist-show-right ol{
+    padding: 0 8px 0 8px;
+    margin: 0;
+    list-style: none;
+}
+
+.playlist-show-right li{
+    display: flex;
+    height: 63.828px;
+    width: 100%;
+}
+
+.playlist-show-right li:hover{
+    background-color: rgba(0,0,0,.3);
+}
+
+.playlist-show-play-button-wrapper{
+    margin-top: 35px;
+    text-align: center;
+}
+
+.playlist-show-year{
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: .015em;
+    font-weight: bold;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+}
+

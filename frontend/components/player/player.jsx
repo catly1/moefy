@@ -10,6 +10,7 @@ import ArtistIndexContainer from '../artist/artist_index_container';
 import ArtistContainer from '../artist/artist_container';
 import UserShow from '../left_sidebar/user_show';
 import PlaylistFormContainer from '../playlist/playlist_form_container';
+import PlaylistContainer from '../playlist/playlist_container'
 
 class Player extends Component {
     constructor(props){
@@ -32,6 +33,7 @@ class Player extends Component {
                     <Switch>
                         <Route className="player-main-view" exact path='/player/browse' component={() => <BrowseContainer currentUser={this.props.currentUser}/>}/>
                         <Route className="player-main-view" exact path="/player/songs" component={SongIndexContainer} />
+                        <Route className="player-main-view" exact path="/player/playlists/:playlistId" component={PlaylistContainer} />
                         <Route className="player-main-view" exact path="/player/albums/:albumId" component={AlbumContainer}/>
                         <Route className="player-main-view" exact path="/player/albums" component={AlbumIndexContainer} />
                         <Route className="player-main-view" exact path="/player/artists/:artistId" component={ArtistContainer} />

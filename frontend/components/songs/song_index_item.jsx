@@ -18,6 +18,10 @@ class SongIndexItem extends Component {
         // this.props.playSong(this.props.song.id)
     }
 
+    stopPropagation(e){
+        e.stopPropagation();
+    }
+
     handleMouseEnter(e){
         this.setState({ note: <MdPlayArrow onClick={this.handleDoubleClick}/>})
     }
@@ -29,10 +33,10 @@ class SongIndexItem extends Component {
     render(){
         const {song} = this.props
         const artists = song.artists.map(artist => 
-            <Link key={artist.id} to={`/player/artists/${artist.id}`}>{artist.name}</Link>
+            <Link key={artist.id} to={`/player/artists/${artist.id}`} onClick={this.stopPropagation}>{artist.name}</Link>
         )
         return(
-            <li onDoubleClick={this.handleDoubleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} id={song.id}>
+            <li onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} id={song.id}>
                 <section className="song-item-play-button">
                     <div>{this.state.note}</div>
                 </section>
@@ -43,7 +47,7 @@ class SongIndexItem extends Component {
                     <div className="song-second-line">
                         {artists}
                         <div className="song-second-line-dot">.</div>
-                        <Link to={`/player/albums/${song.album_id}`}>{song.album}</Link>
+                        <Link to={`/player/albums/${song.album_id}`} onClick={this.stopPropagation}>{song.album}</Link>
                     </div>
                 </section>
                 <section className="song-item-song-options">

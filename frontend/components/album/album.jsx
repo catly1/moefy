@@ -38,6 +38,11 @@ class Album extends Component {
     }
 
     componentDidUpdate(prevProps, prevState){
+        if (prevProps.album != this.props.album && !this.props.album) {
+            this.props.requestAlbum(this.props.match.params.albumId)
+        }
+
+
         if (this.state.songList.length === 0 && this.props.songs.length > 0) {
             let filtered = this.props.songs.filter(song => this.props.album.songs.includes(song.id))
             let songList = filtered.map(song => song.id)
@@ -66,7 +71,7 @@ class Album extends Component {
                             <span>{album.name}</span>
                         </div>
                         <div className="album-show-artist">
-                            <Link to="">{album.artist}</Link>
+                            <Link to={`/player/artists/${album.artist_id}`}>{album.artist}</Link>
                         </div>
                         <div className="album-show-play-button-wrapper"><button className="splash-grn-button noSelect" onClick={this.handlePlayButton}>Play</button></div>
                         <div className="album-show-year">
@@ -77,7 +82,7 @@ class Album extends Component {
                     </div>
                 </div>
                 <div className="album-show-right">
-                    <ol onClick={this.handleClicks} id="album-show-songs">
+                    <ol id="album-show-songs">
                         {list}
                     </ol>
                 </div>

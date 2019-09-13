@@ -98,3 +98,24 @@
 .left-nav-wrapper a:hover{
     color:white;
 }
+
+.sidebar-playlist-list-wrapper{
+}
+
+.sidebar-playlist-list{
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+}
+
+.sidebar-playlist-list li {
+    height: 32px;
+}
+
+.sidebar-playlist-list li a{
+    font-size: 14px;
+    letter-spacing: .015em;
+    font-weight: bold;
+    color: #b3b3b3;
+    text-transform: none;
+}

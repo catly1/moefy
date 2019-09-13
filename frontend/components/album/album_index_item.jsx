@@ -16,7 +16,7 @@ class AlbumIndexItem extends Component {
                         <div className="album-index-art"><Link to={`/player/albums/${album.id}`}><img src={album.image_url} alt={album.name}/></Link></div>
                         <div className="album-index-name"><Link to={`/player/albums/${album.id}`}>{album.name}</Link></div>
                     </div>
-                    <div className="album-index-artist"><Link to="">{album.artist}</Link></div>
+                    <div className="album-index-artist"><Link to={`/player/artists/${album.artist_id}`}>{album.artist}</Link></div>
                 </div>
             </li>
         )
