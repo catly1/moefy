@@ -20,7 +20,7 @@ class LeftSidebar extends Component {
     }
 
     handlePlaylist(){
-        return this.props.currentUser.playlists.map(playlist => <li><Link to={`/player/playlists/${playlist.id}`}>{playlist.name}</Link></li>)
+        return this.props.currentUser.playlists.map(playlist => <li key={playlist.id}><Link to={`/player/playlists/${playlist.id}`}>{playlist.name}</Link></li>)
     }
 
     render() {

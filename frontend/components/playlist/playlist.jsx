@@ -42,8 +42,8 @@ class Playlist extends Component {
             this.props.requestPlaylist(this.props.match.params.playlistId)
         }
         
-        if (this.state.songList.length != prevState.songList.length && this.props.songs.length > 0) {
-            if (this.props.playlist){
+        if (this.state.songList.length === 0 && this.props.songs.length > 0) {
+            if (this.props.playlist && this.props.playlist.songs.length > 0) {
                 let filtered = this.props.songs.filter(song => this.props.playlist.songs.includes(song.id))
                 let songList = filtered.map(song => song.id)
                 let joined = this.state.songList.concat(songList)
