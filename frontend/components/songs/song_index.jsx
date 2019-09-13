@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SongIndexItem from './song_index_item'
+import SongIndexItem from './song_index_item_container'
 import HeaderPlayerContainer from '../header/header_player_container'
 
 class SongIndex extends Component {
@@ -17,7 +17,7 @@ class SongIndex extends Component {
     // }
 
     componentDidUpdate(){
-        if (this.state.songList.length === 0) {
+        if (this.state.songList.length === 0 && this.props.songs.length > 0) {
             let songList = this.props.songs.map(song => song.id)
             let joined = this.state.songList.concat(songList)
             this.setState({ songList: joined })

@@ -11,6 +11,7 @@ import ArtistContainer from '../artist/artist_container';
 import UserShow from '../left_sidebar/user_show';
 import PlaylistFormContainer from '../playlist/playlist_form_container';
 import PlaylistContainer from '../playlist/playlist_container'
+import ContextMenuContainer from '../context_menu/context_menu_container'
 
 class Player extends Component {
     constructor(props){
@@ -43,7 +44,7 @@ class Player extends Component {
                     </Switch>
                 </div>
             </div>
-
+            <ContextMenuContainer/>
             <FooterPlayerContainer />
         </div>)
     }

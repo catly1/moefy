@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HeaderPlayerContainer from '../header/header_player_container';
-import SongIndexItem from '../songs/song_index_item';
+import SongIndexItem from '../songs/song_index_item_container';
 import { Link, Route } from 'react-router-dom';
 
 class Album extends Component {
@@ -82,7 +82,7 @@ class Album extends Component {
                     </div>
                 </div>
                 <div className="album-show-right">
-                    <ol id="album-show-songs">
+                    <ol id="album-show-songs" onClick={this.handleClicks}>
                         {list}
                     </ol>
                 </div>

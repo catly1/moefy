@@ -281,14 +281,25 @@ button.create-button:hover{
     font-weight: bold;
     color: #b3b3b3;
     text-transform: none;
+    flex-direction: column;
 }
 
 .playlist-menu div{
     padding: 3px 20px;
-    width: 100%;
+}
+
+.playlist-menu span{
+    padding: 3px 20px;
 }
 
 .playlist-menu div:hover{
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
+    text-decoration: none;
+}
+
+.playlist-menu span:hover{
     color: #fff;
     background-color: #333;
     border-color: #333;

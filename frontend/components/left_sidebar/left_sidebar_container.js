@@ -3,10 +3,11 @@ import LeftSiderbar from './left_sidebar';
 import { requestPlaylist } from '../../actions/playlist_actions'
 
 
-const msp = ({ session, entities: { users, playlists } }) => ({
+const msp = ({ session, entities: { users, playlists } }) => {
+    return{
     currentUser: users[session.id],
-    playlists
-})
+        playlists: Object.keys((playlists)).map(id => playlists[id])
+}}
 
 const mdp = dispatch => ({
     requestPlaylist: playlistId => dispatch(requestPlaylist(playlistId))

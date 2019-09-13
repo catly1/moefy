@@ -19,7 +19,7 @@ class Playlist extends Component {
     }
 
     componentDidMount() {
-        this.props.requestPlaylist(this.props.match.params.playlistId)
+        if (this.props.match.params.playlistId) this.props.requestPlaylist(this.props.match.params.playlistId)
         document.addEventListener('mousedown', this.handleContextMenu, false);
     }
 

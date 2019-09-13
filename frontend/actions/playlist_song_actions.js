@@ -14,9 +14,7 @@ export const createPlaylistSong = playlistSong => dispatch => (
     ))
 );
 
-export const requestPlaylistSong = id => dispatch => (
-    APIUtil.fetchPlaylistSong(id).then(playlist => dispatch(receivePlaylistSong(playlist)))
-);
+
 
 const removePlaylistSong = playlistSongId => ({
     type: REMOVE_PLAYLIST_SONG,

@@ -33,8 +33,34 @@ class FooterPlayer extends Component {
         this.nowPlaying = this.nowPlaying.bind(this)
         this.handleBackward = this.handleBackward.bind(this)
         this.handleEnded = this.handleEnded.bind(this)
+        this.handleContextMenu = this.handleContextMenu.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
     }
     
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleContextMenu, false);
+    }
+
+    handleContextMenu(e) {
+        e.stopPropagation();
+        if (this.node.contains(e.target)) {
+            const left = e.pageX
+            const top = e.pageY
+            const playlistMenu = document.querySelector(".playlist-menu")
+            playlistMenu.style.left = `${left}px`
+            playlistMenu.style.top = `${top - 120}px`
+            playlistMenu.classList.add(`active`)
+            return;
+        }
+        this.handleClickOutside(e);
+    }
+
+    handleClickOutside(e) {
+        if (!Array.from(e.target.classList).includes("playlist-menu-item")) {
+            const playlistMenu = document.querySelector(".playlist-menu")
+            playlistMenu.classList.remove("active")
+        }
+    }
 
 
     componentDidUpdate(prevProps, prevState){
@@ -173,13 +199,16 @@ class FooterPlayer extends Component {
                 <section className="song-info">
                     <div><Link to={`/player/albums/${song.album_id}`}><img src={song.album_image} alt={song.album} /></Link></div>
                     <div className="song-info-details">
-                        <div className="song-info-details-first-line">
+                        <div className="song-info-details-first-line" id={song.id}>
                             {song.name}
                         </div>
                         <div className="song-info-details-second-line">
                             {artists[0]}
                         </div>
                     </div>
+                    <section className="song-item-song-options footer-dot">
+                        <div onClick={this.handleContextMenu} ref={node => this.node = node}>...</div>
+                    </section>
                 </section>
 
                 <section className="center-console">

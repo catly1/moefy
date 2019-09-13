@@ -11,8 +11,39 @@ class SongIndexItem extends Component {
         this.state = {
             note: <MdMusicNote />
         }
+        this.handleContextMenu = this.handleContextMenu.bind(this);
+        // this.handleDeleteConfirmation = this.handleDeleteConfirmation.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleContextMenu, false);
+    }
+
+    handleContextMenu(e) {
+        e.stopPropagation();
+        if (this.node.contains(e.target)) {
+            const left = e.pageX
+            const top = e.pageY
+            const playlistMenu = document.querySelector(".playlist-menu")
+            playlistMenu.style.left = `${left}px`
+            playlistMenu.style.top = `${top}px`
+            playlistMenu.classList.add("active")
+            return;
+        }
+        this.handleClickOutside(e);
+    }
+
+    handleClickOutside(e) {
+        if (!Array.from(e.target.classList).includes("playlist-menu-item")) {
+            const playlistMenu = document.querySelector(".playlist-menu")
+            playlistMenu.classList.remove("active")
+        }
+    }
+
+    handleAddToPlaylist(){
+
+    }
 
     handleDoubleClick(e) {
         // this.props.playSong(this.props.song.id)
@@ -29,6 +60,8 @@ class SongIndexItem extends Component {
     handleMouseLeave(e){
         this.setState({ note: <MdMusicNote /> })
     }
+
+
 
     render(){
         const {song} = this.props
@@ -51,7 +84,7 @@ class SongIndexItem extends Component {
                     </div>
                 </section>
                 <section className="song-item-song-options">
-                    <div>...</div>
+                    <div onClick={this.handleContextMenu} ref={node => this.node = node}>...</div>
                 </section>
                 <section className="song-item-song-length">
                     <div>{song.duration}</div>
