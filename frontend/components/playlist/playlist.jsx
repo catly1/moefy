@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HeaderPlayerContainer from '../header/header_player_container';
 import SongIndexItem from '../songs/song_index_item';
 import { Link, Route } from 'react-router-dom';
+import PlaylistDelete from '../playlist/playlist_delete_container';
 
 class Playlist extends Component {
     constructor(props) {
@@ -12,11 +13,16 @@ class Playlist extends Component {
         this.handleClicks = this.handleClicks.bind(this);
         this.handlePlayButton = this.handlePlayButton.bind(this);
         this.constructPlaylistShow = this.constructPlaylistShow.bind(this);
+        this.handleContextMenu = this.handleContextMenu.bind(this);
+        this.handleDeleteConfirmation = this.handleDeleteConfirmation.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
     componentDidMount() {
         this.props.requestPlaylist(this.props.match.params.playlistId)
+        document.addEventListener('mousedown', this.handleContextMenu, false);
     }
+
 
     handleClicks(e) {
         let pickedSongId = e.target.closest("li").id
@@ -53,6 +59,31 @@ class Playlist extends Component {
     }
 
 
+    handleContextMenu(e){
+        if (this.node.contains(e.target)) {
+            const left = e.pageX
+            const top = e.pageY
+            const playlistMenu = document.querySelector(".playlist-menu")
+            playlistMenu.style.left = `${left}px`
+            playlistMenu.style.top = `${top}px`
+            playlistMenu.classList.add("active")
+            return;
+        }
+        this.handleClickOutside(e);
+    }
+
+    handleClickOutside(e){
+        if (!Array.from(e.target.classList).includes("playlist-menu-item")){
+        const playlistMenu = document.querySelector(".playlist-menu") 
+        playlistMenu.classList.remove("active")
+        }
+    }
+
+    handleDeleteConfirmation(){
+        const playlistDeleteForm = document.getElementById("playlist-delete-form")
+        playlistDeleteForm.classList.add("active")
+    }
+
     constructPlaylistShow() {
         const { songs, playSong, playlist } = this.props
         let list
@@ -85,6 +116,10 @@ class Playlist extends Component {
                         <div className="playlist-show-year">
                             {numberOfSongs}
                         </div>
+                        <section className="playlist-options">
+                            <div onClick={this.handleContextMenu} ref={node => this.node = node}>...</div>
+
+                        </section>
                     </div>
                 </div>
                 <div className="playlist-show-right">
@@ -102,7 +137,18 @@ class Playlist extends Component {
     }
 
     render() {
-        return <div>{this.constructPlaylistShow()}</div>
+        let playlistId
+        if (this.props.playlist) {
+            playlistId = this.props.playlist.id
+        }
+
+        return <div>
+        {this.constructPlaylistShow()}
+        <PlaylistDelete playlistId={playlistId}/>
+            <nav className="playlist-menu">
+                <div className="playlist-menu-item" onClick={this.handleDeleteConfirmation}>Delete</div>
+            </nav>
+        </div>
     }
 
 }

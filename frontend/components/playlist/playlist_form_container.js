@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PlaylistForm from './playlist_form';
 import { createPlaylist } from '../../actions/playlist_actions';
 
-const msp = ({}) => ({
-
+const msp = state => ({
+    currentUser: state.entities.users[state.session.id],
 })
 
 const mdp = dispatch => ({

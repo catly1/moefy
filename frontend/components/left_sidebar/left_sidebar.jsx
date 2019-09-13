@@ -10,8 +10,15 @@ import { FiArrowDownCircle } from "react-icons/fi";
 class LeftSidebar extends Component {
     constructor(props){
         super(props)
+        this.state = {
+            playlist: [],
+        }
         this.handlePlaylistForm = this.handlePlaylistForm.bind(this)
         this.handlePlaylist = this.handlePlaylist.bind(this)
+    }
+
+    componentDidMount(){
+        this.props.currentUser.playlists.forEach(playlist => this.props.requestPlaylist(playlist.id))
     }
 
     handlePlaylistForm(){
@@ -20,9 +27,13 @@ class LeftSidebar extends Component {
     }
 
     handlePlaylist(){
-        return this.props.currentUser.playlists.map(playlist => <li key={playlist.id}><Link to={`/player/playlists/${playlist.id}`}>{playlist.name}</Link></li>)
+        if (this.props.playlists) this.props.playlists.map(playlist => <li key={playlist.id}><Link to={`/player/playlists/${playlist.id}`}>{playlist.name}</Link></li>)
     }
 
+    componentDidUpdate(prevProps, prevState){
+            debugger
+    }
+    
     render() {
         return (
             <section className="left-nav-bar"> 

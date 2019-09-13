@@ -25,8 +25,8 @@ class Player extends Component {
 
     render(){
         return(<div className="player">
-            <PlaylistFormContainer currentUser={this.props.currentUser}/>
-            <LeftSiderbarContainer currentUser={this.props.currentUser}/>
+            <PlaylistFormContainer/>
+            <LeftSiderbarContainer/>
 
             <div className="main-view">
                 <div className="scroll-wrapper">

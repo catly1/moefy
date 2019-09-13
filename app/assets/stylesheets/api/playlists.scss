@@ -249,3 +249,52 @@ button.create-button:hover{
     letter-spacing: .16em;
 }
 
+.playlist-options{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+}
+
+.playlist-options div:hover{
+    transition: none 33ms cubic-bezier(.3,0,0,1);
+    transition-property: all;
+    transform: scale(1.06);
+}
+
+.playlist-menu{
+    position: fixed;
+    display: none;
+    opacity: 1;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    background-color: #282828;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    outline: none;
+    z-index: 1003;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-weight: bold;
+    color: #b3b3b3;
+    text-transform: none;
+}
+
+.playlist-menu div{
+    padding: 3px 20px;
+    width: 100%;
+}
+
+.playlist-menu div:hover{
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
+    text-decoration: none;
+}
+
+nav.active{
+    display: flex;
+}

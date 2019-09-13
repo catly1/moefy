@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :artists, only: [:index, :show]
     resources :liked_songs, only: [:show, :create, :destroy]
     resources :playlists, only: [:show, :create, :destroy]
+    resources :playlistsongs, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   

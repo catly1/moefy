@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MdClear } from "react-icons/md";
+import { withRouter } from 'react-router-dom';
 
 
 class PlaylistForm extends Component {
@@ -7,7 +8,7 @@ class PlaylistForm extends Component {
         super(props)
         this.state = {
             name: "",
-            user_id: ""
+            user_id: props.currentUser.id
         };
         this.handleClose = this.handleClose.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,10 +21,12 @@ class PlaylistForm extends Component {
 
     handleSubmit(e){
         e.preventDefault();
-        const playlist = Object.assign({}, this.state, {
-            user_id: this.props.currentUser.id
+        this.props.createPlaylist(this.state).then(data => {
+            this.props.history.push(`/player/playlists/${data.playlist.id}`)
+            const playlistForm = document.getElementById("playlist-form");
+            playlistForm.classList.remove("active");
         })
-        this.props.createPlaylist(playlist).then(data => this.props.history.push(`/player/playlist/${data.playlist.id}`))
+        
     }
 
     update(){
@@ -59,4 +62,4 @@ class PlaylistForm extends Component {
 
 }
 
-export default PlaylistForm
+export default withRouter(PlaylistForm)
