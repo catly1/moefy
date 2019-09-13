@@ -343,7 +343,7 @@ class SessionForm extends React.Component {
         if (this.state.year_validation && (this.state.year > (currentTime.getFullYear() - 13) && this.state.year < 9999)) {
             this.addRedBorder("year")
             return (
-                <label className="error">Sorry, but you don't meet Spotify's age requirements.</label>
+                <label className="error">Sorry, but you don't meet Moefy's age requirements.</label>
             );
         }
 
