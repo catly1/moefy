@@ -64,10 +64,11 @@ export const deletePlaylist = id => (
     })
 )
 
-export const createPlaylistSong = playlistSong =>(
+export const createPlaylistSong = playlist_song =>(
     $.ajax({
         method: "POST",
-        url: "api/"
+        url: "api/playlistsongs",
+        data: {playlist_song}
     })
 )
 

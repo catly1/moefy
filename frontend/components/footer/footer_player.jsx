@@ -43,13 +43,15 @@ class FooterPlayer extends Component {
 
     handleContextMenu(e) {
         e.stopPropagation();
-        if (this.node.contains(e.target)) {
+        if (this.node && this.node.contains(e.target)) {
             const left = e.pageX
             const top = e.pageY
             const playlistMenu = document.querySelector(".playlist-menu")
             playlistMenu.style.left = `${left}px`
             playlistMenu.style.top = `${top - 120}px`
             playlistMenu.classList.add(`active`)
+            this.songId = e.target.id
+            playlistMenu.setAttribute("id", this.songId)
             return;
         }
         this.handleClickOutside(e);
@@ -59,6 +61,7 @@ class FooterPlayer extends Component {
         if (!Array.from(e.target.classList).includes("playlist-menu-item")) {
             const playlistMenu = document.querySelector(".playlist-menu")
             playlistMenu.classList.remove("active")
+            playlistMenu.setAttribute("id","")
         }
     }
 
@@ -207,7 +210,7 @@ class FooterPlayer extends Component {
                         </div>
                     </div>
                     <section className="song-item-song-options footer-dot">
-                        <div onClick={this.handleContextMenu} ref={node => this.node = node}>...</div>
+                        <div onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>...</div>
                     </section>
                 </section>
 

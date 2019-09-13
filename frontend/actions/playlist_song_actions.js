@@ -22,5 +22,5 @@ const removePlaylistSong = playlistSongId => ({
 })
 
 export const deletePlaylistSong = id => dispatch => (
-    APIUtil.deletePlaylistSong(id).then(playlistSong => dispatch(removePlaylistSong(id)))
+    APIUtil.deletePlaylistSong(id)
 )

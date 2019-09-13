@@ -42,6 +42,12 @@
     font-weight: normal;
 }
 
+.song-item-song-options:hover div{
+    transition: none 33ms cubic-bezier(.3,0,0,1);
+    transition-property: all;
+    transform: scale(1.06);
+}
+
 li:hover .song-item-song-options > div{
     display: flex;
 }
@@ -53,6 +59,12 @@ li:hover .song-item-song-options > div{
     justify-content: center;
     color: white;
     font-size: 25px;
+}
+
+.song-item-play-button:hover {
+    transition: none 33ms cubic-bezier(.3,0,0,1);
+    transition-property: all;
+    transform: scale(1.06);
 }
 
 .song-item-song-length{

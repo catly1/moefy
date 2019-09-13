@@ -60,10 +60,10 @@ class Playlist extends Component {
 
 
     handleContextMenu(e){
-        if (this.node.contains(e.target)) {
+        if (this.node && this.node.contains(e.target)) {
             const left = e.pageX
             const top = e.pageY
-            const playlistMenu = document.querySelector(".playlist-menu")
+            const playlistMenu = document.querySelector(".playlist-menu-show")
             playlistMenu.style.left = `${left}px`
             playlistMenu.style.top = `${top}px`
             playlistMenu.classList.add("active")
@@ -74,8 +74,8 @@ class Playlist extends Component {
 
     handleClickOutside(e){
         if (!Array.from(e.target.classList).includes("playlist-menu-item")){
-        const playlistMenu = document.querySelector(".playlist-menu") 
-        playlistMenu.classList.remove("active")
+        const playlistMenu = document.querySelector(".playlist-menu-show") 
+        if(playlistMenu) playlistMenu.classList.remove("active")
         }
     }
 
@@ -145,7 +145,7 @@ class Playlist extends Component {
         return <div>
         {this.constructPlaylistShow()}
         <PlaylistDelete playlistId={playlistId}/>
-            <nav className="playlist-menu">
+            <nav className="playlist-menu-show">
                 <div className="playlist-menu-item" onClick={this.handleDeleteConfirmation}>Delete</div>
             </nav>
         </div>

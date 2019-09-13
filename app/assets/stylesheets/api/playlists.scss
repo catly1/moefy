@@ -262,7 +262,9 @@ button.create-button:hover{
     transform: scale(1.06);
 }
 
-.playlist-menu{
+
+
+.playlist-menu, .playlist-menu-show{
     position: fixed;
     display: none;
     opacity: 1;
@@ -284,22 +286,24 @@ button.create-button:hover{
     flex-direction: column;
 }
 
-.playlist-menu div{
+
+
+.playlist-menu div, .playlist-menu-show div{
     padding: 3px 20px;
 }
 
-.playlist-menu span{
+.playlist-menu span, .playlist-menu-show span{
     padding: 3px 20px;
 }
 
-.playlist-menu div:hover{
+.playlist-menu div:hover, .playlist-menu-show div:hover{
     color: #fff;
     background-color: #333;
     border-color: #333;
     text-decoration: none;
 }
 
-.playlist-menu span:hover{
+.playlist-menu-item:hover, .playlist-menu-item-playlist:hover, .playlist-menu-show span:hover{
     color: #fff;
     background-color: #333;
     border-color: #333;
@@ -308,4 +312,8 @@ button.create-button:hover{
 
 nav.active{
     display: flex;
+}
+
+.playlist-menu-item-header{
+    background-color: black;
 }

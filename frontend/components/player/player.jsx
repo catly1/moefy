@@ -32,7 +32,7 @@ class Player extends Component {
             <div className="main-view">
                 <div className="scroll-wrapper">
                     <Switch>
-                        <Route className="player-main-view" exact path='/player/browse' component={() => <BrowseContainer currentUser={this.props.currentUser}/>}/>
+                        <Route className="player-main-view" exact path='/player/browse' render={() => <Redirect to={{ pathname: "/player/albums" }} />}/>
                         <Route className="player-main-view" exact path="/player/songs" component={SongIndexContainer} />
                         <Route className="player-main-view" exact path="/player/playlists/:playlistId" component={PlaylistContainer} />
                         <Route className="player-main-view" exact path="/player/albums/:albumId" component={AlbumContainer}/>
