@@ -209,8 +209,8 @@ class FooterPlayer extends Component {
                             {artists[0]}
                         </div>
                     </div>
-                    <section className="song-item-song-options footer-dot">
-                        <div onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>...</div>
+                    <section className="song-item-song-options footer-dot" onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>
+                        <div id={song.id}>...</div>
                     </section>
                 </section>
 

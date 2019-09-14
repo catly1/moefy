@@ -86,8 +86,8 @@ class SongIndexItem extends Component {
                         <Link to={`/player/albums/${song.album_id}`} onClick={this.stopPropagation}>{song.album}</Link>
                     </div>
                 </section>
-                <section className="song-item-song-options">
-                    <div onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>...</div>
+                <section className="song-item-song-options" onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>
+                    <div id={song.id}>...</div>
                 </section>
                 <section className="song-item-song-length">
                     <div>{song.duration}</div>

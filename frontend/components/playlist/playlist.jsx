@@ -47,13 +47,50 @@ class Playlist extends Component {
         if (prevProps.playlist != this.props.playlist && !this.props.playlist) {
             this.props.requestPlaylist(this.props.match.params.playlistId)
         }
-        
-        if (this.state.songList.length === 0 && this.props.songs.length > 0) {
+        // if (prevProps.playlistSongs.length != this.props.playlistSongs.length && this.props.playlist){
+        //     this.props.requestPlaylist(this.props.match.params.playlistId) 
+        //     const filtered = this.props.playlistSongs.filter(playlist_song => playlist_song.playlist_id === this.props.playlist.id) 
+        //     let songList = filtered.map(song => song.id)
+        //     this.setState({ songList: songList })  
+        // }
+
+        // if (this.props.playlistSongs && this.props.playlistSongs.length != prevProps.playlistSongs.length && this.props.playlist && this.props.songs){
+        //     const song_ids = this.props.playlist.playlist_song_song_ids
+        //     const playlist_song_ids = this.props.playlist.playlist_song_song_ids
+        //     const filtered = this.props.songs.filter(song => song_ids.includes(song.id))
+        //     this.setState({ songList: filtered})
+        // }
+
+        if (this.state.songList && this.props.playlistSongs && this.state.songList.length > this.props.playlistSongs.length){
+            if (this.props.playlistSongs.length === 0){
+                return this.setState({ songList: [] })
+            }
+        }
+
+
+
+
+        if (this.props.playlistSongs.length > 0 && this.props.playlist){
+            const filtered2 = this.props.playlistSongs.filter(playlist_song => playlist_song.playlist_id === this.props.playlist.id)
+            
+            let songList2 = filtered2.map(song => song.song_id)
+            let noMatch = !this.state.songList.every(e => songList2.includes(e))
+            if (noMatch) {
+                return this.setState({ songList: songList2 })
+            }
+
+
+            if (filtered2.length > 0 && songList2 && this.state.songList.length != songList2.length){
+                return this.setState({ songList: songList2 })  
+            }
+
+
+        }
+        if (this.state.songList.length === 0 && this.props.songs.length > 0 && prevState.songList.length != this.state.songList.length) {
             if (this.props.playlist && this.props.playlist.songs.length > 0) {
-                let filtered = this.props.songs.filter(song => this.props.playlist.songs.includes(song.id))
-                let songList = filtered.map(song => song.id)
-                let joined = this.state.songList.concat(songList)
-                this.setState({ songList: joined })
+                let filtered3 = this.props.playlistSongs.filter(playlist_song => playlist_song.playlist_id === this.props.playlist.id)
+                let songList3 = filtered3.map(song => song.song_id)
+                this.setState({ songList: songList3 })
             }
         }
     }
@@ -85,17 +122,18 @@ class Playlist extends Component {
     }
 
     constructPlaylistShow() {
-        const { songs, playSong, playlist } = this.props
+        const { songs, playSong, playlist, playlistSongs } = this.props
         let list
-        if (playlist && songs) {
-            let filtered = songs.filter(song => playlist.songs.includes(song.id))
+        if (playlist && songs && playlistSongs) {
+            let filtered = songs.filter(song => this.state.songList.includes(song.id))
             list = filtered.map(song => <SongIndexItem key={song.id} song={song} playSong={playSong} />)
         }
 
         let numberOfSongs
         if (playlist && playlist.songs) {
-            let num = playlist.songs.length
-            numberOfSongs = playlist.songs.length === 1 ? `${num} song` : `${num} songs`
+            let num = list.length
+
+            numberOfSongs = this.state.songList.length === 1 ? `${num} song` : `${num} songs`
         }
 
         let playlistShow

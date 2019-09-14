@@ -40,7 +40,6 @@ class Artist extends Component{
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.artist != this.props.artist && !this.props.artist) {
-            debugger
             this.props.requestArtist(this.props.match.params.artistId)
         }
         

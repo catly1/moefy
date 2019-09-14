@@ -21,6 +21,7 @@ class Player extends Component {
 
     componentDidMount() {
         this.props.requestSongs();
+        this.props.requestPlaylistSongs();
 
     }
 

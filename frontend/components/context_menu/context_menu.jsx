@@ -20,21 +20,18 @@ class ContextMenu extends Component {
         const playlistMenu = document.querySelector(".playlist-menu")
         let song_id = parseInt(playlistMenu.id)
         const playlist_id = parseInt(e.target.id)
-        this.props.createPlaylistSong({ playlist_id: playlist_id, song_id: song_id })
         playlistMenu.classList.remove("active")
-        this.playlist_id = playlist_id
-        this.setState({refreshAdd: true})
+        this.props.createPlaylistSong({ playlist_id: playlist_id, song_id: song_id })
     }
 
     handleRemove(e){
-        let playlist = this.handleIfSongIsInPlaylist()
+        let playlist = this.props.playlists.filter(playlist => playlist.id === this.playlist)[0]
         const playlistMenu = document.querySelector(".playlist-menu")
         let song_id = parseInt(playlistMenu.id)
-        let playlist_id = playlist.id
-        let playlist_song = playlist.playlist_songs.filter(playlist_song => playlist_song.song_id = song_id)[0]
-        this.props.deletePlaylistSong(playlist_song.id)
+        let playlist_song = this.props.playlistSongs.filter(playlist_song => playlist_song.song_id === song_id).filter(playlist_song => playlist_song.playlist_id === playlist.id)[0]
         playlistMenu.classList.remove("active")
-        this.setState({ refreshRemove: true })
+        if (playlist_song) this.props.deletePlaylistSong(playlist_song.id)
+
     }
 
     componentDidMount() {
@@ -42,10 +39,14 @@ class ContextMenu extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // if (location.hash.includes("playlists") && !this.playlist) {
-        //     const playlists = this.props.playlists
-        //     this.handleIfSongIsInPlaylist(playlists)
-        // }
+        if (location.hash.includes("playlists")) {
+            
+            let playlistId = this.handleIfSongIsInPlaylist()
+
+            if (this.playlist != playlistId){
+                this.props.requestPlaylist(playlistId)
+            }
+        }
         
         // if (this.state.refreshRemove) {
         //     this.props.requestPlaylist(this.playlist.id)
@@ -61,6 +62,10 @@ class ContextMenu extends Component {
             const playlists = this.props.playlists
             this.setState({ playlists: playlists })
         }
+        // if (this.state.playlists && this.props.playlist && this.state.playlists.length != this.props.playlists.length){
+        //     const playlists = this.props.playlists
+        //     this.setState({ playlists: playlists })
+        // }
 
         // if (this.playlist && !this.state.playlists.includes(this.playlist)) {
         //     const playlist = this.props.requestPlaylist(this.playlist.id)
@@ -80,16 +85,16 @@ class ContextMenu extends Component {
         // return playlist
     }
 
-    handleIfSongIsInPlaylist(playlists = this.state.playlists){
+    handleIfSongIsInPlaylist(){
         let location = this.props.history.location.pathname
         let extract = ""
         for (let i = location.length - 1; location[i] != "/"; i--){
             extract += location[i]
         }
         let playlist_id = parseInt(extract.split("").reverse().join(""))
-        let playlist = playlists.filter(playlist => playlist.id = playlist_id)[0]
-        this.playlist = playlist
-        return playlist
+        // let playlist = playlists.filter(playlist => playlist.id === playlist_id)[0]
+        this.playlist = playlist_id
+        return playlist_id
     }
     
     handleRemoveOption(){
