@@ -13,6 +13,7 @@ Artist.delete_all
 Album.delete_all
 Song.delete_all
 Collaboration.delete_all
+User.delete_all
 
 guest = User.create(username: "Guest", password: "password", email: "email@email.com", gender: "weeb", dob: "1/1/1990")
 
