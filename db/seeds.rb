@@ -149,3 +149,136 @@ song13 = Song.create(name: "Hello!", album_id: album5.id, credits: "Written by: 
 song13.song.attach(io: song13_mp3, filename: "song13.mp3")
 
 collaboration13 = Collaboration.create(song_id: song13.id, artist_id:artist3.id)
+
+
+artist4 = Artist.create(name: "Livetune(kz)", image_url: "./assets/artist/lt.jpg")
+
+album5 = Album.create(name: '「Re:Dial」', year: 2013, image_url: "./assets/album/r.jpg", artist_id: artist4.id)
+
+song14_mp3 = open("https://moefy-assets.s3-us-west-1.amazonaws.com/Hatsune+Miku+-+Weekender+Girl.mp3")
+
+song14 = Song.create(name: "Weekender Girl", album_id: album5.id, credits: "Performed by: Hatsune Miku", duration: "3:33")
+
+song14.song.attach(io: song14_mp3, filename: "song14.mp3")
+
+collaboration13 = Collaboration.create(song_id: song14.id, artist_id:artist4.id)
+
+
+artist5 = Artist.create(name: "May'n", image_url: "./assets/artist/m.jpg")
+
+album6 = Album.create(name: 'Frontier Greatest Hits', year: 2011, image_url: "./assets/album/gh.jpg", artist_id: artist3.id)
+
+song15_mp3 = open("https://moefy-assets.s3-us-west-1.amazonaws.com/Sheryl+Nome+(cv.+May'n)+%26+Ranka+Lee+(cv.+Nakajima+Megumi)+-+d+Shootin'+Star+b.mp3")
+
+song15 = Song.create(name: "d Shootin' Star b", album_id: album6.id, credits: "Performed by: May'n, Megumi Nakajima", duration: "5:39")
+
+song15.song.attach(io: song15_mp3, filename: "song15.mp3")
+
+collaboration15 = Collaboration.create(song_id: song15.id, artist_id:artist5.id)
+
+collaboration16 = Collaboration.create(song_id: song15.id, artist_id:artist3.id)
+
+
+song16_mp3 = open("https://moefy-assets.s3-us-west-1.amazonaws.com/Sheryl+Nome+(cv.+May'n)+-+Get+it+on+~+Kousoku+Cry+max.mp3")
+
+song16 = Song.create(name: "Get it on", album_id: album6.id, credits: "Performed by: May'n, Megumi Nakajima", duration: "4:20")
+
+song16.song.attach(io: song16_mp3, filename: "song16.mp3")
+
+collaboration17 = Collaboration.create(song_id: song16.id, artist_id:artist5.id)
+
+collaboration18 = Collaboration.create(song_id: song16.id, artist_id:artist3.id)
+
+
+album7 = Album.create(name: 'End of the "Triangle"', year: 2011, image_url: "./assets/album/teoft.webp", artist_id: artist5.id)
+
+song17_mp3 = open("https://moefy-assets.s3-us-west-1.amazonaws.com/Megumi+Nakajima+-+Nyan+Nyan+Final+Attack+Frontier+Greatest+Hits!.mp3")
+
+song17 = Song.create(name: "Nyan Nyan Final Attack", album_id: album7.id, credits: "Performed by: May'n, Megumi Nakajima", duration: "7:30")
+
+song17.song.attach(io: song17_mp3, filename: "song17.mp3")
+
+collaboration19 = Collaboration.create(song_id: song17.id, artist_id:artist5.id)
+
+collaboration20 = Collaboration.create(song_id: song17.id, artist_id:artist3.id)
+
+
+song18_mp3 = open("https://moefy-assets.s3-us-west-1.amazonaws.com/%EF%BC%AD%EF%BD%81%EF%BD%99%E2%80%99%EF%BD%8E%EF%BC%8C%E4%B8%AD%E5%B3%B6%E6%84%9B+-+%E3%82%B5%E3%83%A8%E3%83%8A%E3%83%A9%E3%83%8E%E3%83%84%E3%83%90%E3%82%B5%EF%BD%9E%EF%BD%94%EF%BD%88%EF%BD%85%E3%80%80%EF%BD%85%EF%BD%8E%EF%BD%84%E3%80%80%EF%BD%8F%EF%BD%86%E3%80%80%EF%BD%94%EF%BD%92%EF%BD%89%EF%BD%81%EF%BD%8E%EF%BD%87%EF%BD%8C%EF%BD%85%EF%BC%9B%E3%82%B5%E3%83%A8%E3%83%8A%E3%83%A9%E3%83%8E%E3%83%84%E3%83%90%E3%82%B5%EF%BD%9C%E3%82%A2%E3%82%A4%E3%83%A2%EF%BD%9C%E6%94%BE%E8%AA%B2%E5%BE%8C%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E3%83%95%E3%83%AD%E3%82%A6.mp3")
+
+song18 = Song.create(name: "Nyan Nyan Final Attack", album_id: album7.id, credits: "Performed by: May'n, Megumi Nakajima", duration: "7:19")
+
+song18.song.attach(io: song18_mp3, filename: "song18.mp3")
+
+collaboration20 = Collaboration.create(song_id: song18.id, artist_id:artist5.id)
+
+collaboration21 = Collaboration.create(song_id: song18.id, artist_id:artist3.id)
+
+
+album8 = Album.create(name: 'Universal Bunny', year: 2009, image_url: "./assets/album/ub.webp", artist_id: artist5.id)
+
+song19_mp3 = open("https://moefy-assets.s3-us-west-1.amazonaws.com/May'n+-+Universal+Bunny.mp3")
+
+song19 = Song.create(name: "Universal Bunny", album_id: album8.id, credits: "Performed by: May'n", duration: "5:57")
+
+song19.song.attach(io: song19_mp3, filename: "song19.mp3")
+
+collaboration22 = Collaboration.create(song_id: song19.id, artist_id:artist5.id)
+
+
+
+artist6 = Artist.create(name: "Round Table", image_url: "./assets/artist/rt.jpg")
+
+album9 = Album.create(name: 'April', year: 2003, image_url: "./assets/album/a.png", artist_id: artist6.id)
+
+song20_mp3 = open("https://moefy-assets.s3-us-west-1.amazonaws.com/ROUND+TABLE+featuring+Nino+-+Dancin'+All+Night.mp3")
+
+song20 = Song.create(name: "Dancin' All Night", album_id: album9.id, credits: "featuring: Nino", duration: "4:16")
+
+song20.song.attach(io: song20_mp3, filename: "song20.mp3")
+
+collaboration23 = Collaboration.create(song_id: song20.id, artist_id:artist6.id)
+
+
+song21_mp3 = open("https://moefy-assets.s3-us-west-1.amazonaws.com/ROUND+TABLE+featuring+Nino+-+Where+Is+Love.mp3")
+
+song21 = Song.create(name: "Where is Love", album_id: album9.id, credits: "featuring: Nino", duration: "5:40")
+
+song21.song.attach(io: song21_mp3, filename: "song21.mp3")
+
+collaboration24 = Collaboration.create(song_id: song21.id, artist_id:artist6.id)
+
+
+
+album10 = Album.create(name: 'Nino', year: 2006, image_url: "./assets/album/n.png", artist_id: artist6.id)
+
+song22_mp3 = open("https://moefy-assets.s3-us-west-1.amazonaws.com/ROUND+TABLE+featuring+Nino+-+Sunny+Side+Hill.mp3")
+
+song22 = Song.create(name: "Sunny Side Hill", album_id: album10.id, credits: "featuring: Nino", duration: "3:32")
+
+song22.song.attach(io: song22_mp3, filename: "song22.mp3")
+
+collaboration25 = Collaboration.create(song_id: song22.id, artist_id:artist6.id)
+
+
+
+song23_mp3 = open("https://moefy-assets.s3-us-west-1.amazonaws.com/ROUND+TABLE+featuring+Nino+-+Message.mp3")
+
+song23 = Song.create(name: "Message", album_id: album10.id, credits: "featuring: Nino", duration: "4:42")
+
+song23.song.attach(io: song23_mp3, filename: "song23.mp3")
+
+collaboration26 = Collaboration.create(song_id: song23.id, artist_id:artist6.id)
+
+
+song24_mp3 = open("https://moefy-assets.s3-us-west-1.amazonaws.com/ROUND+TABLE+featuring+Nino+-+Groovin'+Magic.mp3")
+
+song24 = Song.create(name: "Groovin' Magic", album_id: album10.id, credits: "featuring: Nino", duration: "4:22")
+
+song24.song.attach(io: song24_mp3, filename: "song24.mp3")
+
+collaboration27 = Collaboration.create(song_id: song24.id, artist_id:artist6.id)
+
+
+
+
+

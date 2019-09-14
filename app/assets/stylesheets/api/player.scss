@@ -57,7 +57,7 @@
     width: 100%;
 }
 
-.player-main-view div:nth-child(3){
+.player-main-view > div:nth-child(3){
     padding: 0 32px;
     margin: 0 auto;
     max-width: 1480px;

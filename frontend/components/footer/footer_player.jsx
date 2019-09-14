@@ -19,6 +19,8 @@ class FooterPlayer extends Component {
             muted: false,
             queue: [],
             currentSongIndex: 0,
+            loop: false,
+            shuffle: false,
         }
         this.handlePlayPause = this.handlePlayPause.bind(this);
         this.handleVolumeChange = this.handleVolumeChange.bind(this);
@@ -35,6 +37,8 @@ class FooterPlayer extends Component {
         this.handleEnded = this.handleEnded.bind(this)
         this.handleContextMenu = this.handleContextMenu.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.handleRepeat = this.handleRepeat.bind(this);
+        this.handleShuffle = this.handleShuffle.bind(this);
     }
     
     componentDidMount() {
@@ -158,14 +162,26 @@ class FooterPlayer extends Component {
         })
     }
 
-    handleEnded = () => {
+    handleEnded(){
         this.handleForward()
+    }
+
+    handleRepeat(){
+        this.setState({ loop: !this.state.loop })
+    }
+
+    handleShuffle(){
+        this.setState({ shuffle: !this.state.shuffle })
     }
 
     nowPlaying(){
         const { songs } = this.props
-        const { playing, volume, played, duration, muted, queue, currentSongIndex } = this.state
+        const { playing, volume, played, duration, muted, queue, currentSongIndex, loop, shuffle } = this.state
         let muteButton
+
+        const green = {
+            color: "green",
+        }
 
         if (volume >= .50) {
             muteButton = <MdVolumeUp />
@@ -198,9 +214,10 @@ class FooterPlayer extends Component {
                     onDuration={this.handleDuration}
                     muted={muted}
                     onEnded={this.handleEnded}
+                    loop={loop}
                 />
                 <section className="song-info">
-                    <div><Link to={`/player/albums/${song.album_id}`}><img src={song.album_image} alt={song.album} /></Link></div>
+                    <div className="footer-player-album-wrapper"><Link to={`/player/albums/${song.album_id}`}><img src={song.album_image} alt={song.album} /></Link></div>
                     <div className="song-info-details">
                         <div className="song-info-details-first-line" id={song.id}>
                             {song.name}
@@ -216,11 +233,11 @@ class FooterPlayer extends Component {
 
                 <section className="center-console">
                     <div className="control-buttons">
-                        <div className="shuffle-button button"><IoIosShuffle /></div>
+                        <div className="shuffle-button button" onClick={this.handleShuffle}>{shuffle ? <IoIosShuffle style={green} /> : <IoIosShuffle />}</div>
                         <div className="back-button button" onClick={this.handleBackward}><MdSkipPrevious /></div>
                         <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
                         <div className="fwd-button button" onClick={this.handleForward}><MdSkipNext /></div>
-                        <div className="rep-button button"><TiArrowRepeat /></div>
+                        <div className="rep-button button" onClick={this.handleRepeat}>{loop ? <TiArrowRepeat style={green}/> : <TiArrowRepeat />}</div>
                     </div>
                     <div className="seek-bar">
                         <div className="current-progress"><Duration seconds={duration * played} /></div>

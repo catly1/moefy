@@ -108,7 +108,7 @@ li:hover .song-item-song-options > div{
 }
 
 .song-second-line-dot{
-    color: lightgray;
+    color: #b3b3b3;
     font-size: 22px;
     line-height: 9px;
     letter-spacing: .015em;
@@ -125,3 +125,10 @@ li:hover .song-item-song-options > div{
 .song-list li:hover{
     background-color: rgba(0,0,0,.3);
 }
+
+.song-second-line a:hover{
+    color: #fff;
+    border-bottom: 1px solid transparent;
+    border-bottom-color: currentcolor;
+}
+
