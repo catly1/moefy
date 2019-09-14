@@ -14,6 +14,8 @@ Album.delete_all
 Song.delete_all
 Collaboration.delete_all
 
+guest = User.create(username: "Guest", password: "password", email: "email@email.com", gender: "weeb", dob: "1/1/1990")
+
 artist1 = Artist.create(name: "Official HIGE DANdism", image_url: "./assets/artist/ohd.jpg")
 
 album1 = Album.create(name: 'Love To Peace Ha Kimi No Naka', year: 2015, image_url: "./assets/album/ltphknn.jpg", artist_id: artist1.id)

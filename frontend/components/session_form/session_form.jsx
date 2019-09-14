@@ -33,6 +33,7 @@ class SessionForm extends React.Component {
         this.renderUsernameError = this.renderUsernameError.bind(this);
         this.renderMonthError= this.renderMonthError.bind(this);
         this.renderGenderError = this.renderGenderError.bind(this);
+        this.handleGuest = this.handleGuest.bind(this);
     }
 
     update(field) {
@@ -80,6 +81,14 @@ class SessionForm extends React.Component {
         this.props.processForm(user);
     }
 
+    handleGuest(e){
+        e.preventDefault();
+        const user = {
+            username: "Guest",
+            password: "password",
+        }
+        this.props.processForm(user);
+    }
 
 
     componentDidUpdate(prevProps, prevState){
@@ -554,10 +563,18 @@ class SessionForm extends React.Component {
 
 
         const login = (
-        <form onSubmit={this.handleSubmit} className="login-form-box">
+            <form onSubmit={this.handleSubmit} className="login-form-box">
             <h2>To continue, log in to Moefy.</h2>
+            <button className="splash-grn-button splash-grn-button-sign-up-not-green noSelect blue-button" onClick={this.handleGuest}>Log in as a Guest</button>
+            <div className="login-form-wrapper">
+                <div className="login-form-divider">
+                    <div class="divider-login">
+                        <strong class="login-or">or</strong>
+                    </div>
+                </div>   
+            </div>              
             {/* {this.renderErrors()} */}
-            <div className="login-form">                       
+            <div className="login-form">
                 <div className="login-form-details">
                         <div className="login-error hidden" id="login-error">Incorrect username or password.</div>
                         <div>
