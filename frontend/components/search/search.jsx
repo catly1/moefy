@@ -119,7 +119,7 @@ class Search extends React.Component{
             <div className="player-background player-background-search"></div>
             <div className="search-input-wrapper">
                 <div className="playlist-content-spacing">
-                    <input className="playlist-input search-input" type="text" spellCheck="false" onChange={this.onInputChange}/>
+                    <input className="playlist-input search-input" type="text" spellCheck="false" onChange={this.onInputChange} placeholder="Start typing..."/>
                 </div>
             </div>
             {this.renderResults()}
