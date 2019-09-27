@@ -37,7 +37,7 @@ class Player extends Component {
         return(<div className="player">
             <PlaylistFormContainer/>
             <LeftSiderbarContainer/>
-
+            <div className="black-bg"></div>
             <div className="main-view">
                 <div className="scroll-wrapper">
                     <Switch>
