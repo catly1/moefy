@@ -50,6 +50,10 @@ class Artist extends Component{
             let joined = this.state.songList.concat(songList)
             this.setState({ songList: joined })
         }
+        
+        if (this.props.location !== prevProps.location) {
+            window.scrollTo(0, 0)
+        }
     }
 
     constructArtistShow(){

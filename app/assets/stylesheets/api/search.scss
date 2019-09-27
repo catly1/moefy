@@ -1,0 +1,54 @@
+.search-page{
+    display: flex;
+    flex-direction: column;
+    height: 0;
+    width: 100%;
+    align-items: center;
+}
+
+.rendered-results{
+    width: 100%;
+}
+
+.search-input-wrapper{
+    background-color: #282828;
+    position: fixed;
+    padding: 16px;
+    top: 0;  
+    right: 0;
+    left: 230px;
+    z-index: 2;
+}
+
+.search-input{
+    font-size: 36px;
+    line-height: 44px;
+}
+
+.search-album-song-wrapper{
+    position: relative;
+    padding: 0 32px;
+    padding-top: 88px;
+    z-index: 1;  
+}
+
+.search-album-song-wrapper h2{
+    color: #fff;  
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -.005em;
+}
+
+.rendered-results .artist-show-albums ul{
+    flex-wrap: wrap;
+}
+
+.rendered-results .artist-show-albums .album-index-item{
+    width: 15%;
+}
+
+.search-artists{
+    width: 100%;
+    padding: 0;
+    justify-content: flex-start;
+}

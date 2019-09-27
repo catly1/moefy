@@ -58,7 +58,7 @@ class LeftSidebar extends Component {
                 <Link className="left-nav-bar-items" to='/player/browse' >
                     <MdHome/><div>Home</div>
                 </Link>
-                <Link className="left-nav-bar-items" to='/player/browse' >
+                <Link className="left-nav-bar-items" to='/player/search' >
                     <MdSearch/><div>Search</div>
                 </Link>
                 <Link className="left-nav-bar-items" to='/player/browse' >

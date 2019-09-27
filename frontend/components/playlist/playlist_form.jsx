@@ -43,7 +43,7 @@ class PlaylistForm extends Component {
                         <div className="playlist-input-box">
                             <div className="playlist-content-spacing">
                                 <h4 className="playlist-input-label">Playlist Name</h4>
-                                <input className="playlist-input" type="text" value={this.state.name} onChange={this.update()} placeholder="New Playlist"/>
+                                <input spellCheck="false" className="playlist-input" type="text" value={this.state.name} onChange={this.update()} placeholder="New Playlist"/>
                             </div>
                         </div>
                     </div>

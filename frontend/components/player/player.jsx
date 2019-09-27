@@ -12,6 +12,7 @@ import UserShow from '../left_sidebar/user_show';
 import PlaylistFormContainer from '../playlist/playlist_form_container';
 import PlaylistContainer from '../playlist/playlist_container'
 import ContextMenuContainer from '../context_menu/context_menu_container'
+import SearchContainer from '../search/search_container'
 
 class Player extends Component {
     constructor(props){
@@ -23,6 +24,13 @@ class Player extends Component {
         this.props.requestSongs();
         this.props.requestPlaylistSongs();
 
+    }
+
+    componentDidUpdate(prevProps){
+        if (this.props.location !== prevProps.location) {
+            const div = document.getElementsByClassName("scroll-wrapper")[0]
+            div.scrollTop = 0
+        }
     }
 
     render(){
@@ -40,6 +48,7 @@ class Player extends Component {
                         <Route className="player-main-view" exact path="/player/albums" component={AlbumIndexContainer} />
                         <Route className="player-main-view" exact path="/player/artists/:artistId" component={ArtistContainer} />
                         <Route className="player-main-view" exact path="/player/artists" component={ArtistIndexContainer} />
+                        <Route className="player-main-view" path="/player/search" component={SearchContainer} />
                         <Route className="player-main-view" exact path='/player/settings/account' component={() => <UserShow currentUser={this.props.currentUser} logout={this.props.logout}/>} />
                         <Route exact path='/player*' render={() => <Redirect to={{pathname: "/player/browse"}}/>} />
                     </Switch>
