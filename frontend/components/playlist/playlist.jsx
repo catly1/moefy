@@ -3,6 +3,7 @@ import HeaderPlayerContainer from '../header/header_player_container';
 import SongIndexItem from '../songs/song_index_item';
 import { Link, Route } from 'react-router-dom';
 import PlaylistDelete from '../playlist/playlist_delete_container';
+import { isEmpty } from "lodash"
 
 class Playlist extends Component {
     constructor(props) {
@@ -47,28 +48,12 @@ class Playlist extends Component {
         if (prevProps.playlist != this.props.playlist && !this.props.playlist) {
             this.props.requestPlaylist(this.props.match.params.playlistId)
         }
-        // if (prevProps.playlistSongs.length != this.props.playlistSongs.length && this.props.playlist){
-        //     this.props.requestPlaylist(this.props.match.params.playlistId) 
-        //     const filtered = this.props.playlistSongs.filter(playlist_song => playlist_song.playlist_id === this.props.playlist.id) 
-        //     let songList = filtered.map(song => song.id)
-        //     this.setState({ songList: songList })  
-        // }
-
-        // if (this.props.playlistSongs && this.props.playlistSongs.length != prevProps.playlistSongs.length && this.props.playlist && this.props.songs){
-        //     const song_ids = this.props.playlist.playlist_song_song_ids
-        //     const playlist_song_ids = this.props.playlist.playlist_song_song_ids
-        //     const filtered = this.props.songs.filter(song => song_ids.includes(song.id))
-        //     this.setState({ songList: filtered})
-        // }
 
         if (this.state.songList && this.props.playlistSongs && this.state.songList.length > this.props.playlistSongs.length){
             if (this.props.playlistSongs.length === 0){
                 return this.setState({ songList: [] })
             }
         }
-
-
-
 
         if (this.props.playlistSongs.length > 0 && this.props.playlist){
             const filtered2 = this.props.playlistSongs.filter(playlist_song => playlist_song.playlist_id === this.props.playlist.id)
@@ -86,7 +71,7 @@ class Playlist extends Component {
 
 
         }
-        if (this.state.songList.length === 0 && this.props.songs.length > 0 && prevState.songList.length != this.state.songList.length) {
+        if (this.state.songList.length === 0 && !_.isEmpty(this.props.songs) && prevState.songList.length != this.state.songList.length) {
             if (this.props.playlist && this.props.playlist.songs.length > 0) {
                 let filtered3 = this.props.playlistSongs.filter(playlist_song => playlist_song.playlist_id === this.props.playlist.id)
                 let songList3 = filtered3.map(song => song.song_id)
@@ -124,15 +109,16 @@ class Playlist extends Component {
     constructPlaylistShow() {
         const { songs, playSong, playlist, playlistSongs } = this.props
         let list
-        if (playlist && songs && playlistSongs) {
-            let filtered = songs.filter(song => this.state.songList.includes(song.id))
+        if (playlist && !_.isEmpty(songs) && playlistSongs) {
+            // let filtered = songs.filter(song => this.state.songList.includes(song.id))
+            let filtered = []
+            this.state.songList.forEach(songId => { if (songs[songId]) filtered.push(songs[songId]) })
             list = filtered.map(song => <SongIndexItem key={song.id} song={song} playSong={playSong} />)
         }
 
         let numberOfSongs
-        if (playlist && playlist.songs) {
+        if (playlist && playlist.songs && !_.isEmpty(songs)) {
             let num = list.length
-
             numberOfSongs = this.state.songList.length === 1 ? `${num} song` : `${num} songs`
         }
 
@@ -169,6 +155,7 @@ class Playlist extends Component {
         }
 
         return (<div className="playlist-show">
+            <div className="player-background player-background-playlist-show-low"></div>
             <div className="player-background player-background-playlist-show"></div>
             {playlistShow}
         </div>)

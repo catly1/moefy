@@ -19,6 +19,7 @@ const Splash = ({ currentUser }) => {
     );
     const loggedIn = () =>(
         <section className="main">
+            <div className="background-img background-img-logged-low"></div>
             <div className="background-img background-img-logged"></div>
             <div className="body-text loggedin">
                 <div>

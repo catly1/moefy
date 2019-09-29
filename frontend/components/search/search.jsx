@@ -35,7 +35,6 @@ class Search extends React.Component{
     queueConstructor(songId) {
         let songList = this.state.displayedSongs.map(song => song.id)
         let index = songList.indexOf(parseInt(songId))
-        debugger
         return songList.slice(index)
     }
 
@@ -104,17 +103,6 @@ class Search extends React.Component{
     }
 
     render(){
-        // if (this.state.displayedSongs.length > 1){
-        //     debugger
-        // }
-
-        // if (this.state.displayedAlbums.length > 1) {
-        //     debugger
-        // }
-
-        // if (this.state.displayedArtists.length > 1) {
-        //     debugger
-        // }
         return <div className="search-page">
             <div className="player-background player-background-search-low"></div>
             <div className="player-background player-background-search"></div>

@@ -11,11 +11,6 @@ class SongIndex extends Component {
         this.handleClicks = this.handleClicks.bind(this);
     }
 
-    // componentDidMount() {
-    //     this.props.requestSongs();
-
-    // }
-
     componentDidUpdate(){
         if (this.state.songList.length === 0 && this.props.songs.length > 0) {
             let songList = this.props.songs.map(song => song.id)

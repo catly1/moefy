@@ -61,7 +61,7 @@ class LeftSidebar extends Component {
                 <Link className="left-nav-bar-items" to='/player/search' >
                     <MdSearch/><div>Search</div>
                 </Link>
-                <Link className="left-nav-bar-items" to={`/player/user/${this.props.currentUser.id}`} >
+                <Link className="left-nav-bar-items" to={`/player/user/${this.props.currentUser.id}/songs`} >
                     <GiBookshelf/><div>Library</div>
                 </Link>
             </nav>

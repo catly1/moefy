@@ -8,7 +8,8 @@ const msp = (state, { match }) => {
     return {
         currentUser: state.entities.users[state.session.id],
         playlist: selectPlaylist(state, parseInt(match.params.playlistId)),
-        songs: Object.keys((state.entities.songs)).map(id => state.entities.songs[id]),
+        // songs: Object.keys((state.entities.songs)).map(id => state.entities.songs[id]),
+        songs: state.entities.songs,
         playlistSongs: Object.keys((state.entities.playlistSongs)).map(id => state.entities.playlistSongs[id])
     }
 }

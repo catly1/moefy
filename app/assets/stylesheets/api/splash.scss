@@ -113,9 +113,23 @@ header img {
     background-image: asset-url("background_splash_notlogged.gif");
 }
 
-.background-img-logged{
-    background-image: asset-url("background_splash_logged.jpg")
+.background-img-logged-low{
+    background-image: asset-url("background_splash_logged-smol.jpg");
 }
+
+.background-img-logged{
+    animation: sharpen-splash 2s both;
+}
+
+@keyframes sharpen-splash {
+    0% {
+        background-image: asset-url("background_splash_logged.jpg");
+        filter: blur(200px);
+    }     
+    100% {
+      background-image: asset-url("background_splash_logged.jpg");
+    }
+  }
 
 .social-media {
     margin: 0 15px 0 auto;
