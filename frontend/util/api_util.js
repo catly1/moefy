@@ -85,3 +85,25 @@ export const fetchPlaylistSongs = () =>(
         url: 'api/playlistsongs'
     })
 );
+
+export const createLikedSong = liked_song => (
+    $.ajax({
+        method: "POST",
+        url: "api/liked_songs",
+        data: { liked_song }
+    })
+)
+
+export const deleteLikedSong = id => (
+    $.ajax({
+        method: "DELETE",
+        url: `api/liked_songs/${id}`
+    })
+)
+
+export const fetchLikedSongs = () => (
+    $.ajax({
+        method: 'GET',
+        url: 'api/liked_songs'
+    })
+);

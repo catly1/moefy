@@ -59,6 +59,7 @@
 
 .song-info {
     width: 20%;
+    min-width: 253px;
 }
 
 .volume{
@@ -124,7 +125,7 @@ input[type=range]::-webkit-slider-thumb {
 
 
 .range-bar:hover progress::-webkit-progress-value {
-    background-color: green;
+    background-color: #1db954;
 }
 
 .seek-bar progress {
@@ -177,7 +178,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 .volume-right:hover progress::-webkit-progress-value {
-    background-color: green;
+    background-color: #1db954;
 }
 .volume-right:hover input[type=range]{
     transform: scale(1) translateY(-68%) translateX(-0.3%);
@@ -213,6 +214,9 @@ input[type=range]::-webkit-slider-thumb {
 
 section.footer-dot div{
     display: flex;
+    justify-content: center;
+    cursor: pointer;
+    width: auto;
 }
 
 
@@ -231,6 +235,34 @@ section.footer-dot div{
     align-items: center; 
 }
 
+.song-item-song-options-favorite{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.song-item-song-options-favorite .filled{
+    color: #1db954;
+}
+
+.song-item-song-options-favorite .not-filled{
+    color: #b3b3b3;
+}
+
+.song-item-song-options-favorite:hover .not-filled{
+    color: white;
+}
+
+.footer-player-options{
+    display: flex;
+}
+
+.footer-player-options .song-item-song-options{
+    width: 100%;
+}
 
 
 // // custom check box

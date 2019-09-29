@@ -6,7 +6,8 @@ import queue from './queue_reducer';
 import albums from './albums_reducer';
 import playlists from './playlist_reducer';
 import playlistSongs from './playlist_songs_reducer';
+import likedSongs from './liked_songs_reducer';
 
 export default combineReducers({
-    users, playlists, playlistSongs, songs, albums, artists, queue
+    users, playlists, playlistSongs, songs, albums, artists, queue, likedSongs
 });

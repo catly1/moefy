@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
-import { MdPlayCircleOutline, MdPauseCircleOutline, MdSkipNext, MdSkipPrevious, MdVolumeUp, MdVolumeOff, MdVolumeDown} from "react-icons/md";
+import { MdPlayCircleOutline, MdPauseCircleOutline, MdSkipNext, MdSkipPrevious, MdVolumeUp, MdVolumeOff, MdVolumeDown, MdFavoriteBorder, MdFavorite} from "react-icons/md";
 import { IoIosShuffle } from "react-icons/io";
 import { TiArrowRepeat } from "react-icons/ti";
 import Duration from './duration';
@@ -19,6 +19,7 @@ class FooterPlayer extends Component {
             muted: false,
             queue: [],
             currentSongIndex: 0,
+            currentSong: 0,
             loop: false,
             shuffle: false,
         }
@@ -82,7 +83,6 @@ class FooterPlayer extends Component {
                 currentSongIndex: 0
             })
         }
-
     }
 
 
@@ -174,13 +174,41 @@ class FooterPlayer extends Component {
         this.setState({ shuffle: !this.state.shuffle })
     }
 
+    renderFavoriteButton(){
+        if (!this.props.currentUser){
+            return <MdFavoriteBorder/>
+        }
+        const { likedSongs } = this.props
+        const { id } = this.props.currentUser
+        const currentSongId = this.state.queue[this.state.currentSongIndex]
+        let likedSong = likedSongs.filter(liked_song => liked_song.song_id === currentSongId && liked_song.user_id === id)[0]
+        if (likedSong){
+            return <MdFavorite className="filled" onClick={this.handleFavorite("remove", currentSongId, id)}/>
+        } else {
+            return <MdFavoriteBorder className="not-filled" onClick={this.handleFavorite("add", currentSongId, id)}/>
+        }
+
+    }
+
+    handleFavorite(type, song_id, user_id){
+        const { likedSongs } = this.props
+        return(e)=>{
+        if (type === "add"){
+            this.props.createLikedSong({ user_id: user_id, song_id: song_id })
+        } else {
+            let likedSong = likedSongs.filter(liked_song => liked_song.song_id === song_id && liked_song.user_id === user_id)[0]
+            this.props.deleteLikedSong(likedSong.id)
+        }
+        }
+    }
+
     nowPlaying(){
         const { songs } = this.props
         const { playing, volume, played, duration, muted, queue, currentSongIndex, loop, shuffle } = this.state
         let muteButton
 
         const green = {
-            color: "green",
+            color: "#1db954",
         }
 
         if (volume >= .50) {
@@ -226,9 +254,14 @@ class FooterPlayer extends Component {
                             {artists[0]}
                         </div>
                     </div>
-                    <section className="song-item-song-options footer-dot" onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>
-                        <div id={song.id}>...</div>
-                    </section>
+                    <div className="footer-player-options">
+                        <div className="song-item-song-options-favorite">
+                            {this.renderFavoriteButton()}
+                        </div>
+                        <section className="song-item-song-options footer-dot" onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>
+                            <div id={song.id}>...</div>
+                        </section>
+                    </div>
                 </section>
 
                 <section className="center-console">

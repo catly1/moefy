@@ -24,4 +24,6 @@ class Song < ApplicationRecord
     has_one_attached :song
 
     has_many :playlist_songs
+
+    has_many :liked_songs
 end

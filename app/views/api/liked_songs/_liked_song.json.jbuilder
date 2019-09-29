@@ -1,0 +1,1 @@
+json.extract! liked_song, :id, :user_id, :song_id

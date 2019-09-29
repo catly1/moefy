@@ -1,0 +1,1 @@
+json.partial! 'liked_song', liked_song: @liked_song

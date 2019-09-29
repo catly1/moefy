@@ -27,6 +27,13 @@ class User < ApplicationRecord
 
     has_many :playlists
 
+    has_many :liked_songs
+
+    has_many :songs,
+        through: :liked_songs
+
+
+
     def validate_age
         if dob.present? && dob.year > 13.years.ago.year
             errors.add(:dob, 'You should be over 13 years old.')
