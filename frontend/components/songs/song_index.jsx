@@ -41,6 +41,7 @@ class SongIndex extends Component {
 
         return(
             <div className="song-index player-main-view">
+                <div className="player-background player-background-song-index-low"></div>
                 <div className="player-background player-background-song-index"></div>
                 <HeaderPlayerContainer/>
                 <div className="song-list">
