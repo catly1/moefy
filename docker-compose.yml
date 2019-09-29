@@ -1,0 +1,31 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    image: catly1/moefy-web
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres@db
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    image: catly1/moefy-frontend
+    volumes:
+      - ".:/usr/src/app"
+      - "/usr/src/app/node_modules"
+    environment:
+      - NODE_ENV=development
+volumes:
+  pgdata:
