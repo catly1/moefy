@@ -60,76 +60,78 @@
     }
   }
 
-.player-background-album-index{
+.player-background-album-index-low{
     background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("album-index-bg-smol.jpg");
-    animation: sharpen2 .5s both;
+    filter: blur(200px);
+}
+
+.player-background-album-index{
+    animation: sharpen2 2s both;
 }
 
 @keyframes sharpen2 {
     0% {
-        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("album-index-bg-smol.jpg");
+        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("album-index-bg.jpg");
         filter: blur(200px);
-    }
-    75%{
-         background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("album-index-bg.jpg");
-        filter: blur(60px);
-    }     
+    } 
     100% {
       background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("album-index-bg.jpg");
     }
   }
 
-.player-background-album-show{
+.player-background-album-show-low{
     background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("album-show-bg-smol.jpg");
-    animation: sharpen5 .5s both;
+    filter: blur(200px);
+}
+
+.player-background-album-show{
+    animation: sharpen5 2s both;
 }
 
 @keyframes sharpen5 {
     0% {
-        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("album-show-bg-smol.jpg");
+        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("album-show-bg.jpg");
         filter: blur(200px);
-    }
-    75%{
-         background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("album-show-bg.jpg");
-        filter: blur(60px);
-    }     
+    }   
     100% {
       background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("album-show-bg.jpg");
     }
   }
 
-.player-background-playlist-show{
+
+.player-background-playlist-show-low{
     background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("playlist-show-bg-smol.jpg");
-    animation: sharpen6 .5s both;
+    filter: blur(200px);
 }
+
+.player-background-playlist-show{
+    animation: sharpen6 2s both;
+}
+
 @keyframes sharpen6 {
     0% {
-        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("playlist-show-bg-smol.jpg");
+        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("playlist-show-bg.jpg");
         filter: blur(200px);
-    }
-    75%{
-         background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("playlist-show-bg.jpg");
-        filter: blur(60px);
-    }     
+    }  
     100% {
       background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("playlist-show-bg.jpg");
     }
   }
 
-.player-background-artist-index{
+.player-background-artist-index-low{
     background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("artist-index-bg-smol.jpg");
-    animation: sharpen3 .5s both;
+    filter: blur(200px);
+}
+
+.player-background-artist-index{
+    animation: sharpen3 2s both;
 }
 
 @keyframes sharpen3 {
     0% {
-        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("artist-index-bg-smol.jpg");
+        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("artist-index-bg.jpg");
         filter: blur(200px);
-    }
-    75%{
-         background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("artist-index-bg.jpg");
-        filter: blur(60px);
-    }     
+    } 
     100% {
       background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("artist-index-bg.jpg");
     }
@@ -141,38 +143,38 @@
    background: rgb(24, 24, 24);
 }
 
-.player-background-search{
+.player-background-search-low{
     background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("search-bg-smol.jpg");
-    animation: sharpen4 .5s both;
+    filter: blur(200px);
+}
+
+.player-background-search{
+    animation: sharpen4 2s both;
 }
 
 @keyframes sharpen4 {
     0% {
-        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("search-bg-smol.jpg");
+        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("search-bg.jpg");
         filter: blur(200px);
-    }
-    75%{
-         background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("search-bg.jpg");
-        filter: blur(60px);
-    }     
+    }   
     100% {
       background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("search-bg.jpg");
     }
   }
 
-.player-background-user-profile {
+.player-background-user-profile-low{
     background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.816) 95%), linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.752) 95%),  asset-url("profile-smol.jpg");
-    animation: sharpen7 .5s both;
+    filter: blur(200px);
+}
+
+.player-background-user-profile {
+    animation: sharpen7 2s both;
 }
 
 @keyframes sharpen7 {
     0% {
-        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("profile-smol.jpg");
+        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("profile.jpg");
         filter: blur(200px);
-    }
-    75%{
-         background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("profile.jpg");
-        filter: blur(60px);
     }     
     100% {
       background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.651) 95%),linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.67) 95%), asset-url("profile.jpg");

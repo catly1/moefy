@@ -90,6 +90,7 @@ class Album extends Component {
         }
 
         return (<div className="album-show">
+            <div className="player-background player-background-album-show-low"></div>
             <div className="player-background player-background-album-show"></div>
             {albumShow}
         </div>)

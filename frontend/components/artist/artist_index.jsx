@@ -17,6 +17,7 @@ class ArtistsIndex extends Component {
 
         return (
             <div className="artist-index player-main-view">
+                <div className="player-background player-background-artist-index-low"></div>
                 <div className="player-background player-background-artist-index"></div>
                 <HeaderPlayerContainer />
                 <div className="artist-list-wrapper">

@@ -6,6 +6,7 @@ class UserShow extends Component {
     render(){
         return(
             <div className="player-main-view">
+                <div className="player-background player-background-user-profile-low"></div>
                 <div className="player-background player-background-user-profile"></div>
                 <div className="user-profile-page">
                     <div className="profile-name-pic">

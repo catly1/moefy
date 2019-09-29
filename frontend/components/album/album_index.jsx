@@ -18,6 +18,7 @@ class AlbumIndex extends Component {
 
         return (
             <div className="album-index player-main-view">
+                <div className="player-background player-background-album-index-low"></div>
                 <div className="player-background player-background-album-index"></div>
                 <HeaderPlayerContainer />
                 <div className="album-list-wrapper">

@@ -116,6 +116,7 @@ class Search extends React.Component{
         //     debugger
         // }
         return <div className="search-page">
+            <div className="player-background player-background-search-low"></div>
             <div className="player-background player-background-search"></div>
             <div className="search-input-wrapper">
                 <div className="playlist-content-spacing">
