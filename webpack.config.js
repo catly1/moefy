@@ -3,7 +3,6 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
     entry: './frontend/moefy.jsx',
-    mode: 'development',
     output: {
         path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
         filename: 'bundle.js'
@@ -30,6 +29,6 @@ module.exports = {
         extensions: ['.js', '.jsx', '*'],
     },
     plugins: [
-        new CaseSensitivePathsPlugin({})
+        new CaseSensitivePathsPlugin()
     ]
 };

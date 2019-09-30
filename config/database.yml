@@ -11,7 +11,7 @@ development:
   adapter: postgresql
   host: db
   username: postgres
-  password: <%= ENV['SPOTIFYCLONE_DATABASE_PASSWORD'] %>
+  password:
 
 test:
   <<: *default
@@ -22,4 +22,4 @@ production:
   adapter: postgresql
   host: db
   username: postgres
-  password: <%= ENV['SPOTIFYCLONE_DATABASE_PASSWORD'] %>
+  password:
