@@ -8,10 +8,7 @@ default: &default
 
 development:
   <<: *default
-  adapter: postgresql
-  host: db
-  username: postgres
-  password:
+  database: SpotifyClone_development
 
 test:
   <<: *default
