@@ -77,7 +77,7 @@ class LeftSidebar extends Component {
             </div>
             <div className="sidebar-bottom">
                 <Link className="left-nav-bar-items sidebar-bottom-download" to='/player/browse' >
-                    <FiArrowDownCircle/><div>Install App</div>
+                    {/* <FiArrowDownCircle/><div>Install App</div> */}
                 </Link>
                 <div className="user-profile">
                     <Link className="left-nav-bar-items sidebar-bottom-download" to='/player/settings/account'>

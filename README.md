@@ -1,6 +1,7 @@
 # Moefy
+![](app/assets/images/logo-blk.png)
 ## Overview
-Moefy is an anime themed Spotify clone. The catchy songs accompany the colorful backgrounds. If anime isn't your thing you might just aquire a new taste!
+Moefy is an anime themed Spotify clone where catchy songs accompany colorful backgrounds. If anime isn't your thing you might just aquire a new taste!
 
 ## Features:
 ### Responsive User Authentication
@@ -29,9 +30,9 @@ renderEmailError(){
     return <label className="error hidden" id="email-error"></label>
 }
 ```
-This was challenging in that my first implementation involved deleting html elements and adding new ones whenever a new error shows up. The problem was that deleting elements relies on a parentnode/wrapper. When a user hits signup the page rerenders and the relationship between each tags are disrupted. This resulted in error messages accumulating and not getting remove. 
+This was challenging in that my first implementation involved deleting html elements and adding new ones whenever a new error shows up. The problem was that deleting elements relies on a parentnode/wrapper. When a user hits signup, the page rerenders and the relationship between each tags are lost. This resulted in the accumulation of error message labels without them getting removed. 
 
-The simpler way was just to edit an persistent element. An onBlur event listener updates the "validate" state accordingly and either removes the red borders/error messages or adds them. When a user ignores the errors and hits sign up anyway, these errors are replaced with errors coming from the database. It uses the same label containers and just replaces their text.
+The simpler way was just to edit an persistent element. An onBlur event listener updates the "validate" state accordingly and either removes the red borders/error messages or adds them. When a user ignores the errors and hits sign up, these errors are replaced with errors coming from the database. It uses the same label containers and just repaints their text.
 
 
 ### Remember me
