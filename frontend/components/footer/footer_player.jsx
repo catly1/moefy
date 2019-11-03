@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
-import { MdPlayCircleOutline, MdPauseCircleOutline, MdSkipNext, MdSkipPrevious, MdVolumeUp, MdVolumeOff, MdVolumeDown, MdFavoriteBorder, MdFavorite} from "react-icons/md";
+import { MdPlayCircleOutline, MdPauseCircleOutline, MdSkipNext, MdSkipPrevious, MdVolumeUp, MdVolumeOff, MdVolumeDown, MdFavoriteBorder, MdFavorite, MdQueueMusic} from "react-icons/md";
 import { IoIosShuffle } from "react-icons/io";
 import { TiArrowRepeat } from "react-icons/ti";
 import Duration from './duration';
@@ -162,6 +162,10 @@ class FooterPlayer extends Component {
         })
     }
 
+    handleQueueButton(){
+
+    }
+
     handleEnded(){
         this.handleForward()
     }
@@ -205,7 +209,7 @@ class FooterPlayer extends Component {
     nowPlaying(){
         const { songs } = this.props
         const { playing, volume, played, duration, muted, queue, currentSongIndex, loop, shuffle } = this.state
-        let muteButton
+        let muteButton, queueButton
 
         const green = {
             color: "#1db954",
@@ -219,6 +223,11 @@ class FooterPlayer extends Component {
             muteButton = <MdVolumeOff />
         }
 
+        if (location.hash === "#/player/queue"){
+            queueButton = <Link to="/player"><MdQueueMusic style={green}/></Link>
+        } else {
+            queueButton = <Link to="/player/queue"><MdQueueMusic/></Link>
+        }
 
 
         let nowPlaying
@@ -289,7 +298,9 @@ class FooterPlayer extends Component {
                 </section>
 
                 <section className="volume">
-
+                    <section className="player-queue" onClick={this.handleQueueButton}>
+                        {queueButton}
+                    </section>
                     {/* <label className="volume-left"><input id='muted' type='checkbox' checked={muted} onChange={this.handleToggleMuted} /><span className="checkmark" /></label> */}
                     <label className="volume-left" onClick={this.handleMute}>{muteButton}</label>
                     <div className="volume-right">

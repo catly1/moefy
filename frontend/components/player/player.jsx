@@ -14,6 +14,7 @@ import PlaylistContainer from '../playlist/playlist_container'
 import ContextMenuContainer from '../context_menu/context_menu_container'
 import SearchContainer from '../search/search_container'
 import LibraryContainer from '../user/library_container'
+import QueueContainer from '../queue/queue_container'
 
 class Player extends Component {
     constructor(props){
@@ -42,6 +43,7 @@ class Player extends Component {
             <div className="main-view">
                 <div className="scroll-wrapper">
                     <Switch>
+                        <Route className="player-main-view" exact path="/player/queue" component={QueueContainer} />
                         <Route className="player-main-view" exact path='/player/browse' render={() => <Redirect to={{ pathname: "/player/albums" }} />}/>
                         <Route className="player-main-view" exact path="/player/songs" component={SongIndexContainer} />
                         <Route className="player-main-view" exact path="/player/playlists/:playlistId" component={PlaylistContainer} />
