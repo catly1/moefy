@@ -74,7 +74,7 @@ class FooterPlayer extends Component {
 
 
     componentDidUpdate(prevProps, prevState){
-        if (JSON.stringify(this.state.queue) !== JSON.stringify(this.props.queue)){
+        if (JSON.stringify(prevProps.queue) !== JSON.stringify(this.props.queue)){
             this.setState({ 
                 queue: this.props.queue,
                 currentSongIndex: 0
@@ -181,10 +181,11 @@ class FooterPlayer extends Component {
         this.setState({ shuffle: !this.state.shuffle })
         if (!this.state.shuffle){
             this.oldQueue = this.state.queue
-
+            let newQueue = this.shuffle(this.state.queue.slice())
             this.setState({
-                queue: this.shuffle(this.state.queue.slice())
+                queue: newQueue
             })
+            debugger
         } else {
             this.setState({
                 queue: this.oldQueue
@@ -244,7 +245,6 @@ class FooterPlayer extends Component {
         const green = {
             color: "#1db954",
         }
-
         if (volume >= .50) {
             muteButton = <MdVolumeUp />
         } else if (volume < .50 && volume > 0) {
@@ -254,6 +254,7 @@ class FooterPlayer extends Component {
         }
 
         if (location.hash === "#/player/queue"){
+            debugger
             queueButton = <Link to={this.state.prevPage.slice(1)}><MdQueueMusic style={green}/></Link>
         } else {
 
