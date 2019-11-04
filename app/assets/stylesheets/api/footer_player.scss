@@ -226,6 +226,11 @@ section.footer-dot div{
     align-items: center;
     padding-right: 10px;
     font-size: 22px;
+    cursor: pointer;
+}
+
+.volume-left:hover{
+    color: white;
 }
 
 
@@ -263,6 +268,24 @@ section.footer-dot div{
 .footer-player-options .song-item-song-options{
     width: 100%;
 }
+
+.player-queue{
+    display: flex;
+    color: #b3b3b3;
+    align-items: center;
+    padding-right: 14px;
+    font-size: 25px;
+    line-height: 0px;
+}
+
+.player-queue > a {
+    color: #b3b3b3;
+}
+
+.queue-not-open:hover{
+    color: white;
+}
+
 
 
 // // custom check box

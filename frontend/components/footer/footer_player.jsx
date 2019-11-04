@@ -226,7 +226,7 @@ class FooterPlayer extends Component {
         if (location.hash === "#/player/queue"){
             queueButton = <Link to="/player"><MdQueueMusic style={green}/></Link>
         } else {
-            queueButton = <Link to="/player/queue"><MdQueueMusic/></Link>
+            queueButton = <Link to="/player/queue"><MdQueueMusic className="queue-not-open"/></Link>
         }
 
 
