@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import FooterPlayer from './footer_player';
-import { createLikedSong, deleteLikedSong } from '../../actions/liked_song_actions'
+import { createLikedSong, deleteLikedSong } from '../../actions/liked_song_actions';
+import { currentSong } from '../../actions/song_actions'
 
 const msp = state => {
     return{
@@ -12,7 +13,8 @@ const msp = state => {
 
 const mdp = dispatch => ({
     createLikedSong: likedSong => dispatch(createLikedSong(likedSong)),
-    deleteLikedSong: id => dispatch(deleteLikedSong(id))
+    deleteLikedSong: id => dispatch(deleteLikedSong(id)),
+    currentSong: songId => dispatch(currentSong(songId))
 })
 
 export default connect(

@@ -4,6 +4,7 @@ export const RECEIVE_SONGS = 'RECEIVE_SONGS';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
 export const RECEIVE_SONG_TO_PLAY = 'RECEIVE_SONG_TO_PLAY';
 export const RECEIVE_QUEUE = 'RECEIVE_QUEUE';
+export const RECEIVE_CURRENT_SONG = "RECEIVE_CURRENT_SONG"
 
 export const receiveSongs = songs => ({
     type: RECEIVE_SONGS,
@@ -41,3 +42,12 @@ export const receiveQueue = queue => ({
 export const playQueue = queue => dispatch => (
     dispatch(receiveQueue(queue))
 );
+
+export const receiveCurrentSong = songId => ({
+    type: RECEIVE_CURRENT_SONG,
+    songId
+})
+
+export const currentSong = songId => (
+    dispatch(receiveCurrentSong(songId))
+)

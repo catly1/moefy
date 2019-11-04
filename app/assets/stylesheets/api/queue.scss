@@ -2,7 +2,7 @@
     margin: 0 auto;
 }
 
-.queue-page h1, h2{
+.queue-page h1, .queue-page h2{
     color: white;
     font-weight: bold;
     padding-left: 30px;
@@ -17,3 +17,6 @@ div.queue-current {
     height: 90px;
 }
 
+.queue-current .song-name, .queue-current .song-item-song-length{
+    color: #1db954;
+}

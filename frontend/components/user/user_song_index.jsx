@@ -34,7 +34,6 @@ class UserSongIndex extends Component {
             let songList2 = this.props.likedSongs.map(song => {
                 if (song.user_id === id1) return this.props.songs[song.song_id]
             })
-            debugger
             this.setState({ songList: songList2 })
         }
 
