@@ -9,7 +9,6 @@ class Queue extends Component{
             currentSongIndex: 0,
             songList: []
         }
-        debugger
         this.handleClicks = this.handleClicks.bind(this);
     }
 
@@ -24,6 +23,13 @@ class Queue extends Component{
     componentDidUpdate(prevProps, prevState) {
         // if (JSON.stringify(this.state.queue) !== JSON.stringify(this.props.queue)) {
         //     let currentIndex = this.props.queue.indexOf(this.props.currentSong)
+            // this.setState({
+            //     queue: this.props.queue,
+            //     songList: this.props.queue.slice(1 + currentIndex)
+            // })
+        // }
+
+        // if (JSON.stringify(this.state.queue) !== JSON.stringify(this.props.queue)){
         //     this.setState({
         //         queue: this.props.queue,
         //         songList: this.props.queue.slice(1 + currentIndex)

@@ -4,7 +4,7 @@ import { MdPlayCircleOutline, MdPauseCircleOutline, MdSkipNext, MdSkipPrevious, 
 import { IoIosShuffle } from "react-icons/io";
 import { TiArrowRepeat } from "react-icons/ti";
 import Duration from './duration';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, withRouter } from 'react-router-dom';
 
 
 class FooterPlayer extends Component {
@@ -22,7 +22,8 @@ class FooterPlayer extends Component {
             currentSong: 0,
             loop: false,
             shuffle: false,
-            prevPage: ""
+            prevPage: "",
+            queueButton: false,
         }
         this.handlePlayPause = this.handlePlayPause.bind(this);
         this.handleVolumeChange = this.handleVolumeChange.bind(this);
@@ -42,6 +43,8 @@ class FooterPlayer extends Component {
         this.handleRepeat = this.handleRepeat.bind(this);
         this.handleShuffle = this.handleShuffle.bind(this);
         this.savePrevPage = this.savePrevPage.bind(this);
+        this.shuffleQueue = this.shuffleQueue.bind(this);
+        this.handleQueueButton = this.handleQueueButton.bind(this)
     }
     
     componentDidMount() {
@@ -166,7 +169,17 @@ class FooterPlayer extends Component {
     }
 
     handleQueueButton(){
-
+        this.setState({ queueButton: !this.state.queueButton })
+        if (!this.state.queueButton) {
+        this.savePrevPage()
+        this.props.history.push({
+            pathname: "/player/queue",
+            queue: this.state.queue 
+        }) } else {
+            this.props.history.push({
+                pathname: this.state.prevPage.slice(1)
+            })
+        }
     }
 
     handleEnded(){
@@ -180,17 +193,20 @@ class FooterPlayer extends Component {
     handleShuffle(){
         this.setState({ shuffle: !this.state.shuffle })
         if (!this.state.shuffle){
-            this.oldQueue = this.state.queue
-            let newQueue = this.shuffle(this.state.queue.slice())
-            this.setState({
-                queue: newQueue
-            })
-            debugger
+            this.shuffleQueue()
         } else {
             this.setState({
                 queue: this.oldQueue
             })
         }
+    }
+
+    shuffleQueue(){
+        this.oldQueue = this.state.queue
+        let newQueue = this.shuffle(this.state.queue.slice())
+        this.setState({
+            queue: newQueue
+        })
     }
 
     shuffle(arr){
@@ -254,17 +270,9 @@ class FooterPlayer extends Component {
         }
 
         if (location.hash === "#/player/queue"){
-            debugger
-            queueButton = <Link to={this.state.prevPage.slice(1)}><MdQueueMusic style={green}/></Link>
+            queueButton = <MdQueueMusic style={green}/>
         } else {
-
-            queueButton = <Link 
-            to={{
-                pathname: "/player/queue",
-                queue: queue
-            }}
-            onClick={this.savePrevPage}
-            ><MdQueueMusic className="queue-not-open"/></Link>
+            queueButton = <MdQueueMusic className="queue-not-open"/>
         }
 
 
@@ -367,4 +375,4 @@ class FooterPlayer extends Component {
     }
 }
 
-export default FooterPlayer
+export default withRouter(FooterPlayer)
