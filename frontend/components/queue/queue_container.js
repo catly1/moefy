@@ -5,6 +5,7 @@ const msp = state => {
     return {
         queue: Object.assign([], state.entities.queue),
         songs: state.entities.songs,
+        currentSong: state.entities.currentSong
     }
 }
 

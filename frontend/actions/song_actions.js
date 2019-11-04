@@ -48,6 +48,6 @@ export const receiveCurrentSong = songId => ({
     songId
 })
 
-export const currentSong = songId => (
+export const currentSong = songId => dispatch => (
     dispatch(receiveCurrentSong(songId))
 )

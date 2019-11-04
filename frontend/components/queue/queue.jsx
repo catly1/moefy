@@ -34,8 +34,8 @@ class Queue extends Component{
 
     renderCurrentSong(){
         const { queue, currentSongIndex} = this.state
-        const { songs } = this.props
-        
+        const { songs, currentSong } = this.props
+        debugger
         if (queue.length > 0){
             let current = queue[currentSongIndex]
             let song = songs[current]

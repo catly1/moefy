@@ -207,7 +207,7 @@ class FooterPlayer extends Component {
     }
 
     nowPlaying(){
-        const { songs } = this.props
+        const { songs, currentSong } = this.props
         const { playing, volume, played, duration, muted, queue, currentSongIndex, loop, shuffle } = this.state
         let muteButton, queueButton
 
@@ -235,6 +235,7 @@ class FooterPlayer extends Component {
 
             let current = queue[currentSongIndex]
             let song = songs[current]
+            currentSong(song.id)
             if (song) {
             let artists = song.artists.map(artist =>
                 <Link key={artist.id} to={`/player/artists/${artist.id}`}>{artist.name}</Link>
