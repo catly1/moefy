@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import Queue from './queue'
+import Queue from './queue';
+import { playQueue } from '../../actions/song_actions';
+
 
 const msp = state => {
     return {
@@ -10,7 +12,7 @@ const msp = state => {
 }
 
 const mdp = dispatch => ({
-
+    playQueue: queue => dispatch(playQueue(queue))
 })
 
 export default connect(msp, mdp)(Queue)

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import SongIndexItem from '../songs/song_index_item';
+import SongIndexItem from '../songs/song_index_item_container';
 import AlbumIndexItem from '../album/album_index_item';
 import ArtistIndexItem from '../artist/artist_index_item';
 
