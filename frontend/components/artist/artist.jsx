@@ -44,7 +44,7 @@ class Artist extends Component{
         }
         
 
-        if (this.state.songList.length === 0 && this.props.songs.length > 0) {
+        if (this.state.songList.length === 0 && this.props.songs.length > 0 && this.props.artist) {
             let filtered = this.props.songs.filter(song => this.props.artist.songs.includes(song.id))
             let songList = filtered.map(song => song.id)
             let joined = this.state.songList.concat(songList)

@@ -192,6 +192,9 @@ class FooterPlayer extends Component {
 
     handleShuffle(){
         this.setState({ shuffle: !this.state.shuffle })
+        if (location.hash === "#/player/queue") {
+            this.handleQueueButton()
+        }
         if (!this.state.shuffle){
             this.shuffleQueue()
         } else {

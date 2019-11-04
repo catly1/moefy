@@ -1,5 +1,5 @@
 # Moefy
-![](app/assets/images/logo-blk.png)
+![](app/assets/images/markdown/demo.gif)
 ## Overview
 Moefy is an anime themed Spotify clone where catchy songs accompany colorful backgrounds. If anime isn't your thing you might just aquire a new taste!
 
@@ -7,7 +7,7 @@ Moefy is an anime themed Spotify clone where catchy songs accompany colorful bac
 ### Responsive User Authentication
 Using a series of onBlur event actions, the input fields come to life and reminds a user if they missed an input field or if they typed something invalid.
 
-gif here
+![](app/assets/images/markdown/login.gif)
 
 The logic behind it involves multiple conditionals and toggling the display attribute.
 ```javascript
@@ -35,16 +35,9 @@ This was challenging in that my first implementation involved deleting html elem
 The simpler way was just to edit an persistent element. An onBlur event listener updates the "validate" state accordingly and either removes the red borders/error messages or adds them. When a user ignores the errors and hits sign up, these errors are replaced with errors coming from the database. It uses the same label containers and just repaints their text.
 
 
-### Remember me
-Using async storage, a username or email is saved in the input field when a user logs out.
-
-pic here
-
-
 ### Stylish and functional sliders
 
-gif here
-
+![](app/assets/images/markdown/volume.gif)
 
 It was frustrating to find out that a range input would be so basic. You could not style either sides of the range bar to be different colors. The trick was to super impose the input bar on top of the progress bar which tracks the overall volume. The input bar is hidden and the bar itself is removed so only a customized thumb remains. When a user hovers on the progress bar the thumb of the input bar appears. Pressing the speaker bar mutes and saves the previous level. Its icon changes depending on the level as well.
 ```html
@@ -55,13 +48,54 @@ It was frustrating to find out that a range input would be so basic. You could n
 </div>
 ```
 
-### Continous playback
-No matter which page a user navigates the music won't stop playing. The queue is built from where a user hits play. Can also go back a track or forward.
+### Continous Playback
 
-pic here
+No matter which page a user navigates the music won't stop playing. The queue is built from where a user hits play. Can also go back a track or forward as well as see what's ahead.
 
-### Playlist
-Create playlist and keep track of your favorite songs.
+```javaScript
+    handleClicks(e){
+        let pickedSongId = e.target.closest("li").id
+        let queue = this.queueConstructor(pickedSongId)
+        this.props.playQueue(queue)
+        this.props.currentSong(pickedSongId)
+    }
 
-### 
+    queueConstructor(songId){
+        let songList = this.state.songList
+        let index = songList.indexOf(parseInt(songId))
+        return songList.slice(index)
+    }
+```
+
+### Playlist and Likes
+
+![](app/assets/images/markdown/playlist.gif)
+Like songs, Create playlist and keep track of your favorite songs!
+
+
+
+### Search
+![](app/assets/images/markdown/search.gif)
+
+Search from Artist, albums, or songs! RegExp is used to filter the Redux store and display the results.
+
+```javaScript
+    onInputChange(e){
+        let searchTerm = e.target.value
+        let displayedSongs = this.props.songs.filter(song => song.name.match(new RegExp(searchTerm, "i")))
+        let displayedAlbums = this.props.albums.filter(album => album.name.match(new RegExp(searchTerm, "i")))
+        let displayedArtists = this.props.artists.filter(artist => artist.name.match(new RegExp(searchTerm, "i")))
+        this.setState({
+            searchTerm: searchTerm,
+            displayedSongs: displayedSongs,
+            displayedAlbums: displayedAlbums,
+            displayedArtists: displayedArtists
+        })
+    }
+```
+
+
+
+
+
 
