@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaGithub, FaLinkedinIn, FaAngellist } from "react-icons/fa";
 
 const Footer = () => (
     <footer>
@@ -8,31 +9,30 @@ const Footer = () => (
             </div>
             <div className="footer-top-links">
                 <dl>
-                    <dt>Company</dt>
-                    <dd><a href="">About</a></dd>
-                    <dd><a href="">Jobs</a></dd>
-                    <dd><a href="">For the Record</a></dd>
+                    <dt>Other Projects</dt>
+                    <dd><a href="https://amazonforest.herokuapp.com/">Amazon Forest</a></dd>
+                    <dd><a href="https://dueme.herokuapp.com/">DueMe</a></dd>
+                    <dd><a href="https://twintales.herokuapp.com/">Twin Tales!</a></dd>
                 </dl>
                 <dl>
-                    <dt>Communities</dt>
-                    <dd><a href="">For Artists</a></dd>
-                    <dd><a href="">Developers</a></dd>
-                    <dd><a href="">Brands</a></dd>
-                    <dd><a href="">Investors</a></dd>
-                    <dd><a href="">Vendors</a></dd>
+                    <dt>Technologies</dt>
+                    <dd><a href="https://rubyonrails.org/">Rails</a></dd>
+                    <dd><a href="https://reactjs.org/">React</a></dd>
+                    <dd><a href="https://aws.amazon.com/s3/">AWS S3</a></dd>
+                    <dd><a href="https://www.postgresql.org/">PostgreSQL</a></dd>
+                    <dd><a href="https://github.com/CookPete/react-player">react-player</a></dd>
                 </dl>
                 <dl>
                     <dt>Useful Links</dt>
-                    <dd><a href="">Help</a></dd>
-                    <dd><a href="">Web Player</a></dd>
-                    <dd><a href="">Free Mobile App</a></dd>
+                    <dd><a href="https://www.appacademy.io/">App Academy</a></dd>
+                    <dd><a href="https://www.spotify.com/us/">Spotify</a></dd>
                 </dl>
             </div>
             <div className="social-media">
                 <ul>
-                    <li><a href="https://instagram.com/"><img src="./assets/insta.png" alt="instagram"/></a></li>
-                    <li><a href="https://twitter.com/"><img src="./assets/twitter.png" alt="twitter"/></a></li>
-                    <li><a href="https://www.facebook.com/Spotify"><img src="./assets/fb.png" alt="facebook"/></a></li> 
+                    <li><a href="https://github.com/catly1/moefy"><FaGithub/></a></li>
+                    <li><a href="https://www.linkedin.com/in/carlos-jacob-catly-8a46a0166"><FaLinkedinIn /></a></li>
+                    <li><a href="https://angel.co/carlos-jacob-a-catly"><FaAngellist /></a></li> 
                 </ul>
             </div>
         </nav>
@@ -42,13 +42,13 @@ const Footer = () => (
             </a>
         </div>
         <nav className="bottom-links">
-            <ul>
+            {/* <ul>
                 <li><a href="">Legal</a></li>
                 <li><a href="">Privacy Center</a></li>
                 <li><a href="">Privacy Policy</a></li>
                 <li><a href="">Cookies</a></li>
                 <li><a href="">About Ads</a></li>
-            </ul>
+            </ul> */}
             <a>© Moefy</a>
         </nav>
     </footer>
