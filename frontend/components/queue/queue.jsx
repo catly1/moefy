@@ -5,31 +5,30 @@ class Queue extends Component{
     constructor(props){
         super(props)
         this.state = {
-            queue:[],
+            queue: this.props.history.location.queue || [],
             currentSongIndex: 0,
             songList: []
         }
-
+        debugger
         this.handleClicks = this.handleClicks.bind(this);
     }
 
     componentDidMount(){
-        let currentIndex = this.props.queue.indexOf(this.props.currentSong)
+        let queue = this.props.history.location.queue || []
+        let currentIndex = queue.indexOf(this.props.currentSong)
         this.setState({
-            queue: this.props.queue,
-            songList: this.props.queue.slice(1 + currentIndex)
+            songList: queue.slice(1 + currentIndex) || []
         })
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (JSON.stringify(this.state.queue) !== JSON.stringify(this.props.queue)) {
-            let currentIndex = this.props.queue.indexOf(this.props.currentSong)
-            debugger
-            this.setState({
-                queue: this.props.queue,
-                songList: this.props.queue.slice(1 + currentIndex)
-            })
-        }
+        // if (JSON.stringify(this.state.queue) !== JSON.stringify(this.props.queue)) {
+        //     let currentIndex = this.props.queue.indexOf(this.props.currentSong)
+        //     this.setState({
+        //         queue: this.props.queue,
+        //         songList: this.props.queue.slice(1 + currentIndex)
+        //     })
+        // }
     }
 
     renderCurrentSong(){

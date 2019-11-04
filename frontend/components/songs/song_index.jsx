@@ -23,6 +23,7 @@ class SongIndex extends Component {
         let pickedSongId = e.target.closest("li").id
         let queue = this.queueConstructor(pickedSongId)
         this.props.playQueue(queue)
+        this.props.currentSong(pickedSongId)
     }
     
     queueConstructor(songId){
