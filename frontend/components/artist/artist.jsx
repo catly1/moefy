@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SongIndexItem from '../songs/song_index_item';
+import SongIndexItem from '../songs/song_index_item_container';
 import AlbumIndexItem from '../album/album_index_item';
 import { Link, Route } from 'react-router-dom';
 

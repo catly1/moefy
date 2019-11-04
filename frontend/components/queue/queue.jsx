@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SongIndexItem from '../songs/song_index_item';
+import SongIndexItem from '../songs/song_index_item_container';
 
 class Queue extends Component{
     constructor(props){

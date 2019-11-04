@@ -5,6 +5,7 @@ import { requestSongs, playSong, playQueue } from '../../actions/song_actions'
 
 
 const msp = state => {
+    debugger
     return {
         currentUser: state.entities.users[state.session.id],
         songs: Object.keys((state.entities.songs)).map(id => state.entities.songs[id]),
