@@ -9,6 +9,7 @@ class SongIndexItem extends Component {
         this.handleMouseEnter = this.handleMouseEnter.bind(this)
         this.handleMouseLeave = this.handleMouseLeave.bind(this)
         this.state = {
+            playing: false,
             note: <MdMusicNote />
         }
         this.handleContextMenu = this.handleContextMenu.bind(this);
@@ -18,6 +19,15 @@ class SongIndexItem extends Component {
 
     componentDidMount() {
         document.addEventListener('mousedown', this.handleContextMenu, false);
+    }
+
+    componentDidUpdate(prevProps, PrevState){
+        if (prevProps.currentSong !== this.props.currentSong){
+            this.setState({
+                playing: false,
+                note: <MdMusicNote />
+            })
+        }
     }
 
     handleContextMenu(e) {
@@ -57,11 +67,20 @@ class SongIndexItem extends Component {
     }
 
     handleMouseEnter(e){
-        this.setState({ note: <MdPlayArrow onClick={this.handleDoubleClick}/>})
+        if (!this.state.playing){
+            this.setState({ note: <MdPlayArrow onClick={this.handleDoubleClick}/>})
+        } else {
+            this.setState({ note: <MdVolumeUp onClick={this.handleDoubleClick} /> })
+        }
     }
 
     handleMouseLeave(e){
-        this.setState({ note: <MdMusicNote /> })
+        if (!this.state.playing) {
+            this.setState({ note: <MdMusicNote /> })
+        } else
+        {
+            this.setState({ note: <MdVolumeUp /> }) 
+        }
     }
 
     green(songId){
@@ -72,6 +91,7 @@ class SongIndexItem extends Component {
 
     handleNote(songId){
         if (songId === this.props.currentSong) {
+            debugger
             return <MdVolumeUp />
         } else return <MdMusicNote />
     }
@@ -81,10 +101,18 @@ class SongIndexItem extends Component {
         const artists = song.artists.map(artist => 
             <Link key={artist.id} to={`/player/artists/${artist.id}`} onClick={this.stopPropagation}>{artist.name}</Link>
         )
+
+        if (song.id === this.props.currentSong && !this.state.playing ){
+            this.setState({
+                playing: true,
+                note: <MdVolumeUp />
+            })
+        } 
+
         return(
             <li onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} id={song.id}>
                 <section className={`song-item-play-button ${this.green(song.id)}`}>
-                    <div>{this.handleNote(song.id)}</div>
+                    <div>{this.state.note}</div>
                 </section>
                 <section className="song-item">
                     <div className="song-first-line">
