@@ -22,6 +22,7 @@ class FooterPlayer extends Component {
             currentSong: 0,
             loop: false,
             shuffle: false,
+            prevPage: ""
         }
         this.handlePlayPause = this.handlePlayPause.bind(this);
         this.handleVolumeChange = this.handleVolumeChange.bind(this);
@@ -40,6 +41,7 @@ class FooterPlayer extends Component {
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.handleRepeat = this.handleRepeat.bind(this);
         this.handleShuffle = this.handleShuffle.bind(this);
+        this.savePrevPage = this.savePrevPage.bind(this);
     }
     
     componentDidMount() {
@@ -177,6 +179,26 @@ class FooterPlayer extends Component {
 
     handleShuffle(){
         this.setState({ shuffle: !this.state.shuffle })
+        if (!this.state.shuffle){
+            this.oldQueue = this.state.queue
+
+            this.setState({
+                queue: this.shuffle(this.state.queue.slice())
+            })
+        } else {
+            this.setState({
+                queue: this.oldQueue
+            })
+        }
+    }
+
+    shuffle(arr){
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;   
+
     }
 
     renderFavoriteButton(){
@@ -207,6 +229,13 @@ class FooterPlayer extends Component {
         }
     }
 
+
+    savePrevPage() {
+        this.setState({
+            prevPage: location.hash
+        })
+    }
+
     nowPlaying(){
         const { songs, currentSong } = this.props
         const { playing, volume, played, duration, muted, queue, currentSongIndex, loop, shuffle } = this.state
@@ -225,14 +254,15 @@ class FooterPlayer extends Component {
         }
 
         if (location.hash === "#/player/queue"){
-            queueButton = <Link to="/player"><MdQueueMusic style={green}/></Link>
+            queueButton = <Link to={this.state.prevPage.slice(1)}><MdQueueMusic style={green}/></Link>
         } else {
+
             queueButton = <Link 
             to={{
                 pathname: "/player/queue",
                 queue: queue
             }}
-            
+            onClick={this.savePrevPage}
             ><MdQueueMusic className="queue-not-open"/></Link>
         }
 
