@@ -91,7 +91,6 @@ class SongIndexItem extends Component {
 
     handleNote(songId){
         if (songId === this.props.currentSong) {
-            debugger
             return <MdVolumeUp />
         } else return <MdMusicNote />
     }

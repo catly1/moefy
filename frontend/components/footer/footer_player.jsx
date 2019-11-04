@@ -78,7 +78,7 @@ class FooterPlayer extends Component {
                 currentSongIndex: 0
             })
         }
-        
+
         if (prevState.currentSongIndex && this.state.queue.length === 1){
             this.setState({
                 currentSongIndex: 0

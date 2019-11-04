@@ -45,10 +45,11 @@ class Queue extends Component{
 
     renderNextSongs(){
         const { queue, currentSongIndex } = this.state
-        const { songs } = this.props
+        const { songs, currentSong } = this.props
 
         if(queue.length > 0){
-            let restOfQueue = queue.slice(1)
+            let currentIndex = queue.indexOf(currentSong)
+            let restOfQueue = queue.slice(1 + currentIndex)
             let nextSongs = restOfQueue.map(songId => {
                 let song = songs[songId]
                 return <SongIndexItem key={song.id} song={song} className="queue-song" />
