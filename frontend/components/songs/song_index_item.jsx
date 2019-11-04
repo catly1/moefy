@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import { MdMusicNote, MdPlayArrow } from "react-icons/md";
+import { MdMusicNote, MdPlayArrow, MdVolumeUp } from "react-icons/md";
 
 class SongIndexItem extends Component {
     constructor(props){
@@ -64,7 +64,17 @@ class SongIndexItem extends Component {
         this.setState({ note: <MdMusicNote /> })
     }
 
+    green(songId){
+        if (songId === this.props.currentSong){
+            return "green"
+        } else return ""
+    }
 
+    handleNote(songId){
+        if (songId === this.props.currentSong) {
+            return <MdVolumeUp />
+        } else return <MdMusicNote />
+    }
 
     render(){
         const {song} = this.props
@@ -73,12 +83,12 @@ class SongIndexItem extends Component {
         )
         return(
             <li onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} id={song.id}>
-                <section className="song-item-play-button">
-                    <div>{this.state.note}</div>
+                <section className={`song-item-play-button ${this.green(song.id)}`}>
+                    <div>{this.handleNote(song.id)}</div>
                 </section>
                 <section className="song-item">
                     <div className="song-first-line">
-                            <div className="song-name">{song.name}</div>
+                            <div className={`song-name ${this.green(song.id)}`}>{song.name}</div>
                     </div>
                     <div className="song-second-line">
                         {artists}
@@ -89,7 +99,7 @@ class SongIndexItem extends Component {
                 <section className="song-item-song-options" onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>
                     <div id={song.id}>...</div>
                 </section>
-                <section className="song-item-song-length">
+                <section className={`song-item-song-length ${this.green(song.id)}`}>
                     <div>{song.duration}</div>
                 </section>
             </li>

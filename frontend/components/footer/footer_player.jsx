@@ -72,12 +72,13 @@ class FooterPlayer extends Component {
 
 
     componentDidUpdate(prevProps, prevState){
-        if (this.props.queue !== prevProps.queue){
+        if (JSON.stringify(this.state.queue) !== JSON.stringify(this.props.queue)){
             this.setState({ 
                 queue: this.props.queue,
+                currentSongIndex: 0
             })
         }
-
+        
         if (prevState.currentSongIndex && this.state.queue.length === 1){
             this.setState({
                 currentSongIndex: 0
@@ -235,8 +236,8 @@ class FooterPlayer extends Component {
 
             let current = queue[currentSongIndex]
             let song = songs[current]
-            currentSong(song.id)
             if (song) {
+                currentSong(song.id)
             let artists = song.artists.map(artist =>
                 <Link key={artist.id} to={`/player/artists/${artist.id}`}>{artist.name}</Link>
             )
