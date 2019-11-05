@@ -87,7 +87,11 @@ class SessionForm extends React.Component {
             username: "Guest",
             password: "password",
         }
-        this.props.processForm(user);
+        if (this.props.formType === "signup") {
+            this.props.login(user)
+        } else {
+            this.props.processForm(user);
+        }
     }
 
 
@@ -445,8 +449,8 @@ class SessionForm extends React.Component {
             <button className="splash-grn-button splash-grn-button-sign-up-not-green noSelect blue-button" onClick={this.handleGuest}>Sign up as a Guest</button>
             <div className="login-form-wrapper">
                 <div className="login-form-divider">
-                    <div class="divider-login">
-                        <strong class="login-or">or</strong>
+                    <div className="divider-login">
+                        <strong className="login-or">or</strong>
                     </div>
                 </div>
             </div>       
@@ -576,8 +580,8 @@ class SessionForm extends React.Component {
             <button className="splash-grn-button splash-grn-button-sign-up-not-green noSelect blue-button" onClick={this.handleGuest}>Log in as a Guest</button>
             <div className="login-form-wrapper">
                 <div className="login-form-divider">
-                    <div class="divider-login">
-                        <strong class="login-or">or</strong>
+                    <div className="divider-login">
+                        <strong className="login-or">or</strong>
                     </div>
                 </div>   
             </div>              
