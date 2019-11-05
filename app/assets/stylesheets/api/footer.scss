@@ -10,7 +10,7 @@ footer {
  }
 
  .bottom-logo{
-    width: 16.66666667%;
+   //  width: 16.66666667%;
     padding: 0 15px;
  }
 
@@ -22,7 +22,7 @@ footer {
 
  .about {
      display: flex;
-     width: 64%;
+     width: 80%;
      justify-content: space-between;
      padding: 80px 0 0px;
  }
@@ -31,12 +31,14 @@ footer {
      display: flex;
      width: 50%;
      justify-content: space-between;
+     flex-wrap: wrap;
  }
 
  .footer-top-links dl {
      display: flex;
      flex-direction: column;
-
+     margin-left: 16px;
+     margin-right: 16px;
  }
  .footer-top-links dl dt {
     display: flex;
@@ -72,6 +74,7 @@ footer {
 
  .social-media ul {
     display: flex;
+    padding: 0;
  }
 
  .social-media li {
@@ -83,6 +86,10 @@ footer {
     border-radius: 50%;
     background-color: #222326;
     margin-right: 15px;
+ }
+
+ .social-media li:last-child{
+    margin-right: 0;
  }
 
  .social-media img {
@@ -100,7 +107,7 @@ footer {
  }
 
  .country{
-    width: 60%;
+    width: 80%;
     flex-direction: row-reverse;
 
     padding: 10px;
@@ -120,7 +127,7 @@ footer {
  }
  
  .bottom-links {
-    width: 60%;
+    width: 80%;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 50px;

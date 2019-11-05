@@ -442,6 +442,14 @@ class SessionForm extends React.Component {
         const signup = (
         <form onSubmit={this.handleSubmit} className="login-form-box">
             <h2>Sign up with your email address</h2>
+            <button className="splash-grn-button splash-grn-button-sign-up-not-green noSelect blue-button" onClick={this.handleGuest}>Sign up as a Guest</button>
+            <div className="login-form-wrapper">
+                <div className="login-form-divider">
+                    <div class="divider-login">
+                        <strong class="login-or">or</strong>
+                    </div>
+                </div>
+            </div>       
             <div className="login-form">
                 <div className="login-form-details">
                     <div>
