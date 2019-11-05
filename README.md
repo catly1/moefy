@@ -5,6 +5,16 @@
 ## Overview
 Moefy is an anime themed Spotify clone where catchy songs accompany colorful backgrounds. If anime isn't your thing you might just aquire a new taste!
 
+
+## Technologies Used
+* [React](https://reactjs.org/)
+* [Rails](https://rubyonrails.org/)
+* [Redux](https://redux.js.org/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [AWS S3](https://aws.amazon.com/s3/)
+* [Docker](https://www.docker.com/)
+
+  
 ## Features:
 ### Responsive User Authentication
 Using a series of onBlur event actions, the input fields come to life and reminds a user if they missed an input field or if they typed something invalid.
