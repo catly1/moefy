@@ -70,8 +70,10 @@ class FooterPlayer extends Component {
     handleClickOutside(e) {
         if (!Array.from(e.target.classList).includes("playlist-menu-item")) {
             const playlistMenu = document.querySelector(".playlist-menu")
-            playlistMenu.classList.remove("active")
-            playlistMenu.setAttribute("id","")
+            if (playlistMenu){
+                playlistMenu.classList.remove("active")
+                playlistMenu.setAttribute("id","")
+            }
         }
     }
 
