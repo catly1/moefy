@@ -1,7 +1,7 @@
 # Moefy
 ![](app/assets/images/markdown/demo.gif)
 
-[Live](https://moefy.herokuapp.com/#/)
+## [Live](https://moefy.herokuapp.com/#/)
 ## Overview
 Moefy is an anime themed Spotify clone where catchy songs accompany colorful backgrounds. If anime isn't your thing you might just aquire a new taste!
 
