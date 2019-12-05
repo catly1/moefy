@@ -311,6 +311,7 @@ section.footer-dot div{
     display: flex;
     padding: 0 16px;
     justify-content: space-between;
+    height: 100%;
 }
 
 .small-player .control-buttons{
@@ -328,8 +329,20 @@ section.footer-dot div{
     font-size: 35px;
 }
 
-.small-player .range-bar{
-    width: auto;
+.small-player progress {
+    height: 3px;
+    background-color: red;
+    margin-top: -1px;
+
+}
+
+.small-player progress::-webkit-progress-value {
+    background-color: #b3b3b3;
+}
+
+
+.small-player:hover progress::-webkit-progress-value {
+    background-color: #1db954;
 }
 
 @media only screen and (max-width: 1550px) {

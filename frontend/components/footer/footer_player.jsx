@@ -331,9 +331,7 @@ class FooterPlayer extends Component {
                 content = (<div></div>)
             } else {
                 content = (<div className="small-player">
-                    <div className="range-bar">
-                        <progress max={1} value={played} />
-                    </div>
+                    <progress max={1} value={played} />
                     <div className="small-player-bottom">
                         <div className="footer-player-options">
                             <div className="song-item-song-options-favorite">
