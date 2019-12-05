@@ -24,7 +24,7 @@ class FooterPlayer extends Component {
             shuffle: false,
             prevPage: "",
             queueButton: false,
-            mobile: window.matchMedia("(max-width: 1550px)").matches,
+            mobile: window.matchMedia("(max-width: 980px)").matches,
             expanded: false
         }
         this.handlePlayPause = this.handlePlayPause.bind(this);
