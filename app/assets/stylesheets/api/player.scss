@@ -4,7 +4,8 @@
     grid-template-columns: auto 1fr;
     grid-template-areas: "left-nav-bar main-view"  "footer-player footer-player";
     // background-image: linear-gradient(to right bottom, rgb(36, 58, 56), rgb(0, 0, 0)), linear-gradient(transparent, rgb(0, 0, 0) 70%);
-    min-height: 100vh;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 .black-bg{
