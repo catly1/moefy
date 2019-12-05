@@ -181,3 +181,19 @@
     padding: 0 10px 0 9px;
     color: #b3b3b3; 
 }
+
+@media only screen and (max-width: 1550px) {
+    .album-index-item {
+        width: 29%;
+    }
+
+    .album-index-name a{
+        line-height: normal;
+        font-size: 25px;
+    }
+
+    .album-index-artist a{
+        line-height: normal;
+        font-size: 25px;
+    }
+}

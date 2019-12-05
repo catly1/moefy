@@ -153,7 +153,8 @@
     .sidebar-main-nav a:last-child, .left-nav-bar-items {
         padding-bottom: 0;
     }
-    .sidebar-main-nav a:last-child div {
-        padding-top: 4px;
+    .sidebar-main-nav a:last-child svg {
+        margin-bottom: 6px;
+        font-size: 62px;
     }
 }
