@@ -46,3 +46,25 @@
     margin-left: -15px;  
 }
 
+@media only screen and (max-width: 1550px) {
+    .header-player{
+        margin: 0;
+        width: 100%;
+
+    }
+
+    .header-player ul{
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .header-player a {
+        font-size: 20px;
+    }
+
+    .header-player-bar{
+        bottom: -5px;
+        border-radius: 5px;
+        height: 4px;
+    }
+}

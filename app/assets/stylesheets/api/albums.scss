@@ -196,4 +196,57 @@
         line-height: normal;
         font-size: 25px;
     }
+
+    .album-list{
+        justify-content: center;
+    }
+
+    .album-song-list {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .album-show-left{
+        width: 100%;
+    }
+    
+    .album-show-right{
+        width: 100%;
+    }
+
+    .album-show-art-name-artist {
+        max-width: 400px;
+    }
+
+    .album-show-name {
+        font-size: 45px;
+        line-height: normal;
+        margin: 20px 0 20px 0;
+    }
+
+    .album-show-artist a {
+        font-size: 30px;
+        line-height: normal;
+    }
+
+    .album-song-list button.splash-grn-button{
+        font-size: 25px;
+        line-height: normal;
+        letter-spacing: 10px;
+        text-align: center;
+        min-width: 100%;
+    }
+
+    .album-show-year{
+        line-height: normal;
+        font-size: 23px;
+        margin-bottom: 20px;
+
+    }
+
+    .album-show-dot{
+        font-size: 36px;
+        line-height: 7px;
+        padding: 0px 15px 0 15px;
+    }
 }
