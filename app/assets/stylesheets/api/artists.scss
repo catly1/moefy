@@ -164,3 +164,9 @@
     padding: 0;
     justify-content: flex-start;
 }
+
+@media only screen and (max-width: 980px) {
+    .artist-show-songs ol {
+        overflow-x: hidden;
+    }
+}

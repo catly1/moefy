@@ -159,9 +159,9 @@ li:hover .song-item-song-options > div{
         line-height: normal;
     }
 
-    .album-show-right li{
+    .album-show-right li, .song-list li{
         height: 80px;
-        padding: 10px;
+        padding: 10px 20px 10px 20px;
     }
 
     .song-item-song-options div{
