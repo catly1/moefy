@@ -312,6 +312,7 @@ section.footer-dot div{
     padding: 0 16px;
     justify-content: space-between;
     height: 100%;
+    margin: 20px 0 20px 0;
 }
 
 .small-player .control-buttons{
@@ -347,9 +348,13 @@ section.footer-dot div{
 
 @media only screen and (max-width: 980px) {
  .footer-player{
-    height: 150px;
+    height: auto;
     transition: height 0.5s;
- }   
+ }
+
+ .music-player{
+    height: auto;
+ }
     
 }
 

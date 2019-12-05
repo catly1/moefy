@@ -132,3 +132,41 @@ li:hover .song-item-song-options > div{
     border-bottom-color: currentcolor;
 }
 
+@media only screen and (max-width: 980px) {
+    .song-item-play-button {
+        display:none;
+    }
+
+    .song-item{
+        width: 89%;
+    }
+
+    .song-first-line{
+        font-size: 25px;
+        line-height: 25px;
+    }
+
+    .song-second-line{
+        padding-top: 10px;
+    }
+    .song-second-line a {
+        font-size: 23px;
+        line-height: normal;
+    }
+
+    .song-item-song-length{
+        font-size: 25px;
+        line-height: normal;
+    }
+
+    .album-show-right li{
+        height: 80px;
+        padding: 10px;
+    }
+
+    .song-item-song-options div{
+        display: flex;
+        writing-mode: vertical-rl;
+        font-size: 50px;
+    }
+}
