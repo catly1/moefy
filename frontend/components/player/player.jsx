@@ -26,9 +26,12 @@ class Player extends Component {
         this.props.requestSongs();
         this.props.requestPlaylistSongs();
         this.props.requestLikedSongs();
+
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
         
         window.addEventListener('resize', () => {
-            let vh = window.innerHeight * 0.01;
+            vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         });
     }
