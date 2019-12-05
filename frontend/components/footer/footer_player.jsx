@@ -24,7 +24,8 @@ class FooterPlayer extends Component {
             shuffle: false,
             prevPage: "",
             queueButton: false,
-            mobile: window.matchMedia("(max-width: 1550px)").matches
+            mobile: window.matchMedia("(max-width: 1550px)").matches,
+            expanded: false
         }
         this.handlePlayPause = this.handlePlayPause.bind(this);
         this.handleVolumeChange = this.handleVolumeChange.bind(this);
@@ -323,9 +324,38 @@ class FooterPlayer extends Component {
             queueButton = <MdQueueMusic className="queue-not-open" />
         }
 
+        let player, content
+        if (this.state.mobile){
+
+            if (this.state.expanded){
+                content = (<div></div>)
+            } else {
+                content = (<div className="small-player">
+                    <div className="footer-player-options">
+                        <div className="song-item-song-options-favorite">
+                            {this.renderFavoriteButton()}
+                        </div>
+                    </div>
+                    <div className="song-info-details">
+                        <div className="song-info-details-first-line" id={song.id}>
+                            {song.name}
+                        </div>
+                        <div className="song-info-details-second-line">
+                            {artists[0]}
+                        </div>
+                    </div>
+                    <div className="control-buttons">
+                        <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
+                    </div>
+                </div>)
+            }
 
 
-        return(<div className="song-info-wrapper">
+            player = (<div className="song-info-wrapper">
+                {content}
+            </div>)
+        } else {
+        player = (<div className="song-info-wrapper">
             <section className="song-info">
                 <div className="footer-player-album-wrapper"><Link to={`/player/albums/${song.album_id}`}><img src={song.album_image} alt={song.album} /></Link></div>
                 <div className="song-info-details">
@@ -383,6 +413,9 @@ class FooterPlayer extends Component {
             </section>
         </div>
         )
+        }
+
+        return player
     }
 
     render (){
