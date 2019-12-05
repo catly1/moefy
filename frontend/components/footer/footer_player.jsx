@@ -331,27 +331,32 @@ class FooterPlayer extends Component {
                 content = (<div></div>)
             } else {
                 content = (<div className="small-player">
-                    <div className="footer-player-options">
-                        <div className="song-item-song-options-favorite">
-                            {this.renderFavoriteButton()}
-                        </div>
+                    <div className="range-bar">
+                        <progress max={1} value={played} />
                     </div>
-                    <div className="song-info-details">
-                        <div className="song-info-details-first-line" id={song.id}>
-                            {song.name}
+                    <div className="small-player-bottom">
+                        <div className="footer-player-options">
+                            <div className="song-item-song-options-favorite">
+                                {this.renderFavoriteButton()}
+                            </div>
                         </div>
-                        <div className="song-info-details-second-line">
-                            {artists[0]}
+                        <div className="song-info-details">
+                            <div className="song-info-details-first-line" id={song.id}>
+                                {song.name}
+                            </div>
+                            <div className="song-info-details-second-line">
+                                {artists[0]}
+                            </div>
                         </div>
-                    </div>
-                    <div className="control-buttons">
-                        <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
+                        <div className="control-buttons">
+                            <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
+                        </div>
                     </div>
                 </div>)
             }
 
 
-            player = (<div className="song-info-wrapper">
+            player = (<div className="song-info-wrapper no-padding">
                 {content}
             </div>)
         } else {

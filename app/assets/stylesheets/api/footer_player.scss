@@ -13,7 +13,6 @@
 .music-player {
     display: flex;
     width: 100%;
-    padding: 0 16px;
     height: 100%;
 }
 
@@ -295,11 +294,22 @@ section.footer-dot div{
 .song-info-wrapper{
     display: flex;
     width: 100%;
+    padding: 0 16px;
+}
+
+.no-padding{
+    padding: 0;
 }
 
 .small-player{
     display: flex;
     width: 100%;
+    flex-direction: column;
+}
+
+.small-player-bottom{
+    display: flex;
+    padding: 0 16px;
     justify-content: space-between;
 }
 
@@ -316,6 +326,10 @@ section.footer-dot div{
     line-height: normal;
     letter-spacing: normal;
     font-size: 35px;
+}
+
+.small-player .range-bar{
+    width: auto;
 }
 
 @media only screen and (max-width: 1550px) {
