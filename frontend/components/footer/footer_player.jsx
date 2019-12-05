@@ -24,6 +24,7 @@ class FooterPlayer extends Component {
             shuffle: false,
             prevPage: "",
             queueButton: false,
+            mobile: window.matchMedia("(max-width: 1550px)").matches
         }
         this.handlePlayPause = this.handlePlayPause.bind(this);
         this.handleVolumeChange = this.handleVolumeChange.bind(this);
@@ -44,7 +45,8 @@ class FooterPlayer extends Component {
         this.handleShuffle = this.handleShuffle.bind(this);
         this.savePrevPage = this.savePrevPage.bind(this);
         this.shuffleQueue = this.shuffleQueue.bind(this);
-        this.handleQueueButton = this.handleQueueButton.bind(this)
+        this.handleQueueButton = this.handleQueueButton.bind(this);
+        // this.renderDesktopPlayer = this.renderDesktopPlayer.bind(this);
     }
     
     componentDidMount() {
@@ -261,25 +263,6 @@ class FooterPlayer extends Component {
     nowPlaying(){
         const { songs, currentSong } = this.props
         const { playing, volume, played, duration, muted, queue, currentSongIndex, loop, shuffle } = this.state
-        let muteButton, queueButton
-
-        const green = {
-            color: "#1db954",
-        }
-        if (volume >= .50) {
-            muteButton = <MdVolumeUp />
-        } else if (volume < .50 && volume > 0) {
-            muteButton = <MdVolumeDown />
-        } else if (volume === 0) {
-            muteButton = <MdVolumeOff />
-        }
-
-        if (location.hash === "#/player/queue"){
-            queueButton = <MdQueueMusic style={green}/>
-        } else {
-            queueButton = <MdQueueMusic className="queue-not-open"/>
-        }
-
 
         let nowPlaying
         if (queue.length > 0) {
@@ -291,7 +274,7 @@ class FooterPlayer extends Component {
             let artists = song.artists.map(artist =>
                 <Link key={artist.id} to={`/player/artists/${artist.id}`}>{artist.name}</Link>
             )
-            
+
             nowPlaying = (<div className="music-player">
                 <ReactPlayer
                     ref={this.ref}
@@ -306,68 +289,97 @@ class FooterPlayer extends Component {
                     onEnded={this.handleEnded}
                     loop={loop}
                 />
-                <section className="song-info">
-                    <div className="footer-player-album-wrapper"><Link to={`/player/albums/${song.album_id}`}><img src={song.album_image} alt={song.album} /></Link></div>
-                    <div className="song-info-details">
-                        <div className="song-info-details-first-line" id={song.id}>
-                            {song.name}
-                        </div>
-                        <div className="song-info-details-second-line">
-                            {artists[0]}
-                        </div>
-                    </div>
-                    <div className="footer-player-options">
-                        <div className="song-item-song-options-favorite">
-                            {this.renderFavoriteButton()}
-                        </div>
-                        <section className="song-item-song-options footer-dot" onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>
-                            <div id={song.id}>...</div>
-                        </section>
-                    </div>
-                </section>
-
-                <section className="center-console">
-                    <div className="control-buttons">
-                        <div className="shuffle-button button" onClick={this.handleShuffle}>{shuffle ? <IoIosShuffle style={green} /> : <IoIosShuffle />}</div>
-                        <div className="back-button button" onClick={this.handleBackward}><MdSkipPrevious /></div>
-                        <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
-                        <div className="fwd-button button" onClick={this.handleForward}><MdSkipNext /></div>
-                        <div className="rep-button button" onClick={this.handleRepeat}>{loop ? <TiArrowRepeat style={green}/> : <TiArrowRepeat />}</div>
-                    </div>
-                    <div className="seek-bar">
-                        <div className="current-progress"><Duration seconds={duration * played} /></div>
-                        <div className="range-bar">
-                            <input
-                                type='range' min={0} max={1} step='any'
-                                value={played}
-                                onMouseDown={this.handleSeekMouseDown}
-                                onChange={this.handleSeekChange}
-                                onMouseUp={this.handleSeekMouseUp}
-                            />
-                            <progress max={1} value={played} />
-                        </div>
-                        <div className="song-length"><Duration seconds={duration} /></div>
-                    </div>
-                </section>
-
-                <section className="volume">
-                    <section className="player-queue" onClick={this.handleQueueButton}>
-                        {queueButton}
-                    </section>
-                    {/* <label className="volume-left"><input id='muted' type='checkbox' checked={muted} onChange={this.handleToggleMuted} /><span className="checkmark" /></label> */}
-                    <label className="volume-left" onClick={this.handleMute}>{muteButton}</label>
-                    <div className="volume-right">
-                        <div className="volume-bar"><input type='range' min={0} max={1} step='any' value={volume} onChange={this.handleVolumeChange} /></div>
-                        <progress max={1} value={volume} />
-                    </div>
-                </section>
-
-
+                {this.renderDesktopPlayer(song, artists)}
             </div>
             )}
         }
 
         return nowPlaying
+    }
+
+    renderDesktopPlayer(song, artists){
+        const { playing, volume, played, duration, muted, queue, currentSongIndex, loop, shuffle } = this.state
+
+        let muteButton, queueButton
+
+        const green = {
+            color: "#1db954",
+        }
+
+        if (volume >= .50) {
+            muteButton = <MdVolumeUp />
+        } else if (volume < .50 && volume > 0) {
+            muteButton = <MdVolumeDown />
+        } else if (volume === 0) {
+            muteButton = <MdVolumeOff />
+        }
+
+        if (location.hash === "#/player/queue") {
+            queueButton = <MdQueueMusic style={green} />
+        } else {
+            queueButton = <MdQueueMusic className="queue-not-open" />
+        }
+
+
+
+        return(<div className="song-info-wrapper">
+            <section className="song-info">
+                <div className="footer-player-album-wrapper"><Link to={`/player/albums/${song.album_id}`}><img src={song.album_image} alt={song.album} /></Link></div>
+                <div className="song-info-details">
+                    <div className="song-info-details-first-line" id={song.id}>
+                        {song.name}
+                    </div>
+                    <div className="song-info-details-second-line">
+                        {artists[0]}
+                    </div>
+                </div>
+                <div className="footer-player-options">
+                    <div className="song-item-song-options-favorite">
+                        {this.renderFavoriteButton()}
+                    </div>
+                    <section className="song-item-song-options footer-dot" onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>
+                        <div id={song.id}>...</div>
+                    </section>
+                </div>
+            </section>
+
+            <section className="center-console">
+                <div className="control-buttons">
+                    <div className="shuffle-button button" onClick={this.handleShuffle}>{shuffle ? <IoIosShuffle style={green} /> : <IoIosShuffle />}</div>
+                    <div className="back-button button" onClick={this.handleBackward}><MdSkipPrevious /></div>
+                    <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
+                    <div className="fwd-button button" onClick={this.handleForward}><MdSkipNext /></div>
+                    <div className="rep-button button" onClick={this.handleRepeat}>{loop ? <TiArrowRepeat style={green} /> : <TiArrowRepeat />}</div>
+                </div>
+                <div className="seek-bar">
+                    <div className="current-progress"><Duration seconds={duration * played} /></div>
+                    <div className="range-bar">
+                        <input
+                            type='range' min={0} max={1} step='any'
+                            value={played}
+                            onMouseDown={this.handleSeekMouseDown}
+                            onChange={this.handleSeekChange}
+                            onMouseUp={this.handleSeekMouseUp}
+                        />
+                        <progress max={1} value={played} />
+                    </div>
+                    <div className="song-length"><Duration seconds={duration} /></div>
+                </div>
+            </section>
+
+            <section className="volume">
+                <section className="player-queue" onClick={this.handleQueueButton}>
+                    {queueButton}
+                </section>
+                {/* <label className="volume-left"><input id='muted' type='checkbox' checked={muted} onChange={this.handleToggleMuted} /><span className="checkmark" /></label> */}
+                <label className="volume-left" onClick={this.handleMute}>{muteButton}</label>
+                <div className="volume-right">
+                    <div className="volume-bar"><input type='range' min={0} max={1} step='any' value={volume} onChange={this.handleVolumeChange} /></div>
+                    <progress max={1} value={volume} />
+                </div>
+            </section>
+        </div>
+        )
     }
 
     render (){

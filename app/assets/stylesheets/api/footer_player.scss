@@ -286,6 +286,12 @@ section.footer-dot div{
     color: white;
 }
 
+.song-info-wrapper{
+    display: flex;
+    width: 100%;
+}
+
+
 @media only screen and (max-width: 1550px) {
  .footer-player{
     height: 150px;
