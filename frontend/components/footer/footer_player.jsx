@@ -46,7 +46,6 @@ class FooterPlayer extends Component {
         this.savePrevPage = this.savePrevPage.bind(this);
         this.shuffleQueue = this.shuffleQueue.bind(this);
         this.handleQueueButton = this.handleQueueButton.bind(this);
-        // this.renderDesktopPlayer = this.renderDesktopPlayer.bind(this);
     }
     
     componentDidMount() {
@@ -92,6 +91,10 @@ class FooterPlayer extends Component {
             this.setState({
                 currentSongIndex: 0
             })
+        }
+
+        if (location.hash !== "#/player/queue" && this.state.queueButton) {
+            this.handleQueueButton()
         }
     }
 
@@ -289,7 +292,7 @@ class FooterPlayer extends Component {
                     onEnded={this.handleEnded}
                     loop={loop}
                 />
-                {this.renderDesktopPlayer(song, artists)}
+                {this.renderPlayer(song, artists)}
             </div>
             )}
         }
@@ -297,7 +300,7 @@ class FooterPlayer extends Component {
         return nowPlaying
     }
 
-    renderDesktopPlayer(song, artists){
+    renderPlayer(song, artists){
         const { playing, volume, played, duration, muted, queue, currentSongIndex, loop, shuffle } = this.state
 
         let muteButton, queueButton
