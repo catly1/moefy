@@ -288,7 +288,8 @@ section.footer-dot div{
 
 @media only screen and (max-width: 1550px) {
  .footer-player{
-     height: 150px;
+    height: 150px;
+    transition: height 0.5s;
  }   
     
 }
