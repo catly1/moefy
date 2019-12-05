@@ -119,3 +119,41 @@
     color: #b3b3b3;
     text-transform: none;
 }
+
+@media only screen and (max-width: 1550px) {
+    .left-nav-logo, .user-profile, .sidebar-playlist-header, .create-playlist-button, .sidebar-playlist-list-wrapper{
+        display: none;
+    }
+
+    .sidebar-main-nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+    }
+
+    .left-nav-bar-items{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left-nav-bar-items div{
+        margin-left: 0;
+        font-size: 30px;
+    }
+
+    .left-nav-wrapper{
+        height: 150px;
+    }
+
+    .left-nav-bar-items svg {
+        font-size: 70px;
+    }
+    .sidebar-main-nav a:last-child, .left-nav-bar-items {
+        padding-bottom: 0;
+    }
+    .sidebar-main-nav a:last-child div {
+        padding-top: 4px;
+    }
+}
