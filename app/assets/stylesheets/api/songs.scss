@@ -159,9 +159,24 @@ li:hover .song-item-song-options > div{
         line-height: normal;
     }
 
+    .song-list li {
+        padding: 10px 20px 10px 20px;
+    }
+
     .album-show-right li, .song-list li{
         height: 80px;
-        padding: 10px 20px 10px 20px;
+    }
+
+    .album-show-right {
+        padding: 0;
+    }
+
+    .album-show-right li:last-child{
+        margin-bottom: 30px;
+    }
+
+    .album-show-right ol {
+    // padding: 0;
     }
 
     .song-item-song-options div{
