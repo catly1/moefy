@@ -373,10 +373,16 @@ section.footer-dot div{
 }
 .expanded-player-album-art{
     margin-top: auto;
+    margin-bottom: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .expanded-player-album-art img {
-    width: 90%;
+    width: 57vh;
+    height: auto;
+    max-width: 90%;
 }
 
 .expanded-player-song-info .song-info-details-first-line{

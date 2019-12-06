@@ -366,7 +366,7 @@ class FooterPlayer extends Component {
                             </div>
                         </section>
                         <section className="expanded-player-album-art">
-                            <div className="footer-player-album-wrapper"><img src={song.album_image} alt={song.album} /></div>
+                            <img src={song.album_image} alt={song.album} />
                         </section>
                         <div className="bottom">
                             <section className="expanded-player-song-info">
