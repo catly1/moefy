@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
-import { MdPlayCircleOutline, MdPauseCircleOutline, MdSkipNext, MdSkipPrevious, MdVolumeUp, MdVolumeOff, MdVolumeDown, MdFavoriteBorder, MdFavorite, MdQueueMusic} from "react-icons/md";
+import { MdExpandMore, MdPlayCircleOutline, MdPauseCircleOutline, MdSkipNext, MdSkipPrevious, MdVolumeUp, MdVolumeOff, MdVolumeDown, MdFavoriteBorder, MdFavorite, MdQueueMusic} from "react-icons/md";
 import { IoIosShuffle } from "react-icons/io";
 import { TiArrowRepeat } from "react-icons/ti";
 import Duration from './duration';
@@ -306,6 +306,9 @@ class FooterPlayer extends Component {
         const sidebar = document.querySelector(".left-nav-bar")
         const player = document.querySelector(".footer-player")
         player.setAttribute("style", `height:calc(var(--vh, 1vh) * 100)`)
+        this.setState({
+            expanded: true
+        })
     }
 
     renderPlayer(song, artists){
@@ -335,7 +338,66 @@ class FooterPlayer extends Component {
         if (this.state.mobile){
 
             if (this.state.expanded){
-                content = (<div></div>)
+                content = (<div className="expanded-player">
+                        <section className="top">
+                            <MdExpandMore/>
+                            <div className="song-item-song-options footer-dot" onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>
+                                <div id={song.id}>...</div>
+                            </div>
+                        </section>
+                        <section className="expanded-player-album art">
+                            <div className="footer-player-album-wrapper"><img src={song.album_image} alt={song.album} /></div>
+                        </section>
+                        <div className="bottom">
+                            <section className="expanded-player-song-info">
+                                <div className="song-info-details">
+                                    <div className="song-info-details-first-line" id={song.id}>
+                                        {song.name}
+                                    </div>
+                                    <div className="song-info-details-second-line">
+                                        {artists[0]}
+                                    </div>
+                                </div>
+                                <div className="song-item-song-options-favorite">
+                                    {this.renderFavoriteButton()}
+                                </div>
+                            </section>
+                            <section className="center-console">
+                                <div className="seek-bar">
+
+                                    <div className="range-bar">
+                                        <input
+                                            type='range' min={0} max={1} step='any'
+                                            value={played}
+                                            onMouseDown={this.handleSeekMouseDown}
+                                            onChange={this.handleSeekChange}
+                                            onMouseUp={this.handleSeekMouseUp}
+                                        />
+                                        <progress max={1} value={played} />
+                                    </div>
+                                    <div className="player-times">
+                                        <div className="current-progress"><Duration seconds={duration * played} /></div>
+                                        <div className="song-length"><Duration seconds={duration} /></div>
+                                    </div>
+                                </div>
+                                <div className="control-buttons">
+                                    <div className="shuffle-button button" onClick={this.handleShuffle}>{shuffle ? <IoIosShuffle style={green} /> : <IoIosShuffle />}</div>
+                                    <div className="back-button button" onClick={this.handleBackward}><MdSkipPrevious /></div>
+                                    <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
+                                    <div className="fwd-button button" onClick={this.handleForward}><MdSkipNext /></div>
+                                    <div className="rep-button button" onClick={this.handleRepeat}>{loop ? <TiArrowRepeat style={green} /> : <TiArrowRepeat />}</div>
+                                </div>
+                            </section>
+                            <section className="volume-queue">
+                                <label className="volume-left" onClick={this.handleMute}>{muteButton}</label>
+
+                                <section className="player-queue" onClick={this.handleQueueButton}>
+                                    {queueButton}
+                                </section>
+                            </section>
+                        </div>
+ 
+                </div>)
             } else {
                 content = (<div className="small-player">
                     <progress max={1} value={played} />
