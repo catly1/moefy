@@ -31,18 +31,18 @@ class Player extends Component {
 
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
-        
-        window.addEventListener('resize', () => {
-            vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        });
-        
+
         if (this.state.mobile) {
             const player = document.querySelector(".footer-player")
             const sidebar = document.querySelector(".left-nav-bar")
             const sidebarHeight = sidebar.offsetHeight
             player.setAttribute("style", `height:${sidebarHeight}px`)
         }
+
+        window.addEventListener('resize', () => {
+            vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        });
     }
 
     componentDidUpdate(prevProps){
@@ -51,6 +51,7 @@ class Player extends Component {
             div.scrollTop = 0
         }
 
+        
     }
 
     render(){
