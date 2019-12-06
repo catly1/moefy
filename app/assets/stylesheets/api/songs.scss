@@ -159,8 +159,17 @@ li:hover .song-item-song-options > div{
         line-height: normal;
     }
 
-    .song-list li {
-        padding: 10px 20px 10px 20px;
+    .song-list li, .queue-page li {
+        padding: 10px 30px 10px 30px;
+    }
+
+    // .queue-page li{
+    //     padding: 10px 30px 10px 30px;
+    // }
+
+    .artist-show-songs li {
+        padding: 10px 0 10px 0 ;
+        width: 98%;
     }
 
     .album-show-right li, .song-list li{

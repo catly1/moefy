@@ -25,3 +25,15 @@ div.green {
 section.green{
     color: #1db954;
 }
+
+@media only screen and (max-width: 980px) {
+
+    .queue-page h2 {
+        font-size: 27px;
+        margin-bottom: 0;
+    }
+
+    div.queue-current {
+        height: 120px;
+    }
+}

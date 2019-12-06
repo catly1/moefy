@@ -179,6 +179,9 @@ class FooterPlayer extends Component {
     }
 
     handleQueueButton(){
+        if (this.state.expanded){
+            this.handleClose()
+        }
         this.setState({ queueButton: !this.state.queueButton })
         if (!this.state.queueButton) {
         this.savePrevPage()
