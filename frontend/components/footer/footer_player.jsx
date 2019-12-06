@@ -359,7 +359,7 @@ class FooterPlayer extends Component {
                                 <div id={song.id}>...</div>
                             </div>
                         </section>
-                        <section className="expanded-player-album art">
+                        <section className="expanded-player-album-art">
                             <div className="footer-player-album-wrapper"><img src={song.album_image} alt={song.album} /></div>
                         </section>
                         <div className="bottom">
@@ -396,9 +396,11 @@ class FooterPlayer extends Component {
                                 </div>
                                 <div className="control-buttons">
                                     <div className="shuffle-button button" onClick={this.handleShuffle}>{shuffle ? <IoIosShuffle style={green} /> : <IoIosShuffle />}</div>
-                                    <div className="back-button button" onClick={this.handleBackward}><MdSkipPrevious /></div>
-                                    <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
-                                    <div className="fwd-button button" onClick={this.handleForward}><MdSkipNext /></div>
+                                        <div className="center">
+                                            <div className="back-button button" onClick={this.handleBackward}><MdSkipPrevious /></div>
+                                            <div className="play-button button" onClick={this.handlePlayPause}>{playing ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}</div>
+                                            <div className="fwd-button button" onClick={this.handleForward}><MdSkipNext /></div>
+                                        </div>
                                     <div className="rep-button button" onClick={this.handleRepeat}>{loop ? <TiArrowRepeat style={green} /> : <TiArrowRepeat />}</div>
                                 </div>
                             </section>

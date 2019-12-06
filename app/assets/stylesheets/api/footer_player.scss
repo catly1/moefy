@@ -366,9 +366,17 @@ section.footer-dot div{
 }
 
 .expanded-player-song-info{
-    margin-top: 0 auto;
+    margin-bottom: 30px;
     display: flex;
+    width: 100%;
     justify-content: space-between;
+}
+.expanded-player-album-art{
+    margin-top: auto;
+}
+
+.expanded-player-album-art img {
+    width: 90%;
 }
 
 .expanded-player-song-info .song-info-details-first-line{
@@ -389,10 +397,15 @@ section.footer-dot div{
 
 .bottom{
     margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+    padding: 0 30px;
 }
 
 .expanded-player .center-console{
-    width: auto;
+    width: 97%;
     display: flex;
     flex-direction: column;
 }
@@ -402,8 +415,10 @@ section.footer-dot div{
 }
 
 .player-times{
+    margin-top: 5px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5px;
 }
 
 .expanded-player .range-bar {
@@ -412,17 +427,58 @@ section.footer-dot div{
 
 .expanded-player .control-buttons {
     min-width: 0;
-    width: 100%;
+    width: 102%;
+}
+
+.expanded-player .center{
+    display: flex;
+    align-items: center;
 }
 
 .volume-queue{
     display: flex;
     justify-content: space-between;
+    width: 97%;
+    margin-top: 10px;
 }
 
 .volume-queue .player-queue{
     padding: 0;
 }
+
+.volume-queue svg {
+    font-size: 30px;
+}
+
+.expanded-player .current-progress, .expanded-player .song-length {
+    width: auto;
+    font-size: 20px;
+}
+
+.expanded-player .button{
+    width: auto;
+    height: auto;
+    font-size: 60px;
+    line-height: 1px;
+}
+
+.center .back-button, .center .fwd-button {
+    font-size: 65px;
+}
+
+.center .back-button{
+    margin-right: 20px;
+}
+
+.center .fwd-button{
+    margin-left: 20px;
+}
+
+.center .play-button{
+    font-size: 90px;
+}
+
+
 
 @media only screen and (max-width: 980px) {
  .footer-player{
