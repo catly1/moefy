@@ -19,7 +19,9 @@ import QueueContainer from '../queue/queue_container'
 class Player extends Component {
     constructor(props){
         super(props)
-
+        this.state = {
+            mobile: window.matchMedia("(max-width: 980px)").matches
+        }
     }
 
     componentDidMount() {
@@ -34,6 +36,12 @@ class Player extends Component {
             vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         });
+        if (this.state.mobile) {
+            const player = document.querySelector(".footer-player")
+            const sidebar = document.querySelector(".left-nav-bar")
+            const sidebarHeight = sidebar.offsetHeight
+            player.setAttribute("style", `height:${sidebarHeight}px`)
+        }
     }
 
     componentDidUpdate(prevProps){
@@ -41,6 +49,7 @@ class Player extends Component {
             const div = document.getElementsByClassName("scroll-wrapper")[0]
             div.scrollTop = 0
         }
+
     }
 
     render(){

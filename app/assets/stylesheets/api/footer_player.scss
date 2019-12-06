@@ -350,6 +350,7 @@ section.footer-dot div{
  .footer-player{
     height: auto;
     transition: height 0.5s;
+    // min-height: 150px;
  }
 
  .music-player{
@@ -357,6 +358,10 @@ section.footer-dot div{
  }
     
 }
+
+// .collapsed{
+//     height: calc(var(--vh, 1vh) * 100);
+// }
 
 // // custom check box
 // /* The container */

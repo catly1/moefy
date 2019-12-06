@@ -47,6 +47,7 @@ class FooterPlayer extends Component {
         this.savePrevPage = this.savePrevPage.bind(this);
         this.shuffleQueue = this.shuffleQueue.bind(this);
         this.handleQueueButton = this.handleQueueButton.bind(this);
+        this.handleOpen = this.handleOpen.bind(this);
     }
     
     componentDidMount() {
@@ -301,6 +302,12 @@ class FooterPlayer extends Component {
         return nowPlaying
     }
 
+    handleOpen(){
+        const sidebar = document.querySelector(".left-nav-bar")
+        const player = document.querySelector(".footer-player")
+        player.setAttribute("style", `height:calc(var(--vh, 1vh) * 100)`)
+    }
+
     renderPlayer(song, artists){
         const { playing, volume, played, duration, muted, queue, currentSongIndex, loop, shuffle } = this.state
 
@@ -338,7 +345,7 @@ class FooterPlayer extends Component {
                                 {this.renderFavoriteButton()}
                             </div>
                         </div>
-                        <div className="song-info-details">
+                        <div className="song-info-details" onClick={this.handleOpen}>
                             <div className="song-info-details-first-line" id={song.id}>
                                 {song.name}
                             </div>
