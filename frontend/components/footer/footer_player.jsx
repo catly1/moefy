@@ -309,7 +309,10 @@ class FooterPlayer extends Component {
     handleOpen(){
         const sidebar = document.querySelector(".left-nav-bar")
         const player = document.querySelector(".footer-player")
+        const main = document.querySelector(".main-view")
         player.setAttribute("style", `height:calc(var(--vh, 1vh) * 100)`)
+        sidebar.setAttribute("style", `display:none`)
+        main.setAttribute("style", `display:none`)
         this.setState({
             expanded: true
         })
@@ -317,8 +320,11 @@ class FooterPlayer extends Component {
 
     handleClose(){
         const sidebar = document.querySelector(".left-nav-bar")
+        sidebar.setAttribute("style", `display:block`)
         const player = document.querySelector(".footer-player")
+        const main = document.querySelector(".main-view")
         const sidebarHeight = sidebar.offsetHeight
+        main.setAttribute("style", `display:block`)
         player.setAttribute("style", `height:${sidebarHeight}px`)
         this.setState({
             expanded: false

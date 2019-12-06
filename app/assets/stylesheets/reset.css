@@ -10,5 +10,6 @@ ul {
 }
 
 body{
-    overflow: hidden 
+	overflow: hidden;
+	background: black;
 }
