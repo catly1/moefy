@@ -101,9 +101,11 @@ class FooterPlayer extends Component {
         }
 
         if (!window.matchMedia("(max-width: 980px)").matches && this.state.mobile){
-            if (this.state.expanded){
-                this.handleClose(90)
-            }
+            // if (this.state.expanded){
+            this.handleClose()
+            let player = document.querySelector(".footer-player")
+            player.setAttribute("style", `height:90px`)
+            // }
 
             this.setState({
                 mobile: false
@@ -111,11 +113,11 @@ class FooterPlayer extends Component {
         }
 
         if (window.matchMedia("(max-width: 980px)").matches && !this.state.mobile) {
-            const player = document.querySelector(".footer-player")
-            const sidebar = document.querySelector(".left-nav-bar")
-            const sidebarHeight = sidebar.offsetHeight
-            
-            player.setAttribute("style", `height:${sidebarHeight}px`)
+            let sidebar = document.querySelector(".left-nav-bar")
+            let player2 = document.querySelector(".footer-player")
+            let sidebarHeight = sidebar.offsetHeight
+            player2.setAttribute("style", `height:${sidebarHeight}px`)
+
             this.setState({
                 mobile: true
             })
@@ -348,7 +350,7 @@ class FooterPlayer extends Component {
         const main = document.querySelector(".main-view")
         const sidebarHeight = sidebar.offsetHeight
         main.setAttribute("style", `display:block`)
-        player.setAttribute("style", `height:${size ? size : sidebarHeight}px`)
+        player.setAttribute("style", `height:${sidebarHeight}px`)
         this.setState({
             expanded: false
         })
