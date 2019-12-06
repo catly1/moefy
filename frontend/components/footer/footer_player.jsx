@@ -48,6 +48,7 @@ class FooterPlayer extends Component {
         this.shuffleQueue = this.shuffleQueue.bind(this);
         this.handleQueueButton = this.handleQueueButton.bind(this);
         this.handleOpen = this.handleOpen.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
     
     componentDidMount() {
@@ -311,6 +312,16 @@ class FooterPlayer extends Component {
         })
     }
 
+    handleClose(){
+        const sidebar = document.querySelector(".left-nav-bar")
+        const player = document.querySelector(".footer-player")
+        const sidebarHeight = sidebar.offsetHeight
+        player.setAttribute("style", `height:${sidebarHeight}px`)
+        this.setState({
+            expanded: false
+        })
+    }
+
     renderPlayer(song, artists){
         const { playing, volume, played, duration, muted, queue, currentSongIndex, loop, shuffle } = this.state
 
@@ -340,7 +351,7 @@ class FooterPlayer extends Component {
             if (this.state.expanded){
                 content = (<div className="expanded-player">
                         <section className="top">
-                            <MdExpandMore/>
+                            <MdExpandMore onClick={this.handleClose}/>
                             <div className="song-item-song-options footer-dot" onClick={this.handleContextMenu} ref={node => this.node = node} id={song.id}>
                                 <div id={song.id}>...</div>
                             </div>

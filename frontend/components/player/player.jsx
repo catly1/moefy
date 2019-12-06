@@ -36,6 +36,7 @@ class Player extends Component {
             vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         });
+        
         if (this.state.mobile) {
             const player = document.querySelector(".footer-player")
             const sidebar = document.querySelector(".left-nav-bar")
