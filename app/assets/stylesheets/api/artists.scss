@@ -169,4 +169,34 @@
     .artist-show-songs ol {
         overflow-x: hidden;
     }
+
+    .artist-list-wrapper .artist-list{
+        justify-content: center;
+    }
+
+    .artist-index-art{
+        width: 280px;
+        height: 280px;
+    }
+
+    .artist-index-name a{
+        font-size: 25px;
+        line-height: normal;
+    }
+
+    .artist-list-wrapper{
+        margin-top: 10px;
+    }
+
+    .artist-show button.splash-grn-button{
+        font-size: 25px;
+        line-height: normal;
+        letter-spacing: 10px;
+        text-align: center;
+        min-width: 35%;
+    }
+
+    .artist-show-nav{
+        display: none;
+    }
 }
