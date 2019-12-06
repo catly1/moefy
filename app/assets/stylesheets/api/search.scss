@@ -52,3 +52,12 @@
     padding: 0;
     justify-content: flex-start;
 }
+
+@media only screen and (max-width: 980px) {
+    .search-input-wrapper{
+        left: 0
+    }
+    .rendered-results .artist-show-albums .album-index-item {
+        width: 25%;
+    }
+}
