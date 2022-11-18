@@ -45,7 +45,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7",
+    "webpack-cli": "^3.3.12",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.6.0",
